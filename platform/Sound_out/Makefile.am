@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 
 %SK.cpp %.h :
 	@IDL@ @IDL_FLAGS@ -bcxx -Wbh=.h -Wbs=SK.cpp -Wbkeep_inc_path soundControl.idl

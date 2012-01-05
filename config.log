@@ -133,105 +133,105 @@ on june-laptop
 
 config.status:792: creating Makefile
 config.status:955: executing depfiles commands
-configure:4513: === configuring in system/ossie (/home/june/Work/ossie-0.8.2/system/ossie)
+configure:4513: === configuring in system/ossie (/home/june/Work/temp/ossie-june/system/ossie)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in system/standardInterfaces (/home/june/Work/ossie-0.8.2/system/standardInterfaces)
+configure:4513: === configuring in system/standardInterfaces (/home/june/Work/temp/ossie-june/system/standardInterfaces)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in system/nodebooter (/home/june/Work/ossie-0.8.2/system/nodebooter)
+configure:4513: === configuring in system/nodebooter (/home/june/Work/temp/ossie-june/system/nodebooter)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in system/customInterfaces (/home/june/Work/ossie-0.8.2/system/customInterfaces)
+configure:4513: === configuring in system/customInterfaces (/home/june/Work/temp/ossie-june/system/customInterfaces)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in system/c_wavLoader (/home/june/Work/ossie-0.8.2/system/c_wavLoader)
+configure:4513: === configuring in system/c_wavLoader (/home/june/Work/temp/ossie-june/system/c_wavLoader)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in system/SigProc (/home/june/Work/ossie-0.8.2/system/SigProc)
+configure:4513: === configuring in system/SigProc (/home/june/Work/temp/ossie-june/system/SigProc)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/domain (/home/june/Work/ossie-0.8.2/platform/domain)
+configure:4513: === configuring in platform/domain (/home/june/Work/temp/ossie-june/platform/domain)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/dtd (/home/june/Work/ossie-0.8.2/platform/dtd)
+configure:4513: === configuring in platform/dtd (/home/june/Work/temp/ossie-june/platform/dtd)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/Sound_in (/home/june/Work/ossie-0.8.2/platform/Sound_in)
+configure:4513: === configuring in platform/Sound_in (/home/june/Work/temp/ossie-june/platform/Sound_in)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/Sound_out (/home/june/Work/ossie-0.8.2/platform/Sound_out)
+configure:4513: === configuring in platform/Sound_out (/home/june/Work/temp/ossie-june/platform/Sound_out)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/USRP (/home/june/Work/ossie-0.8.2/platform/USRP)
+configure:4513: === configuring in platform/USRP (/home/june/Work/temp/ossie-june/platform/USRP)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/USRP2 (/home/june/Work/ossie-0.8.2/platform/USRP2)
+configure:4513: === configuring in platform/USRP2 (/home/june/Work/temp/ossie-june/platform/USRP2)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/XilinxFPGA (/home/june/Work/ossie-0.8.2/platform/XilinxFPGA)
+configure:4513: === configuring in platform/XilinxFPGA (/home/june/Work/temp/ossie-june/platform/XilinxFPGA)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/nodes/default_GPP_node (/home/june/Work/ossie-0.8.2/platform/nodes/default_GPP_node)
+configure:4513: === configuring in platform/nodes/default_GPP_node (/home/june/Work/temp/ossie-june/platform/nodes/default_GPP_node)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/nodes/default_GPP_sound_node (/home/june/Work/ossie-0.8.2/platform/nodes/default_GPP_sound_node)
+configure:4513: === configuring in platform/nodes/default_GPP_sound_node (/home/june/Work/temp/ossie-june/platform/nodes/default_GPP_sound_node)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/nodes/default_GPP_USRP_node (/home/june/Work/ossie-0.8.2/platform/nodes/default_GPP_USRP_node)
+configure:4513: === configuring in platform/nodes/default_GPP_USRP_node (/home/june/Work/temp/ossie-june/platform/nodes/default_GPP_USRP_node)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/nodes/default_GPP_USRP2_node (/home/june/Work/ossie-0.8.2/platform/nodes/default_GPP_USRP2_node)
+configure:4513: === configuring in platform/nodes/default_GPP_USRP2_node (/home/june/Work/temp/ossie-june/platform/nodes/default_GPP_USRP2_node)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/nodes/default_GPP_USRP_sound_node (/home/june/Work/ossie-0.8.2/platform/nodes/default_GPP_USRP_sound_node)
+configure:4513: === configuring in platform/nodes/default_GPP_USRP_sound_node (/home/june/Work/temp/ossie-june/platform/nodes/default_GPP_USRP_sound_node)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/nodes/default_ml403_node (/home/june/Work/ossie-0.8.2/platform/nodes/default_ml403_node)
+configure:4513: === configuring in platform/nodes/default_ml403_node (/home/june/Work/temp/ossie-june/platform/nodes/default_ml403_node)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in platform/GPP (/home/june/Work/ossie-0.8.2/platform/GPP)
+configure:4513: === configuring in platform/GPP (/home/june/Work/temp/ossie-june/platform/GPP)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in waveforms/ossie_demo (/home/june/Work/ossie-0.8.2/waveforms/ossie_demo)
+configure:4513: === configuring in waveforms/ossie_demo (/home/june/Work/temp/ossie-june/waveforms/ossie_demo)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in waveforms/ml403_ossie_demo (/home/june/Work/ossie-0.8.2/waveforms/ml403_ossie_demo)
+configure:4513: === configuring in waveforms/ml403_ossie_demo (/home/june/Work/temp/ossie-june/waveforms/ml403_ossie_demo)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in waveforms/OSSIETalkUSRP (/home/june/Work/ossie-0.8.2/waveforms/OSSIETalkUSRP)
+configure:4513: === configuring in waveforms/OSSIETalkUSRP (/home/june/Work/temp/ossie-june/waveforms/OSSIETalkUSRP)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in waveforms/OSSIETalkLoopBack (/home/june/Work/ossie-0.8.2/waveforms/OSSIETalkLoopBack)
+configure:4513: === configuring in waveforms/OSSIETalkLoopBack (/home/june/Work/temp/ossie-june/waveforms/OSSIETalkLoopBack)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in waveforms/Lab5Example (/home/june/Work/ossie-0.8.2/waveforms/Lab5Example)
+configure:4513: === configuring in waveforms/Lab5Example (/home/june/Work/temp/ossie-june/waveforms/Lab5Example)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in waveforms/pass_data_waveform (/home/june/Work/ossie-0.8.2/waveforms/pass_data_waveform)
+configure:4513: === configuring in waveforms/pass_data_waveform (/home/june/Work/temp/ossie-june/waveforms/pass_data_waveform)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/am_demod (/home/june/Work/ossie-0.8.2/components/am_demod)
+configure:4513: === configuring in components/am_demod (/home/june/Work/temp/ossie-june/components/am_demod)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/amplifier (/home/june/Work/ossie-0.8.2/components/amplifier)
+configure:4513: === configuring in components/amplifier (/home/june/Work/temp/ossie-june/components/amplifier)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/AutomaticGainControl (/home/june/Work/ossie-0.8.2/components/AutomaticGainControl)
+configure:4513: === configuring in components/AutomaticGainControl (/home/june/Work/temp/ossie-june/components/AutomaticGainControl)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/Channel (/home/june/Work/ossie-0.8.2/components/Channel)
+configure:4513: === configuring in components/Channel (/home/june/Work/temp/ossie-june/components/Channel)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/ChannelDemo (/home/june/Work/ossie-0.8.2/components/ChannelDemo)
+configure:4513: === configuring in components/ChannelDemo (/home/june/Work/temp/ossie-june/components/ChannelDemo)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/Conv_Dec (/home/june/Work/ossie-0.8.2/components/Conv_Dec)
+configure:4513: === configuring in components/Conv_Dec (/home/june/Work/temp/ossie-june/components/Conv_Dec)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/Conv_Enc (/home/june/Work/ossie-0.8.2/components/Conv_Enc)
+configure:4513: === configuring in components/Conv_Enc (/home/june/Work/temp/ossie-june/components/Conv_Enc)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/Decimator (/home/june/Work/ossie-0.8.2/components/Decimator)
+configure:4513: === configuring in components/Decimator (/home/june/Work/temp/ossie-june/components/Decimator)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/DigitalModem (/home/june/Work/ossie-0.8.2/components/DigitalModem)
+configure:4513: === configuring in components/DigitalModem (/home/june/Work/temp/ossie-june/components/DigitalModem)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/FrameAssembler (/home/june/Work/ossie-0.8.2/components/FrameAssembler)
+configure:4513: === configuring in components/FrameAssembler (/home/june/Work/temp/ossie-june/components/FrameAssembler)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/Interpolator (/home/june/Work/ossie-0.8.2/components/Interpolator)
+configure:4513: === configuring in components/Interpolator (/home/june/Work/temp/ossie-june/components/Interpolator)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/JPEG_VideoViewer (/home/june/Work/ossie-0.8.2/components/JPEG_VideoViewer)
+configure:4513: === configuring in components/JPEG_VideoViewer (/home/june/Work/temp/ossie-june/components/JPEG_VideoViewer)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/OSSIETalk (/home/june/Work/ossie-0.8.2/components/OSSIETalk)
+configure:4513: === configuring in components/OSSIETalk (/home/june/Work/temp/ossie-june/components/OSSIETalk)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/PacketResizer (/home/june/Work/ossie-0.8.2/components/PacketResizer)
+configure:4513: === configuring in components/PacketResizer (/home/june/Work/temp/ossie-june/components/PacketResizer)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/pass_data (/home/june/Work/ossie-0.8.2/components/pass_data)
+configure:4513: === configuring in components/pass_data (/home/june/Work/temp/ossie-june/components/pass_data)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/RxDemo (/home/june/Work/ossie-0.8.2/components/RxDemo)
+configure:4513: === configuring in components/RxDemo (/home/june/Work/temp/ossie-june/components/RxDemo)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/SymbolSyncPoly (/home/june/Work/ossie-0.8.2/components/SymbolSyncPoly)
+configure:4513: === configuring in components/SymbolSyncPoly (/home/june/Work/temp/ossie-june/components/SymbolSyncPoly)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/TxDemo (/home/june/Work/ossie-0.8.2/components/TxDemo)
+configure:4513: === configuring in components/TxDemo (/home/june/Work/temp/ossie-june/components/TxDemo)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/USRP_Commander (/home/june/Work/ossie-0.8.2/components/USRP_Commander)
+configure:4513: === configuring in components/USRP_Commander (/home/june/Work/temp/ossie-june/components/USRP_Commander)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/WebCamCapture (/home/june/Work/ossie-0.8.2/components/WebCamCapture)
+configure:4513: === configuring in components/WebCamCapture (/home/june/Work/temp/ossie-june/components/WebCamCapture)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/WFMDemod (/home/june/Work/ossie-0.8.2/components/WFMDemod)
+configure:4513: === configuring in components/WFMDemod (/home/june/Work/temp/ossie-june/components/WFMDemod)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/writeBytestoFile (/home/june/Work/ossie-0.8.2/components/writeBytestoFile)
+configure:4513: === configuring in components/writeBytestoFile (/home/june/Work/temp/ossie-june/components/writeBytestoFile)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in components/readBytesfromFile (/home/june/Work/ossie-0.8.2/components/readBytesfromFile)
+configure:4513: === configuring in components/readBytesfromFile (/home/june/Work/temp/ossie-june/components/readBytesfromFile)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
-configure:4513: === configuring in tools (/home/june/Work/ossie-0.8.2/tools)
+configure:4513: === configuring in tools (/home/june/Work/temp/ossie-june/tools)
 configure:4576: running /bin/bash ./configure --disable-option-checking '--prefix=/sdr'  '--libdir=/usr/local/lib/' '--includedir=/usr/local/include/' '--with-boost' '--with-boost-filesystem' --cache-file=/dev/null --srcdir=.
 
 ## ---------------- ##
@@ -273,14 +273,14 @@ am_cv_CXX_dependencies_compiler_type=gcc3
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /home/june/Work/ossie-0.8.2/missing --run aclocal-1.11'
+ACLOCAL='${SHELL} /home/june/Work/temp/ossie-june/missing --run aclocal-1.11'
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
 AMDEP_TRUE=''
-AMTAR='${SHELL} /home/june/Work/ossie-0.8.2/missing --run tar'
-AUTOCONF='${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoconf'
-AUTOHEADER='${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoheader'
-AUTOMAKE='${SHELL} /home/june/Work/ossie-0.8.2/missing --run automake-1.11'
+AMTAR='${SHELL} /home/june/Work/temp/ossie-june/missing --run tar'
+AUTOCONF='${SHELL} /home/june/Work/temp/ossie-june/missing --run autoconf'
+AUTOHEADER='${SHELL} /home/june/Work/temp/ossie-june/missing --run autoheader'
+AUTOMAKE='${SHELL} /home/june/Work/temp/ossie-june/missing --run automake-1.11'
 AWK='gawk'
 CPPFLAGS=''
 CXX='g++'
@@ -301,7 +301,7 @@ LDFLAGS=''
 LIBOBJS=''
 LIBS=''
 LTLIBOBJS=''
-MAKEINFO='${SHELL} /home/june/Work/ossie-0.8.2/missing --run makeinfo'
+MAKEINFO='${SHELL} /home/june/Work/temp/ossie-june/missing --run makeinfo'
 MKDIR_P='/bin/mkdir -p'
 OBJEXT='o'
 PACKAGE='ossie'
@@ -348,7 +348,7 @@ host_vendor='pc'
 htmldir='${docdir}'
 includedir='/usr/local/include'
 infodir='${datarootdir}/info'
-install_sh='${SHELL} /home/june/Work/ossie-0.8.2/install-sh'
+install_sh='${SHELL} /home/june/Work/temp/ossie-june/install-sh'
 libdir='/usr/local/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'

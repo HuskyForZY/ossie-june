@@ -1,4 +1,4 @@
-IDL_BIN = $(shell which omniidl)
+IDL_BIN = omniidl
 
 all:
 	$(IDL_BIN) -bpython -I../../ossie/idl -Wbpackage=ossie.custominterfaces -Wbinline ../charArray.idl

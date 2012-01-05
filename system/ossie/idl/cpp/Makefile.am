@@ -1,4 +1,4 @@
-IDL_BIN = $(shell which omniidl)
+IDL_BIN = omniidl
 
 %SK.cpp %.h %DynSK.cpp : ../%.idl
 	$(IDL_BIN) -bcxx -Wba -Wbd=DynSK.cpp -Wbh=.h -Wbs=SK.cpp $<

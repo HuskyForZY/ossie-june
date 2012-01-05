@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 AM_CXXFLAGS = -Wall 
 
 ossieName = default_GPP_USRP_sound_node

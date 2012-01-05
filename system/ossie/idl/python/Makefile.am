@@ -1,4 +1,4 @@
-IDL_BIN = $(shell which omniidl)
+IDL_BIN = omniidl
 
 all : 
 	$(IDL_BIN) -bpython -Wbpackage=ossie.cf ../cf.idl

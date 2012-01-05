@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = 
 AM_CXXFLAGS = -Wall -I../ossie/include -I../ossie/include/ossie -I../ossie/parser -I../standardInterfaces/include
 
 bin_PROGRAMS = nodeBooter

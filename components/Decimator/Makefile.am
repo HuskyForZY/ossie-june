@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 AM_CXXFLAGS = -Wall -O3 -g -I../../system/ossie/include -I../../system/ossie/include/ossie -I../../system/standardInterfaces/include -I../../system/SigProc
 
 LDADD = ../../system/ossie/framework/libossiecf.la \

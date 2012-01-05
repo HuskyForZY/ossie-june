@@ -45,12 +45,12 @@ CONFIG_CLEAN_VPATH_FILES =
 SOURCES =
 DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run tar
+ACLOCAL = ${SHELL} /home/june/Work/temp/ossie-june/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/june/Work/temp/ossie-june/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/june/Work/temp/ossie-june/missing --run automake-1.11
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -88,7 +88,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/june/Work/temp/ossie-june/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
 NMEDIT = 
@@ -115,10 +115,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.6.2
-abs_builddir = /home/june/Work/ossie-0.8.2/system/standardInterfaces/python
-abs_srcdir = /home/june/Work/ossie-0.8.2/system/standardInterfaces/python
-abs_top_builddir = /home/june/Work/ossie-0.8.2/system/standardInterfaces
-abs_top_srcdir = /home/june/Work/ossie-0.8.2/system/standardInterfaces
+abs_builddir = /home/june/Work/temp/ossie-june/system/standardInterfaces/python
+abs_srcdir = /home/june/Work/temp/ossie-june/system/standardInterfaces/python
+abs_top_builddir = /home/june/Work/temp/ossie-june/system/standardInterfaces
+abs_top_srcdir = /home/june/Work/temp/ossie-june/system/standardInterfaces
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_DUMPBIN = 
@@ -147,7 +147,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = /usr/local/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/june/Work/ossie-0.8.2/install-sh
+install_sh = ${SHELL} /home/june/Work/temp/ossie-june/install-sh
 libdir = /usr/local/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -172,7 +172,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-IDL_BIN = $(shell which omniidl)
+IDL_BIN = omniidl
 EXTRA_DIST = setup.py
 all: all-am
 
@@ -186,9 +186,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign python/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu python/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign python/Makefile
+	  $(AUTOMAKE) --gnu python/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

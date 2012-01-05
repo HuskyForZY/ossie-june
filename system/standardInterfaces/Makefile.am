@@ -1,6 +1,6 @@
-IDL_BIN = $(shell which omniidl)
+IDL_BIN = omniidl
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 
 %.pp.idl : %.idl
 	gcc -E -x c++ $< > $@

@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 AM_CXXFLAGS = -Wall -I../../system/ossie/include 
 
 GPP_LDADD = ../../system/ossie/parser/libossieparser.la \

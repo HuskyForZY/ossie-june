@@ -43,11 +43,11 @@ CONFIG_CLEAN_VPATH_FILES =
 SOURCES =
 DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run tar
-AUTOCONF = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run automake-1.11
+ACLOCAL = ${SHELL} /home/june/Work/temp/ossie-june/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/june/Work/temp/ossie-june/missing --run tar
+AUTOCONF = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/june/Work/temp/ossie-june/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"tool_suite\" -DPACKAGE_TARNAME=\"tool_suite\" -DPACKAGE_VERSION=\"0.7.0\" -DPACKAGE_STRING=\"tool_suite\ 0.7.0\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"tool_suite\" -DVERSION=\"0.7.0\"
@@ -62,7 +62,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/june/Work/temp/ossie-june/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 PACKAGE = tool_suite
 PACKAGE_BUGREPORT = 
@@ -81,10 +81,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 0.7.0
-abs_builddir = /home/june/Work/ossie-0.8.2/tools/WaveDev/wavedev/XML_gen/templates
-abs_srcdir = /home/june/Work/ossie-0.8.2/tools/WaveDev/wavedev/XML_gen/templates
-abs_top_builddir = /home/june/Work/ossie-0.8.2/tools
-abs_top_srcdir = /home/june/Work/ossie-0.8.2/tools
+abs_builddir = /home/june/Work/temp/ossie-june/tools/WaveDev/wavedev/XML_gen/templates
+abs_srcdir = /home/june/Work/temp/ossie-june/tools/WaveDev/wavedev/XML_gen/templates
+abs_top_builddir = /home/june/Work/temp/ossie-june/tools
+abs_top_srcdir = /home/june/Work/temp/ossie-june/tools
 am__leading_dot = .
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
@@ -100,7 +100,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = /usr/local/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/june/Work/ossie-0.8.2/install-sh
+install_sh = ${SHELL} /home/june/Work/temp/ossie-june/install-sh
 libdir = /usr/local/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -143,9 +143,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign WaveDev/wavedev/XML_gen/templates/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu WaveDev/wavedev/XML_gen/templates/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign WaveDev/wavedev/XML_gen/templates/Makefile
+	  $(AUTOMAKE) --gnu WaveDev/wavedev/XML_gen/templates/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

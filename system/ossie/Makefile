@@ -35,12 +35,12 @@ POST_UNINSTALL = :
 build_triplet = i686-pc-linux-gnu
 host_triplet = i686-pc-linux-gnu
 subdir = .
-DIST_COMMON = $(am__configure_deps) $(dist_pkgconfig_DATA) \
+DIST_COMMON = README $(am__configure_deps) $(dist_pkgconfig_DATA) \
 	$(srcdir)/../../config.guess $(srcdir)/../../config.sub \
 	$(srcdir)/../../install-sh $(srcdir)/../../ltmain.sh \
 	$(srcdir)/../../missing $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/ossie.pc.in \
-	$(top_srcdir)/configure INSTALL
+	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -126,12 +126,12 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run tar
+ACLOCAL = ${SHELL} /home/june/Work/temp/ossie-june/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/june/Work/temp/ossie-june/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/june/Work/temp/ossie-june/missing --run automake-1.11
 AWK = gawk
 BOOST_CPPFLAGS = -I/usr/include
 BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt
@@ -171,7 +171,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/june/Work/temp/ossie-june/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
 NMEDIT = 
@@ -198,10 +198,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.6.2
-abs_builddir = /home/june/Work/ossie-0.8.2/system/ossie
-abs_srcdir = /home/june/Work/ossie-0.8.2/system/ossie
-abs_top_builddir = /home/june/Work/ossie-0.8.2/system/ossie
-abs_top_srcdir = /home/june/Work/ossie-0.8.2/system/ossie
+abs_builddir = /home/june/Work/temp/ossie-june/system/ossie
+abs_srcdir = /home/june/Work/temp/ossie-june/system/ossie
+abs_top_builddir = /home/june/Work/temp/ossie-june/system/ossie
+abs_top_srcdir = /home/june/Work/temp/ossie-june/system/ossie
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_DUMPBIN = 
@@ -231,7 +231,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = /usr/local/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/june/Work/ossie-0.8.2/install-sh
+install_sh = ${SHELL} /home/june/Work/temp/ossie-june/install-sh
 libdir = /usr/local/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -256,7 +256,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = 
 LIBTOOL_DEPS = @LIBTOOL_DEPS@
 EXTRA_DIST = ossie.pc.in LICENSE
 SUBDIRS = idl parser framework include
@@ -271,15 +271,15 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
-	      echo ' cd $(srcdir) && $(AUTOMAKE) --foreign'; \
-	      $(am__cd) $(srcdir) && $(AUTOMAKE) --foreign \
+	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu'; \
+	      $(am__cd) $(srcdir) && $(AUTOMAKE) --gnu \
 		&& exit 0; \
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign Makefile
+	  $(AUTOMAKE) --gnu Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

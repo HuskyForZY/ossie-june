@@ -85,12 +85,12 @@ am__relativize = \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
   done; \
   reldir="$$dir2"
-ACLOCAL = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run tar
+ACLOCAL = ${SHELL} /home/june/Work/temp/ossie-june/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/june/Work/temp/ossie-june/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/june/Work/temp/ossie-june/missing --run automake-1.11
 AWK = gawk
 BOOST_CPPFLAGS = -I/usr/include
 BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt
@@ -130,7 +130,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/june/Work/temp/ossie-june/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
 NMEDIT = 
@@ -157,10 +157,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.6.2
-abs_builddir = /home/june/Work/ossie-0.8.2/system/ossie/idl
-abs_srcdir = /home/june/Work/ossie-0.8.2/system/ossie/idl
-abs_top_builddir = /home/june/Work/ossie-0.8.2/system/ossie
-abs_top_srcdir = /home/june/Work/ossie-0.8.2/system/ossie
+abs_builddir = /home/june/Work/temp/ossie-june/system/ossie/idl
+abs_srcdir = /home/june/Work/temp/ossie-june/system/ossie/idl
+abs_top_builddir = /home/june/Work/temp/ossie-june/system/ossie
+abs_top_srcdir = /home/june/Work/temp/ossie-june/system/ossie
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_DUMPBIN = 
@@ -190,7 +190,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = /usr/local/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/june/Work/ossie-0.8.2/install-sh
+install_sh = ${SHELL} /home/june/Work/temp/ossie-june/install-sh
 libdir = /usr/local/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -228,9 +228,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign idl/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu idl/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign idl/Makefile
+	  $(AUTOMAKE) --gnu idl/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

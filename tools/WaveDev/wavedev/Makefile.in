@@ -201,9 +201,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign WaveDev/wavedev/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu WaveDev/wavedev/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign WaveDev/wavedev/Makefile
+	  $(AUTOMAKE) --gnu WaveDev/wavedev/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

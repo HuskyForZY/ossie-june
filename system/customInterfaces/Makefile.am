@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 %.pp.idl : %.idl
 	@CC@ -E -x c++ -I../ossie/idl $< > $@
 

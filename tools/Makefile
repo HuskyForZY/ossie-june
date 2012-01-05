@@ -32,9 +32,10 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 subdir = .
-DIST_COMMON = $(am__configure_deps) $(srcdir)/../install-sh \
+DIST_COMMON = README $(am__configure_deps) $(srcdir)/../install-sh \
 	$(srcdir)/../missing $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in $(top_srcdir)/configure
+	$(srcdir)/Makefile.in $(top_srcdir)/configure AUTHORS COPYING \
+	ChangeLog INSTALL NEWS
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -97,11 +98,11 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run tar
-AUTOCONF = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run automake-1.11
+ACLOCAL = ${SHELL} /home/june/Work/temp/ossie-june/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/june/Work/temp/ossie-june/missing --run tar
+AUTOCONF = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/june/Work/temp/ossie-june/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/june/Work/temp/ossie-june/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"tool_suite\" -DPACKAGE_TARNAME=\"tool_suite\" -DPACKAGE_VERSION=\"0.7.0\" -DPACKAGE_STRING=\"tool_suite\ 0.7.0\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"tool_suite\" -DVERSION=\"0.7.0\"
@@ -116,7 +117,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/june/Work/ossie-0.8.2/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/june/Work/temp/ossie-june/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 PACKAGE = tool_suite
 PACKAGE_BUGREPORT = 
@@ -135,10 +136,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 0.7.0
-abs_builddir = /home/june/Work/ossie-0.8.2/tools
-abs_srcdir = /home/june/Work/ossie-0.8.2/tools
-abs_top_builddir = /home/june/Work/ossie-0.8.2/tools
-abs_top_srcdir = /home/june/Work/ossie-0.8.2/tools
+abs_builddir = /home/june/Work/temp/ossie-june/tools
+abs_srcdir = /home/june/Work/temp/ossie-june/tools
+abs_top_builddir = /home/june/Work/temp/ossie-june/tools
+abs_top_srcdir = /home/june/Work/temp/ossie-june/tools
 am__leading_dot = .
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
@@ -154,7 +155,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = /usr/local/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/june/Work/ossie-0.8.2/install-sh
+install_sh = ${SHELL} /home/june/Work/temp/ossie-june/install-sh
 libdir = /usr/local/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -178,7 +179,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = 
 SUBDIRS = alf \
 	  alf_plugins \
 	  WaveDev \
@@ -199,15 +200,15 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
-	      echo ' cd $(srcdir) && $(AUTOMAKE) --foreign'; \
-	      $(am__cd) $(srcdir) && $(AUTOMAKE) --foreign \
+	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu'; \
+	      $(am__cd) $(srcdir) && $(AUTOMAKE) --gnu \
 		&& exit 0; \
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign Makefile
+	  $(AUTOMAKE) --gnu Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

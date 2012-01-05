@@ -143,9 +143,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign WaveDev/wavedev/XML_gen/templates/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu WaveDev/wavedev/XML_gen/templates/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign WaveDev/wavedev/XML_gen/templates/Makefile
+	  $(AUTOMAKE) --gnu WaveDev/wavedev/XML_gen/templates/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

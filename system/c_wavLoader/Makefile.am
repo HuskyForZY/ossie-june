@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 AM_CXXFLAGS = -Wall -I../ossie/include -I../ossie/parser
 
 bin_PROGRAMS = c_wavLoader
