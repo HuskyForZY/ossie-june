@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="string" id="DCE:a15e70e4-96e4-4cc8-b1f0-06cb301f6c2e" name="mod_type" mode="readwrite">
+        <description>Modulation type: BPSK, QPSK, 8PSK, 16QAM</description>
+        <value>BPSK</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:96b798ba-5412-4bbe-bf0b-8ca665d25b83" name="FrameSizeOptionNumber" mode="readwrite">
+        <description>Frame Size Option Number</description>
+        <value>1</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:cdac2d50-214c-4c47-8a6d-d9ec453b3b3c" name="FrameSizeOption1" mode="readwrite">
+        <description>Frame Size for Option 1</description> 
+        <value>512</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:a6caa288-08d2-4f0e-b0f0-f34fa513ce3d" name="FrameSizeOption2" mode="readwrite">
+        <description>Frame Size for Option 2</description> 
+        <value>2048</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:bcf3ff9b-9f9d-4498-b29a-78f813678271" name="FrameSizeOption3" mode="readwrite">
+        <description>Frame Size for Option 3</description> 
+        <value>4096</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:34311a06-2055-4490-a949-478786cad4d4" name="FrameSizeOption4" mode="readwrite">
+        <description>Frame Size for Option 4</description> 
+        <value>8192</value>
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

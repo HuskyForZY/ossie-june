@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.5.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="ulong" id="DCE:4702ac9c-2ce5-11e1-8add-000c29c0b7da" name="sample_rate" mode="readwrite">
+        <description>Sample rate of sound card playback (Hz)</description>
+        <value>25000</value>
+        <!--Prior to 0.8.1 release, default value was 48000-->
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

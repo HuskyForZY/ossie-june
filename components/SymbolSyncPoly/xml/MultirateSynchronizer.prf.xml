@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="string" id="DCE:c104305d-27ee-44d8-ab29-8672e5ccb205" name="pulse_shape" mode="readwrite">
+        <description>Type of pulse shape to use for matched filter</description> 
+        <value>rrcos</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:ba19e325-46d0-48ec-9620-cedb38e3d822" name="k" mode="readwrite">
+        <description>Samples per symbol</description> 
+        <value>4</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:93c150e6-8bbd-4976-98a7-372254fd739f" name="m" mode="readwrite">
+        <description>Symbol delay</description> 
+        <value>3</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="float" id="DCE:73c150e6-8bbd-4976-98a7-372254fd739f" name="beta" mode="readwrite">
+        <description>Excess bandwidth factor, 0&lt;beta&lt;1</description> 
+        <value>0.3</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:6dbe74a9-279d-4c70-9eed-47e27c98857f" name="Npfb" mode="readwrite">
+        <description>Number of filters in bank</description> 
+        <value>16</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="string" id="DCE:512cb885-789b-42cd-a5bb-c8ac53752269" name="mod_scheme" mode="readwrite">
+        <description>Type of modulation scheme (bpsk, qpsk, 8psk, 16qam, 4pam)</description> 
+        <value>bpsk</value>
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<properties>
+    <simple id="DCE:3204f64f-216b-45a4-af8e-6b1e0aebfeea" mode="readwrite" name="clb_logiccells" type="short">
+        <value>12312</value>
+        <description>CLB Logic Cells</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+    <simple id="DCE:e08d2794-d09f-419e-9f6b-7a1cd5da5955" mode="readwrite" name="clb_slices" type="short">
+        <value>5472</value>
+        <description>CLB Slices</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+    <simple id="DCE:bca018e2-a454-4204-884e-d8fc841715e5" mode="readwrite" name="dcms" type="short">
+        <value>4</value>
+        <description>Digital Clock Managers</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+    <simple id="DCE:3ab4e104-d1a1-4d72-83d0-24346ebd4d7f" mode="readwrite" name="pmcds" type="short">
+        <value>0</value>
+        <description>Phase Matched Clock Dividers</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+    <simple id="DCE:9ccfcc96-f8fc-4421-9c51-6cead609dc05" mode="readonly" name="powerpc" type="short">
+        <value>1</value>
+        <description>PowerPC (hard) Cores</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+    <simple id="DCE:dd0cff3f-945e-491c-9ff7-0ae530b54ae0" mode="readonly" name="ethernetmac" type="short">
+        <value>2</value>
+        <description>Ethernet MACs</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+    <simple id="DCE:2e7eb942-10cf-4faf-884c-71768cf98e68" mode="readwrite" name="rocketio" type="short">
+        <value>0</value>
+        <description>RocketIO Transciever Blocks</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+    <simple id="DCE:fe474836-8346-4030-88da-3dfb952b1b2a" mode="readwrite" name="IOpins" type="short">
+        <value>320</value>
+        <description>IO Pins</description>
+        <kind kindtype="allocation"/>
+        <action type="external"/>
+    </simple>
+</properties>

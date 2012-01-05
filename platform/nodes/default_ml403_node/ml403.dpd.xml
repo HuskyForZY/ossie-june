@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE devicepkg SYSTEM "../../xml/dtd/devicepkg.dtd">
+<devicepkg id="DCE:00051cbf-54e8-4f21-b8c7-1790d46fe011" version="1,0,0,0" name="ml403">
+    <title>Virtex 4 FX12</title>
+    <author>Matt Carrick</author>
+    <description>Device Package Description for Virtex 4, Intended for Xilinx ML403 Platform</description>
+    <hwdeviceregistration id="DCE:496df0a9-832f-4ff4-9ce7-cf7b22c50b4a" version="1,0,0,0" name="Virtex4-FX12">
+        <propertyfile type="PRF">
+            <localfile name="/xml/XilinxFPGA/XCV4FX12-FF668-10C.prf.xml"/>
+        </propertyfile>
+        <description>Xilinx Virtex 4 FPGA</description>
+        <manufacturer>Xilinx</manufacturer>
+        <modelnumber>XC4VFX12-FF668-10C</modelnumber>
+        <deviceclass>
+            <class>Device</class>
+        </deviceclass>
+        <childhwdevice>
+            <hwdeviceregistration id="DCE:980f8067-47c0-4b2a-a5f8-965a0a840702" version="1,0,0,0" name="PowerPC405">
+                <propertyfile type="PRF">
+                    <localfile name="/xml/XilinxFPGA/PowerPC405.prf.xml"/>
+                </propertyfile>
+                <description>PowerPC 405 General Purpose Processor, Embedded in Virtex 4 FX12</description>
+                <manufacturer>Xilinx</manufacturer>
+                <modelnumber>405D5</modelnumber>
+                <deviceclass>
+                    <class>Device</class>
+                    <class>LoadableDevice</class>
+                    <class>ExecutableDevice</class>
+                </deviceclass>
+            </hwdeviceregistration>
+        </childhwdevice>
+        <childhwdevice>
+            <hwdeviceregistration id="DCE:15fca8f6-3be2-4e3f-8191-66e05817abbc" version="1,0,0,0" name="UARTLite-Interface">
+                <propertyfile type="PRF">
+                    <localfile name="/xml/XilinxFPGA/UARTlite.prf.xml"/>
+                </propertyfile>
+                <description>UART Lite Core Instantiated on FPGA</description>
+                <manufacturer>Xilinx</manufacturer>
+                <modelnumber>XPS_UARTLITE_1.00.a</modelnumber>
+                <deviceclass>
+                    <class>Device</class>
+                </deviceclass>
+            </hwdeviceregistration>
+        </childhwdevice>
+        <childhwdevice>
+            <hwdeviceregistration id="DCE:2a22c6f5-fd09-4532-ac15-7942a58643e4" version="1,0,0,0" name="EthernetLite-MAC">
+                <propertyfile type="PRF">
+                    <localfile name="/xml/XilinxFPGA/EthernetLite.prf.xml"/>
+                </propertyfile>
+                <description>Ethernet Lite Core Instantiated on FPGA</description>
+                <manufacturer>Xilinx</manufacturer>
+                <modelnumber>XPS_ETHERNETLITE_2.00.b</modelnumber>
+                <deviceclass>
+                    <class>Device</class>
+                </deviceclass>
+            </hwdeviceregistration>
+        </childhwdevice>
+    </hwdeviceregistration>
+</devicepkg>

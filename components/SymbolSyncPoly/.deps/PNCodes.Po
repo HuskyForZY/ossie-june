@@ -1,0 +1,3 @@
+PNCodes.o: src/PNCodes.cpp src/PNCodes.h
+
+src/PNCodes.h:

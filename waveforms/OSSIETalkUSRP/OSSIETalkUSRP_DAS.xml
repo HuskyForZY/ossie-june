@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE deploymentenforcement SYSTEM "dtd/deploymentenforcement.dtd">
+<!-- Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<deploymentenforcement>
+    <application id="DCE:438bffd7-cf7d-4f29-b0bc-e66303d25a84" name="Name"/>
+    <deviceassignmentsequence>
+        <deviceassignmenttype>
+            <componentid>DCE:ea94f934-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eaae691e-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eabb1dee-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eac79fb0-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:ead461fa-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eae206de-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eaee7a36-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eafa6e5e-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eb065a3e-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eb121874-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:eb1dfe50-1265-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:15b5cf90-126a-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:1ba90688-126a-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:30cae748-126a-11de-b7e0-0000e80014f9</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+    </deviceassignmentsequence>
+</deploymentenforcement>

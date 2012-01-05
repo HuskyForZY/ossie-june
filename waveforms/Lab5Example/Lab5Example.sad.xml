@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softwareassembly SYSTEM "../../xml/dtd/softwareassembly.dtd">
+<!-- Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softwareassembly id="DCE:c4e94626-457e-11de-b318-3de101e9c8ae" name="OSSIE::Lab5Example">
+    <componentfiles>
+        <componentfile id="USRP_Commander_e8a54e5e-457c-11de-b318-7fcee1a72568" type="SPD">
+            <localfile name="/xml/USRP_Commander/USRP_Commander.spd.xml"/>
+        </componentfile>
+        <componentfile id="Decimator_e8b58922-457c-11de-b318-7fcee1a72568" type="SPD">
+            <localfile name="/xml/Decimator/Decimator.spd.xml"/>
+        </componentfile>
+        <componentfile id="AutomaticGainControl_e870cf3a-457c-11de-b318-7fcee1a72568" type="SPD">
+            <localfile name="/xml/AutomaticGainControl/AutomaticGainControl.spd.xml"/>
+        </componentfile>
+        <componentfile id="am_demod_e83586d2-457c-11de-b318-7fcee1a72568" type="SPD">
+            <localfile name="/xml/am_demod/am_demod.spd.xml"/>
+        </componentfile>
+    </componentfiles>
+    <partitioning>
+        <componentplacement>
+            <componentfileref refid="USRP_Commander_e8a54e5e-457c-11de-b318-7fcee1a72568"/>
+            <componentinstantiation id="DCE:f80eab60-457c-11de-b318-7fcee1a72568">
+                <componentproperties>
+                    <simpleref description="" name="rx_freq" refid="DCE:3efc3930-2739-40b4-8c02-ecfb1b0da9ee" value="1430000"/>
+                </componentproperties>
+                <usagename>USRP_Commander1</usagename> 
+                <findcomponent>
+                    <namingservice name="USRP_Commander1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="Decimator_e8b58922-457c-11de-b318-7fcee1a72568"/>
+            <componentinstantiation id="DCE:fc2d041c-457c-11de-b318-7fcee1a72568">
+                <componentproperties>
+                    <simpleref description="" name="DecimateBy" refid="DCE:cea26b54-9d86-4b68-a761-14186efa9415" value="10"/>
+                </componentproperties>
+                <usagename>Decimator1</usagename> 
+                <findcomponent>
+                    <namingservice name="Decimator1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="AutomaticGainControl_e870cf3a-457c-11de-b318-7fcee1a72568"/>
+            <componentinstantiation id="DCE:ff274fa6-457c-11de-b318-7fcee1a72568">
+                <componentproperties>
+                    <simpleref description="" name="energy_lo" refid="DCE:aaf97fa0-d184-4d88-9954-3a1334c73d6d" value="1000"/>
+                    <simpleref description="" name="energy_hi" refid="DCE:346e17c9-6678-483a-bffb-1909c64bddc0" value="1000"/>
+                    <simpleref description="" name="k_attack" refid="DCE:4608b943-4fe2-49df-91fb-afa287b609d4" value="0.00001"/>
+                    <simpleref description="" name="k_release" refid="DCE:491ec3de-ed45-48af-a6fc-ca2d6465e136" value="0.00001"/>
+                    <simpleref description="" name="g_min" refid="DCE:312f63fe-709a-4217-933b-c584c8d6a9bb" value="0.01"/>
+                    <simpleref description="" name="g_max" refid="DCE:8357ee0d-2417-46d9-8475-2e5778d797e4" value="1000.0"/>
+                    <simpleref description="" name="rssi_pass" refid="DCE:b9b72ec8-d0bd-4060-b356-dcc6b0809e65" value="0"/>
+                </componentproperties>
+                <usagename>AutomaticGainControl1</usagename> 
+                <findcomponent>
+                    <namingservice name="AutomaticGainControl1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="am_demod_e83586d2-457c-11de-b318-7fcee1a72568"/>
+            <componentinstantiation id="DCE:08609654-457d-11de-b318-7fcee1a72568">
+                <usagename>am_demod1</usagename> 
+                <findcomponent>
+                    <namingservice name="am_demod1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+    </partitioning>
+    <assemblycontroller>
+        <componentinstantiationref refid="DCE:f80eab60-457c-11de-b318-7fcee1a72568"/>
+    </assemblycontroller>
+    <connections>
+        <connectinterface id="DCE:c4ea7f32-457e-11de-b318-3de101e9c8ae">
+            <findby>
+                <namingservice name="DomainName1/RX_Control"/>
+            </findby>
+            <usesport>
+                <usesidentifier>RX_Control</usesidentifier> 
+                <findby>
+                    <namingservice name="USRP_Commander1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:c4eba9b6-457e-11de-b318-3de101e9c8ae">
+            <providesport>
+                <providesidentifier>inData</providesidentifier> 
+                <findby>
+                    <namingservice name="Decimator1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>RX_Data_1</usesidentifier> 
+                <findby>
+                    <namingservice name="DomainName1/USRP1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:c4ecafdc-457e-11de-b318-3de101e9c8ae">
+            <providesport>
+                <providesidentifier>data_in</providesidentifier> 
+                <findby>
+                    <namingservice name="AutomaticGainControl1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>outData</usesidentifier> 
+                <findby>
+                    <namingservice name="Decimator1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:c4ee3c8a-457e-11de-b318-3de101e9c8ae">
+            <providesport>
+                <providesidentifier>Rx_In_from_USRP_or_Decimator</providesidentifier> 
+                <findby>
+                    <namingservice name="am_demod1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>data_out</usesidentifier> 
+                <findby>
+                    <namingservice name="AutomaticGainControl1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:c4ef5f66-457e-11de-b318-3de101e9c8ae">
+            <findby>
+                <namingservice name="DomainName1/soundOut"/>
+            </findby>
+            <usesport>
+                <usesidentifier>Out_to_sound_card</usesidentifier> 
+                <findby>
+                    <namingservice name="am_demod1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+    </connections>
+</softwareassembly>

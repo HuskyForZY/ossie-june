@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import alf.ALF
+
+alf.ALF.main ()
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget-property-map>
+	<widgets>
+		<widget type="text">
+			<parameters>
+				<parameter name="value" value=""/>
+			</parameters>
+		</widget>
+		<widget type="checkbox">
+			<parameters>
+				<parameter name="value" value="True"/>
+			</parameters>
+		</widget>
+		<widget type="spin">
+			<parameters>
+				<parameter name="value" value="0"/>
+				<parameter name="min" value="0"/>
+				<parameter name="max" value="10000"/>
+			</parameters>
+		</widget>
+		<widget type="slider">
+			<parameters>
+				<parameter name="value" value="0"/>
+				<parameter name="min" value="0"/>
+				<parameter name="max" value="10000"/>
+				<parameter name="style" value="HORIZONTAL"/>
+			</parameters>
+		</widget>
+		<widget type="listbox">
+			<parameters>
+				<parameter name="value" value=""/>
+			</parameters>
+		</widget>
+	</widgets>
+	<properties>
+		<property xmltype="simple" datatype="int">
+			<preferred-widgets>
+				<preferred-widget type="spin" default="true"/>
+				<preferred-widget type="text"/>
+				<preferred-widget type="slider"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="uint">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+				<preferred-widget type="spin"/>
+				<preferred-widget type="slider"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="long">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+				<preferred-widget type="spin"/>
+				<preferred-widget type="slider"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="ulong">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+				<preferred-widget type="spin"/>
+				<preferred-widget type="slider"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="double">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="float">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+				<preferred-widget type="slider"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="short">
+			<preferred-widgets>
+				<preferred-widget type="spin" default="true"/>
+				<preferred-widget type="text"/>
+				<preferred-widget type="slider"/>
+				</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="ushort">
+			<preferred-widgets>
+				<preferred-widget type="spin" default="true"/>
+				<preferred-widget type="text"/>
+				<preferred-widget type="slider"/>
+				</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="char">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="string">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simple" datatype="boolean">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simplesequence" datatype="float">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+			</preferred-widgets>
+		</property>
+		<property xmltype="simplesequence" datatype="string">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+			</preferred-widgets>		
+		</property>
+		<property xmltype="simplesequence" datatype="short">
+			<preferred-widgets>
+				<preferred-widget type="text" default="true"/>
+			</preferred-widgets>		
+		</property>
+
+	</properties>
+</widget-property-map>

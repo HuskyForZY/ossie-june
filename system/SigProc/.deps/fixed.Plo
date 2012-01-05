@@ -1,0 +1,3 @@
+fixed.lo: fixed.c fixed.h
+
+fixed.h:

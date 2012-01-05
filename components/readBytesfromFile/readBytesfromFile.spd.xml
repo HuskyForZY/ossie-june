@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softpkg id="DCE:1a886f36-0792-11e0-829d-0024bec489f8" name="readBytesfromFile">
+    <title/>
+    <description>
+    </description>
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/readBytesfromFile/readBytesfromFile.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/readBytesfromFile/readBytesfromFile.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:1a8e5edc-0792-11e0-820e-0024bec489f8">
+        <description>Description</description> 
+        <code type="Executable">
+            <localfile name="/bin/readBytesfromFile"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

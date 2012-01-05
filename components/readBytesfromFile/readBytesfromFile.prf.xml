@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<properties>
+    <description>These are the properties to configure the device manager</description> 
+    <simple id="DCE:eb12dbd0-078f-11e0-a6e8-0024bec489f8" mode="readwrite" name="bufferLength" type="ulong">
+        <value>32800</value> 
+        <description>Define the output buffer length in bits</description> 
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

@@ -1,0 +1,6 @@
+Install Procedure
+
+1. add this directory AC_CONFIG_SUBDIR section of OSSIE/configure.ac
+2. ./configure
+3. make
+4. sudo make install

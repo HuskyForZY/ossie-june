@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.5.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="string" id="DCE:de4641d3-5c25-47d4-8d0b-89a069ac0248" name="DemodScheme" mode="readwrite">
+        <description>Type of demodulation scheme to use (BPSK, QPSK, 8PSK, 16QAM, 4PAM)</description>
+        <value>BPSK</value> 
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

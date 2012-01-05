@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<softpkg id="DCE:82f16310-5309-11dc-99d1-00123f573a7f" name="OSSIETalk">
+    <title/>
+    <description>Push to talk GUI </description> 
+    <author>
+        <name>Drew Cormier</name> 
+        <company>Wireless at Virginia Tech</company> 
+        <webpage>http://www.wireless.vt.edu/</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/OSSIETalk/OSSIETalk.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/OSSIETalk/OSSIETalk.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:82f2a4c8-5309-11dc-82ac-00123f573a7f">
+        <description>x86 Implementation</description> 
+        <code type="Executable">
+            <localfile name="/bin/OSSIETalk/OSSIETalk.py"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

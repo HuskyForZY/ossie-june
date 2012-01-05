@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.5.0b-->
+<!--Powered by Python-->
+<softpkg type="sca_compliant" name="DigitalDemodulator" id="DCE:a3f63141-20a4-4d3f-9caa-120d17ba720b">
+    <title>Digital demodulator component</title>
+    <description>Demodulates data symbols into bits for a variety of modulation schemes</description>
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/DigitalDemodulator/DigitalDemodulator.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/DigitalDemodulator/DigitalDemodulator.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:a4ac4486-303d-4909-8a84-e7fe80e3a6eb" aepcompliance="aep_compliant">
+        <description>x86 Implementation</description> 
+        <code type="Executable">
+            <localfile name="/bin/DigitalDemodulator"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

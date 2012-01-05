@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<softpkg name="FrameSynchronizer" id="DCE:2a5578db-10e7-4434-a8e0-5aa8c9b4ba10">
+    <title>Frame synchronizer (polyphase fitler bank)</title>
+    <description>Tracks to symbol timing and carrier frequency/phase, extracts coherent symbols from frame (see also FrameAssembler)</description>
+    <author>
+        <name>Joseph Gaeddert</name>
+        <company>Mobile and Portable Radio Research Group</company>
+        <webpage>http://www.mprg.org</webpage>
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/FrameSynchronizer/FrameSynchronizer.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/FrameSynchronizer/FrameSynchronizer.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:11cba80a-5bc8-4b88-88b3-63ed1474f4a8">
+        <description>x86 Implementation</description>
+        <code type="Executable">
+            <localfile name="/bin/FrameSynchronizer"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import wavedash.src.WavedashView
+
+wavedash.src.WavedashView.main ()
+

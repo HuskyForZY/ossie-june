@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.5.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="string" id="DCE:cc5a494c-4c04-11dc-92c1-00123f63025f" name="ModScheme" mode="readwrite">
+        <description>Type of modulation scheme to use (BPSK, QPSK, 8PSK, 16QAM, 4PAM)</description> 
+        <value>BPSK</value> 
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

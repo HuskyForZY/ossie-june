@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<softpkg name="MultirateSynchronizer" id="DCE:242a845e-aa1c-4055-9bd1-18372e015c16">
+    <title>Multiraste synchronizer (polyphase filter bank)</title>
+    <description>MultirateSynchronizer: tracks to symbol timing and carrier frequency/phase, matched filter/decimator</description>
+    <author>
+        <name>Joseph Gaeddert</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/MultirateSynchronizer/MultirateSynchronizer.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/MultirateSynchronizer/MultirateSynchronizer.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:457a2025-fd52-4727-b14f-ce3f8722d684">
+        <description>x86 Implementation</description>
+        <code type="Executable">
+            <localfile name="/bin/MultirateSynchronizer"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

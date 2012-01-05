@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE deploymentenforcement SYSTEM "dtd/deploymentenforcement.dtd">
+<!-- Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<deploymentenforcement>
+    <application id="DCE:438bffd7-cf7d-4f29-b0bc-e66303d25a84" name="Name"/>
+    <deviceassignmentsequence>
+        <deviceassignmenttype>
+            <componentid>DCE:f80eab60-457c-11de-b318-7fcee1a72568</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:fc2d041c-457c-11de-b318-7fcee1a72568</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:ff274fa6-457c-11de-b318-7fcee1a72568</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+        <deviceassignmenttype>
+            <componentid>DCE:08609654-457d-11de-b318-7fcee1a72568</componentid> 
+            <assigndeviceid>DCE:5ba336ee-aaaa-aaaa-aaaa-00123f573a7f</assigndeviceid> 
+        </deviceassignmenttype>
+    </deviceassignmentsequence>
+</deploymentenforcement>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<properties>
+    <simple id="DCE:f420f023-e3f4-4847-9d58-534ed74dbf41" mode="readonly" name="serial_baud_rate" type="short">
+        <value>115200</value>
+        <description>The baud rate for the uart serial driver</description>
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

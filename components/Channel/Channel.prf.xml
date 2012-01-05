@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.2-->
+<!--Powered by Python-->
+<properties>
+    <simple id="DCE:eddc66ce-8a82-11dd-ae05-0016769e497b" mode="readonly" name="AWGN Noise Power" type="long">
+        <value>0</value> 
+        <description>The power of the AWGN noise</description> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:3bbc0656-8a83-11dd-bcd3-0016769e497b" mode="readonly" name="Fading type" type="string">
+        <value>Ricean</value> 
+        <description>Specifies the fading type. Valid values are "None" and "Ricean"</description> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:4ba6cb86-29fb-40c8-a90c-7e69b7e59d85" mode="readonly" name="Envelope Fading Only" type="string">
+        <value>True</value> 
+        <description>If set to "True" fading doesn't affect the phase of the signal. Valid values "True" and "False"</description> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:76abee66-8a83-11dd-b96d-0016769e497b" mode="readonly" name="K Fading factor" type="double">
+        <value>5</value> 
+        <description>This is the Ricean K fading factor, 0 implies Rayleigh fading</description> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:9cc6196c-8a85-11dd-b572-0016769e497b" mode="readonly" name="Max doppler rate" type="double">
+        <value>0.01</value> 
+        <description>The maximum doppler rate in terms of (divided by) the sample rate.</description> 
+        <kind kindtype="configure"/>
+    </simple>
+
+    <simplesequence id="port_list" mode="readonly" name="port_list" type="string">
+        <description>Returns a sequence of strings with the names of the available Provides ports</description> 
+        <kind kindtype="configure"/>
+        <values>
+            <value>data_in::standardInterfaces.complexShort</value> 
+        </values>
+    </simplesequence>
+</properties>

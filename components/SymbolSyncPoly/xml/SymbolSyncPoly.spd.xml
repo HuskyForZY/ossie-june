@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<softpkg name="SymbolSyncPoly" id="DCE:9ddf4c47-e00f-447b-8555-93d10f88a6db">
+    <title>Symbol synchronizer (polyphase filter bank)</title>
+    <description>Symbol timing recovery matched filter and decimator</description>
+    <author>
+        <name>Joseph Gaeddert</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/SymbolSyncPoly/SymbolSyncPoly.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/SymbolSyncPoly/SymbolSyncPoly.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:2cd85709-7b4b-452c-beee-9fcee8c32df2">
+        <description>x86 Implementation</description> 
+        <code type="Executable">
+            <localfile name="/bin/SymbolSyncPoly"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

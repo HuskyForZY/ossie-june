@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.2-->
+<!--Powered by Python-->
+<softpkg id="DCE:9ed2e2fc-8a86-11dd-aba6-0016769e497b" name="Channel">
+    <title/>
+    <description>Adds channel effects such as thermal noise (AWGN) and fading</description> 
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/Channel/Channel.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/Channel/Channel.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:9ed47068-8a86-11dd-9736-0016769e497b">
+        <description>x86 Implementation</description> 
+        <code type="Executable">
+            <localfile name="/bin/Channel"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

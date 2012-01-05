@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="string" id="DCE:18576cfb-849b-4856-8b53-b3ab215df53c" name="pulse_shape" mode="readwrite">
+        <description>Type of pulse shape to use for matched filter</description> 
+        <value>rrcos</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:1bc8ae91-fa37-4905-aeeb-dff58870b76e" name="k" mode="readwrite">
+        <description>Samples per symbol</description> 
+        <value>4</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:a70a36df-a580-4e1e-90d6-05a1b713edd4" name="m" mode="readwrite">
+        <description>Symbol delay</description> 
+        <value>3</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="float" id="DCE:a233bee5-9696-4b37-b01e-3a910f77afe6" name="beta" mode="readwrite">
+        <description>Excess bandwidth factor, 0&lt;beta&lt;1</description> 
+        <value>0.3</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:8b80d4ae-b108-4e6c-8755-dc10d8f46f3b" name="Npfb" mode="readwrite">
+        <description>Number of filters in bank</description> 
+        <value>16</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:d11bdc8d-1069-4f3a-9541-ecfcb67a1875" name="FrameSizeOption1" mode="readwrite">
+        <description>Frame Size for Option 1</description> 
+        <value>512</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:0af7e693-4387-46d1-9d04-fdb1e2b83675" name="FrameSizeOption2" mode="readwrite">
+        <description>Frame Size for Option 2</description> 
+        <value>2048</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:12b10d48-a8b2-4e96-bf5a-e7fa96000326" name="FrameSizeOption3" mode="readwrite">
+        <description>Frame Size for Option 3</description> 
+        <value>4096</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:d04d7b28-bfc9-4304-9a0c-9308ecc07812" name="FrameSizeOption4" mode="readwrite">
+        <description>Frame Size for Option 4</description> 
+        <value>8192</value>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:841e7c53-9e6a-4efa-9f99-090bf1d33dd5" name="BufferSize" mode="readwrite">
+        <description>Output Buffer Size. Enter 0 for no buffer</description> 
+        <value>512</value>
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

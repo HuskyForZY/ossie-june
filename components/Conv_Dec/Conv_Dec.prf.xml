@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="short" id="DCE:0e756459-63b7-4f5e-8b15-e5fbe3bf200f" name="rate_index" mode="readwrite">
+        <description>The index of the decoding rate from the supported rates table. For a custom rate use rate_index 0</description> 
+        <value>1</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:8fd6f6e3-41d0-40b4-a26a-5ebdd6514931" name="mode" mode="readwrite">
+        <description>mode
+        </description>
+        <value>0</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:c8638626-7377-4b2e-a2a4-85de280eac05" name="k" mode="readwrite">
+        <description>Input bits at a time (for the custom rate rate_index=0) The encoder rate = k/n</description> 
+        <value>1</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:91b1454d-f5b7-4049-a60c-cf5d587f3149" name="K" mode="readwrite">
+        <description>Constrain length for the custom rate. (rate_index=0)</description> 
+        <value>8</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:6fa08774-471e-4761-aa7b-a37ba2166cf9" name="n" mode="readwrite">
+        <description>Output bits at a time for the custom rate index, has to match the number of suplied polynomials (rate_index=0) The encoder rate = k/n</description> 
+        <value>2</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simplesequence type="short" id="DCE:7a4234e2-fe15-44e0-bedb-cffc9e2ec78d" name="generatorPolynomials" mode="readwrite">
+        <description>A list of generator polynomials in OCTAL for the custom rate (rate_index=0)</description> 
+        <values>
+            <value>247</value> 
+            <value>371</value> 
+        </values>
+        <kind kindtype="configure"/>
+    </simplesequence>
+    <simplesequence type="string" id="port_list" name="port_list" mode="readonly">
+        <description>Returns a sequence of strings with the names of the available Provides ports</description> 
+        <values>
+            <value>bits_to_dec_in::standardInterfaces.realChar</value> 
+        </values>
+        <kind kindtype="configure"/>
+    </simplesequence>
+</properties>

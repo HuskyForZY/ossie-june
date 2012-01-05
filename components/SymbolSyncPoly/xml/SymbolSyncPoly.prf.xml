@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="string" id="DCE:0bb52b63-3a66-4aa6-afa9-d0417318c001" name="pulse_shape" mode="readwrite">
+        <description>Type of pulse shape to use for matched filter</description> 
+        <value>rrcos</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:c6f2eba5-e69f-4397-a75d-ae0450a7699b" name="k" mode="readwrite">
+        <description>Samples per symbol, k</description> 
+        <value>4</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:08f16d2d-f69d-48eb-a558-3e93b2e481d1" name="m" mode="readwrite">
+        <description>Symbol delay, m</description> 
+        <value>3</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="float" id="DCE:abe26dd4-ca5d-40ff-8141-093b56ddce16" name="beta" mode="readwrite">
+        <description>Excess bandwidth factor, beta</description> 
+        <value>0.3</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ushort" id="DCE:d8f0cbea-a3ba-416f-ada3-16e960938544" name="Npfb" mode="readwrite">
+        <description>Number of filters in bank, Npfb</description> 
+        <value>16</value> 
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softwareassembly SYSTEM "../../xml/dtd/softwareassembly.dtd">
+<!-- Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softwareassembly id="DCE:535cc29e-1333-11de-b7e0-0000e80014f9" name="OSSIE::OSSIETalkLoopBack">
+    <componentfiles>
+        <componentfile id="OSSIETalk_33b825d4-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/OSSIETalk/OSSIETalk.spd.xml"/>
+        </componentfile>
+        <componentfile id="FrameSynchronizer_336b8b5c-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/FrameSynchronizer/FrameSynchronizer.spd.xml"/>
+        </componentfile>
+        <componentfile id="FrameAssembler_33529002-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/FrameAssembler/FrameAssembler.spd.xml"/>
+        </componentfile>
+        <componentfile id="DigitalModulator_338139fc-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/DigitalModulator/DigitalModulator.spd.xml"/>
+        </componentfile>
+        <componentfile id="DigitalDemodulator_3350b73c-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/DigitalDemodulator/DigitalDemodulator.spd.xml"/>
+        </componentfile>
+        <componentfile id="amplifier_33f0623c-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/amplifier/amplifier.spd.xml"/>
+        </componentfile>
+        <componentfile id="Interpolator_33758ca6-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/Interpolator/Interpolator.spd.xml"/>
+        </componentfile>
+        <componentfile id="AutomaticGainControl_335a932e-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/AutomaticGainControl/AutomaticGainControl.spd.xml"/>
+        </componentfile>
+        <componentfile id="Conv_Enc_3324c762-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/Conv_Enc/Conv_Enc.spd.xml"/>
+        </componentfile>
+        <componentfile id="Conv_Dec_33ec4d14-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/Conv_Dec/Conv_Dec.spd.xml"/>
+        </componentfile>
+        <componentfile id="PacketResizer_33d39cd8-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/PacketResizer/PacketResizer.spd.xml"/>
+        </componentfile>
+        <componentfile id="Decimator_33cb5352-1331-11de-b7e0-0000e80014f9" type="SPD">
+            <localfile name="/xml/Decimator/Decimator.spd.xml"/>
+        </componentfile>
+    </componentfiles>
+    <partitioning>
+        <componentplacement>
+            <componentfileref refid="OSSIETalk_33b825d4-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3a7864b0-1331-11de-b7e0-0000e80014f9">
+                <usagename>OSSIETalk1</usagename> 
+                <findcomponent>
+                    <namingservice name="OSSIETalk1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="FrameSynchronizer_336b8b5c-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3a86caaa-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="k" refid="DCE:1bc8ae91-fa37-4905-aeeb-dff58870b76e" value="2"/>
+                    <simpleref description="" name="m" refid="DCE:a70a36df-a580-4e1e-90d6-05a1b713edd4" value="4"/>
+                    <simpleref description="" name="beta" refid="DCE:a233bee5-9696-4b37-b01e-3a910f77afe6" value="0.33"/>
+                    <simpleref description="" name="Npfb" refid="DCE:8b80d4ae-b108-4e6c-8755-dc10d8f46f3b" value="32"/>
+                    <simpleref description="" name="FrameSizeOption2" refid="DCE:0af7e693-4387-46d1-9d04-fdb1e2b83675" value="1584"/>
+                    <simpleref description="" name="FrameSizeOption3" refid="DCE:12b10d48-a8b2-4e96-bf5a-e7fa96000326" value="3168"/>
+                    <simpleref description="" name="FrameSizeOption4" refid="DCE:d04d7b28-bfc9-4304-9a0c-9308ecc07812" value="6336"/>
+                    <simpleref description="" name="BufferSize" refid="DCE:841e7c53-9e6a-4efa-9f99-090bf1d33dd5" value="198"/>
+                </componentproperties>
+                <usagename>FrameSynchronizer1</usagename> 
+                <findcomponent>
+                    <namingservice name="FrameSynchronizer1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="FrameAssembler_33529002-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3a96441c-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="mod_type" refid="DCE:a15e70e4-96e4-4cc8-b1f0-06cb301f6c2e" value="QPSK"/>
+                    <simpleref description="" name="FrameSizeOptionNumber" refid="DCE:96b798ba-5412-4bbe-bf0b-8ca665d25b83" value="3"/>
+                    <simpleref description="" name="FrameSizeOption2" refid="DCE:a6caa288-08d2-4f0e-b0f0-f34fa513ce3d" value="1584"/>
+                    <simpleref description="" name="FrameSizeOption3" refid="DCE:bcf3ff9b-9f9d-4498-b29a-78f813678271" value="3168"/>
+                    <simpleref description="" name="FrameSizeOption4" refid="DCE:34311a06-2055-4490-a949-478786cad4d4" value="6336"/>
+                </componentproperties>
+                <usagename>FrameAssembler1</usagename> 
+                <findcomponent>
+                    <namingservice name="FrameAssembler1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="DigitalModulator_338139fc-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3aa5bb5e-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="ModScheme" refid="DCE:cc5a494c-4c04-11dc-92c1-00123f63025f" value="QPSK"/>
+                </componentproperties>
+                <usagename>DigitalModulator1</usagename> 
+                <findcomponent>
+                    <namingservice name="DigitalModulator1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="DigitalDemodulator_3350b73c-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3ab70832-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="DemodScheme" refid="DCE:de4641d3-5c25-47d4-8d0b-89a069ac0248" value="QPSK"/>
+                </componentproperties>
+                <usagename>DigitalDemodulator1</usagename> 
+                <findcomponent>
+                    <namingservice name="DigitalDemodulator1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="amplifier_33f0623c-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3ac733ec-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="I_gain" refid="DCE:06b88d4f-dd38-44e6-bc49-82db0eba5bc6" value="0.2"/>
+                    <simpleref description="" name="Q_gain" refid="DCE:df91b1a8-9c83-44b4-bf2c-0dbeacb2b6f4" value="0.2"/>
+                </componentproperties>
+                <usagename>amplifier1</usagename> 
+                <findcomponent>
+                    <namingservice name="amplifier1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="Interpolator_33758ca6-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3af5ec8c-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="InterpFactor (k)" refid="DCE:e5c1d4aa-4b7f-48b7-b3bf-ed90b7653bec" value="8"/>
+                    <simpleref description="" name="m" refid="DCE:f6843fdc-4c11-11dc-b0be-00123f63025f" value="4"/>
+                    <simpleref description="" name="beta" refid="DCE:fed01972-4c11-11dc-8d59-00123f63025f" value="0.33"/>
+                    <simplesequenceref description="" name="filter" refid="DCE:9c39de73-54d4-43ad-ab9d-52f5fa526ddf">
+                        <values>
+                            <value>None</value> 
+                        </values>
+                    </simplesequenceref>
+                </componentproperties>
+                <usagename>Interpolator1</usagename> 
+                <findcomponent>
+                    <namingservice name="Interpolator1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="AutomaticGainControl_335a932e-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3b3471fa-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="energy_lo" refid="DCE:aaf97fa0-d184-4d88-9954-3a1334c73d6d" value="10000"/>
+                    <simpleref description="" name="energy_hi" refid="DCE:346e17c9-6678-483a-bffb-1909c64bddc0" value="10000"/>
+                    <simpleref description="" name="k_attack" refid="DCE:4608b943-4fe2-49df-91fb-afa287b609d4" value="0.01"/>
+                    <simpleref description="" name="k_release" refid="DCE:491ec3de-ed45-48af-a6fc-ca2d6465e136" value="0.002"/>
+                    <simpleref description="" name="g_min" refid="DCE:312f63fe-709a-4217-933b-c584c8d6a9bb" value="0.5"/>
+                    <simpleref description="" name="g_max" refid="DCE:8357ee0d-2417-46d9-8475-2e5778d797e4" value="2000"/>
+                    <simpleref description="" name="rssi_pass" refid="DCE:b9b72ec8-d0bd-4060-b356-dcc6b0809e65" value="1"/>
+                </componentproperties>
+                <usagename>AutomaticGainControl1</usagename> 
+                <findcomponent>
+                    <namingservice name="AutomaticGainControl1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="Conv_Enc_3324c762-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3b4251bc-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="rate_index" refid="DCE:345df262-1611-11dc-a219-0016769e497b" value="3"/>
+                    <simpleref description="" name="mode" refid="DCE:7be7e584-1611-11dc-b945-0016769e497b" value="1"/>
+                </componentproperties>
+                <usagename>Conv_Enc1</usagename> 
+                <findcomponent>
+                    <namingservice name="Conv_Enc1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="Conv_Dec_33ec4d14-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3b5151d0-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="rate_index" refid="DCE:0e756459-63b7-4f5e-8b15-e5fbe3bf200f" value="3"/>
+                    <simpleref description="" name="mode" refid="DCE:8fd6f6e3-41d0-40b4-a26a-5ebdd6514931" value="1"/>
+                </componentproperties>
+                <usagename>Conv_Dec1</usagename> 
+                <findcomponent>
+                    <namingservice name="Conv_Dec1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="PacketResizer_33d39cd8-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3b7b2eba-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="Packet Size" refid="DCE:863201ca-0505-11de-b7e0-0000e80014f9" value="256"/>
+                </componentproperties>
+                <usagename>PacketResizer1</usagename> 
+                <findcomponent>
+                    <namingservice name="PacketResizer1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="amplifier_33f0623c-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3b8ab8c6-1331-11de-b7e0-0000e80014f9">
+                <usagename>amplifier2</usagename> 
+                <findcomponent>
+                    <namingservice name="amplifier2"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="Decimator_33cb5352-1331-11de-b7e0-0000e80014f9"/>
+            <componentinstantiation id="DCE:3ba7abfc-1331-11de-b7e0-0000e80014f9">
+                <componentproperties>
+                    <simpleref description="" name="DecimateBy" refid="DCE:cea26b54-9d86-4b68-a761-14186efa9415" value="4"/>
+                    <simpleref description="" name="Filter Type" refid="DCE:537a42d9-2dd7-45b8-8dfb-f0999115ba71" value="IIR"/>
+                </componentproperties>
+                <usagename>Decimator1</usagename> 
+                <findcomponent>
+                    <namingservice name="Decimator1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+    </partitioning>
+    <assemblycontroller>
+        <componentinstantiationref refid="DCE:3b8ab8c6-1331-11de-b7e0-0000e80014f9"/>
+    </assemblycontroller>
+    <connections>
+        <connectinterface id="DCE:535e9b1e-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>SymbolsIn</providesidentifier> 
+                <findby>
+                    <namingservice name="FrameAssembler1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>symbolsOut</usesidentifier> 
+                <findby>
+                    <namingservice name="DigitalModulator1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:53605ea4-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>SymbolsIn</providesidentifier> 
+                <findby>
+                    <namingservice name="DigitalDemodulator1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>symbols_out</usesidentifier> 
+                <findby>
+                    <namingservice name="FrameSynchronizer1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:536236ca-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>dataIn</providesidentifier> 
+                <findby>
+                    <namingservice name="amplifier1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>FrameSymbolsOut</usesidentifier> 
+                <findby>
+                    <namingservice name="FrameAssembler1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:536411d4-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>inData</providesidentifier> 
+                <findby>
+                    <namingservice name="Interpolator1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>dataOut</usesidentifier> 
+                <findby>
+                    <namingservice name="amplifier1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:5365e1c6-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>dataIn</providesidentifier> 
+                <findby>
+                    <namingservice name="amplifier2"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>outData</usesidentifier> 
+                <findby>
+                    <namingservice name="Interpolator1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:53696396-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>IF_in</providesidentifier> 
+                <findby>
+                    <namingservice name="FrameSynchronizer1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>data_out</usesidentifier> 
+                <findby>
+                    <namingservice name="AutomaticGainControl1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:536b9bde-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>bitsIn</providesidentifier> 
+                <findby>
+                    <namingservice name="DigitalModulator1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>encoded_bits</usesidentifier> 
+                <findby>
+                    <namingservice name="Conv_Enc1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:536f00b2-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>bits_to_dec_in</providesidentifier> 
+                <findby>
+                    <namingservice name="Conv_Dec1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>DataBitsOut</usesidentifier> 
+                <findby>
+                    <namingservice name="DigitalDemodulator1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:537015d8-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>from_radio</providesidentifier> 
+                <findby>
+                    <namingservice name="OSSIETalk1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>decoded_bits</usesidentifier> 
+                <findby>
+                    <namingservice name="Conv_Dec1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:537092a6-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>packet_in</providesidentifier> 
+                <findby>
+                    <namingservice name="PacketResizer1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>to_radio</usesidentifier> 
+                <findby>
+                    <namingservice name="OSSIETalk1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:5370f5ac-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>bits_to_enc_in</providesidentifier> 
+                <findby>
+                    <namingservice name="Conv_Enc1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>packet_out</usesidentifier> 
+                <findby>
+                    <namingservice name="PacketResizer1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:5371559c-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>inData</providesidentifier> 
+                <findby>
+                    <namingservice name="Decimator1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>dataOut</usesidentifier> 
+                <findby>
+                    <namingservice name="amplifier2"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:5371c572-1333-11de-b7e0-0000e80014f9">
+            <providesport>
+                <providesidentifier>data_in</providesidentifier> 
+                <findby>
+                    <namingservice name="AutomaticGainControl1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>outData</usesidentifier> 
+                <findby>
+                    <namingservice name="Decimator1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+    </connections>
+</softwareassembly>

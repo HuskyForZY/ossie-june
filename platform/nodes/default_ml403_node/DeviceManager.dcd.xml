@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE deviceconfiguration SYSTEM "../../xml/dtd/deviceconfiguration.dtd">
+<!-- Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<deviceconfiguration id="DCE:4b14b5b2-fc5c-11dd-9a58-001d092f0ea2" name="DeviceManager_ml403">
+    <devicemanagersoftpkg>
+        <localfile name="/nodes/default_ml403_node/DeviceManager.spd.xml"/>
+    </devicemanagersoftpkg>
+    <componentfiles>
+        <!--Device Definitions--> 
+        <componentfile id="GPP1_915e9e4e-fc5b-11dd-9115-001d092f0ea2" type="SPD">
+            <localfile name="/xml/GPP/GPP.spd.xml"/>
+        </componentfile>
+        <componentfile id="XilinxFPGA1_8e2ae9da-93eb-428d-b9f3-99b2b4886d9c" type="SPD">
+            <localfile name="/xml/XilinxFPGA/XilinxFPGA.spd.xml"/>
+        </componentfile>
+    </componentfiles>
+    <partitioning>
+        <componentplacement>
+            <deployondevice refid="DCE:4b08ce96-fc5c-11dd-9347-001d092f0ea2"/>
+	    <componentfileref refid="GPP1_915e9e4e-fc5b-11dd-9115-001d092f0ea2"/>
+            <componentinstantiation id="DCE:4b08ce96-fc5c-11dd-9347-001d092f0ea2">
+                <usagename>GPP1</usagename> 
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <deployondevice refid="DCE:b461fddf-7c03-4a83-83be-208031a19bfa"/>
+            <componentfileref refid="XilinxFPGA1_8e2ae9da-93eb-428d-b9f3-99b2b4886d9c"/>
+            <devicepkgfile type="DPD">
+                <localfile name="/ml403.dpd.xml"/>
+            </devicepkgfile>
+            <componentinstantiation id="DCE:b461fddf-7c03-4a83-83be-208031a19bfa">
+                <usagename>XilinxFPGA1</usagename>
+            </componentinstantiation>
+        </componentplacement>
+    </partitioning>
+    <domainmanager>
+        <namingservice name="DomainName1/DomainManager"/>
+    </domainmanager>
+    <filesystemnames>
+	<filesystemname mountname="DeviceManager_ml403" deviceid="DCE:4b08ce96-fc5c-11dd-9347-001d092f0ea2"/>
+    </filesystemnames>
+</deviceconfiguration>

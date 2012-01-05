@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<softpkg name="FrameAssembler" id="DCE:ad67fe3a-ec3b-45f6-8c2b-b4cdab07ad56">
+    <title>Frame assembler component</title>
+    <description>Adds BPSK preamble header information for assembling frames</description>
+    <author>
+        <name>Joseph Gaeddert</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/FrameAssembler/FrameAssembler.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/FrameAssembler/FrameAssembler.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:d2a578b9-6ca0-4e20-9375-196a5f2a8121">
+        <description>x86 Implementation</description> 
+        <code type="Executable">
+            <localfile name="/bin/FrameAssembler"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

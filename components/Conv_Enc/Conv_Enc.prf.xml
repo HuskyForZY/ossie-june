@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="short" id="DCE:345df262-1611-11dc-a219-0016769e497b" name="rate_index" mode="readwrite">
+        <description>The index of the desired encoding rate from the supported rates table. For a custom rate use rate_index 0</description> 
+        <value>1</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:7be7e584-1611-11dc-b945-0016769e497b" name="mode" mode="readwrite">
+        <description>
+        </description>
+        <value>0</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:d2ee004a-18ee-11dc-8925-0016769e497b" name="k" mode="readwrite">
+        <description>Input bits at a time (for the custom rate rate_index=0) The encoder rate = k/n</description> 
+        <value>1</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:04aaa5ac-18ef-11dc-83ea-0016769e497b" name="K" mode="readwrite">
+        <description>Constrain length for the custom rate. (rate_index=0)</description> 
+        <value>8</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="short" id="DCE:2d17e716-18ef-11dc-bf5c-0016769e497b" name="n" mode="readwrite">
+        <description>Output bits at a time for the custom rate index, has to match the number of suplied polynomials (rate_index=0) The encoder rate = k/n</description> 
+        <value>2</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simplesequence type="short" id="DCE:4ef1b3b0-18f1-11dc-99b1-0016769e497b" name="generatorPolynomials" mode="readwrite">
+        <description>A list of generator polynomials in OCTAL for the custom rate (rate_index=0)</description> 
+        <values>
+            <value>247</value> 
+            <value>371</value> 
+        </values>
+        <kind kindtype="configure"/>
+    </simplesequence>
+    <simplesequence type="string" id="port_list" name="port_list" mode="readonly">
+        <description>Returns a sequence of strings with the names of the available Provides ports</description> 
+        <values>
+            <value>bits_to_enc_in::standardInterfaces.realChar</value> 
+        </values>
+        <kind kindtype="configure"/>
+    </simplesequence>
+</properties>

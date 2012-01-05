@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.5.0b-->
+<!--Powered by Python-->
+<softpkg type="sca_compliant" name="Interpolator" id="DCE:e1a32064-21c5-11db-a265-000f1fd5acd7">
+    <title/>
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/Interpolator/Interpolator.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/Interpolator/Interpolator.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:e1a41b54-21c5-11db-9618-000f1fd5acd7" aepcompliance="aep_compliant">
+        <description>x86 Implementation</description> 
+        <code type="Executable">
+            <localfile name="/bin/Interpolator"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

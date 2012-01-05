@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<properties>
+    <simple id="DCE:21605efc-93e0-432f-a71f-82aeb4e99e0a" mode="readonly" name="bit_rate" type="char">
+        <value>10/100</value>
+        <description>Bit Rate (Mbps) for EthernetLite MAC</description>
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

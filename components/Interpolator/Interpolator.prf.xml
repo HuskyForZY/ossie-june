@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.5.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple id="DCE:e5c1d4aa-4b7f-48b7-b3bf-ed90b7653bec" type="ushort" name="InterpFactor (k)" mode="readwrite">
+        <value>1</value>
+        <kind kindtype="configure" />
+    </simple>
+    <simplesequence id="DCE:9c39de73-54d4-43ad-ab9d-52f5fa526ddf" type="float" name="filter" mode="readwrite">
+        <values>
+            <value>1.0</value>           
+        </values>
+        <kind kindtype="configure" />
+    </simplesequence>
+    <simple id="DCE:e65ba870-4c11-11dc-9470-00123f63025f" type="string" name="pulse_shape" mode="readwrite">
+        <description>Type of pulse shape to use for filter prototype</description>
+        <value>rrcos</value>
+        <kind kindtype="configure" />
+    </simple>
+    <simple id="DCE:f6843fdc-4c11-11dc-b0be-00123f63025f" type="ushort" name="m" mode="readwrite">
+        <description>Symbol delay</description>
+        <value>2</value>
+        <kind kindtype="configure" />
+    </simple>
+    <simple id="DCE:fed01972-4c11-11dc-8d59-00123f63025f" type="float" name="beta" mode="readwrite">
+        <description>Excess bandwidth factor</description>
+        <value>0.3</value>
+        <kind kindtype="configure" />
+    </simple>
+</properties>

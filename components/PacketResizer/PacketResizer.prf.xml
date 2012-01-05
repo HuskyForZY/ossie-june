@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<properties>
+    <simple id="DCE:863201ca-0505-11de-b7e0-0000e80014f9" mode="readonly" name="Packet Size" type="ulong">
+        <value>1024</value> 
+        <description>This is the output packet size. Input data will be buffered or breaken apart to match this size.</description> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simplesequence id="port_list" mode="readonly" name="port_list" type="string">
+        <description>Returns a sequence of strings with the names of the available Provides ports</description> 
+        <kind kindtype="configure"/>
+        <values>
+            <value>packet_in::standardInterfaces.complexShort</value> 
+        </values>
+    </simplesequence>
+</properties>

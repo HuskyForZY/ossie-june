@@ -1,0 +1,9 @@
+The XilinxFPGA installation process is the standard:
+
+./configure
+make
+su -c "make install"
+
+./configure --help returns the available configure options. 
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<softpkg id="DCE:928483ff-e190-4af7-871d-afe457d6e985" name="XilinxFPGA" type="sca_compliant" version="1,0,0,0">
+    <title>XilinxFPGA</title>
+    <description>Xilinx Field Programmable Gate Array</description>
+    <author>
+        <name>Matt Carrick</name>
+        <company>Virginia Tech : MPRG : OSSIE</company>
+        <webpage>ossie.wireless.vt.edu</webpage>
+    </author>
+    <descriptor name="SCD">
+        <localfile name="/xml/XilinxFPGA/XilinxFPGA.scd.xml" />
+    </descriptor>
+    <implementation id="DCE:e6d7ca42-e4c9-482c-a9ed-23901f15a465" aepcompliance="aep_non_compliant">
+        <description>FX12 Implementation</description>
+        <code type="Executable">
+            <localfile name="dev/bin/XilinxFPGA"/>
+        </code>
+        <propertyfile type="PRF">
+            <localfile name="/xml/XilinxFPGA/XCV4FX12-FF668-10C.prf.xml"/>
+        </propertyfile>
+        <processor name="XCV4FX12-FF6668-10C"/>
+    </implementation>
+</softpkg>
