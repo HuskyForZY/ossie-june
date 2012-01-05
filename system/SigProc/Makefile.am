@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 
 lib_LTLIBRARIES = libsigproc.la
 libsigproc_la_SOURCES =             \

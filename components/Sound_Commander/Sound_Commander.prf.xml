@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<properties>
+    <description>These are the properties to configure the device manager</description> 
+    <simple id="DCE:d1e1764c-2f72-11e1-9da8-000c29c0b7da" mode="writeonly" name="playback_sample_rate" type="ulong">
+        <value>44100</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:fad06162-2f72-11e1-b943-000c29c0b7da" mode="writeonly" name="playback_channels" type="ushort">
+        <value>1</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:88c75d18-3126-11e1-8542-000c29c0b7da" mode="writeonly" name="playback_media" type="ushort">
+        <value>0</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:ec607c06-3126-11e1-b64b-000c29c0b7da" mode="writeonly" name="playback_mute" type="boolean">
+        <value>False</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:fc2787ec-3126-11e1-af56-000c29c0b7da" mode="writeonly" name="capture_sample_rate" type="ulong">
+        <value>44100</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:0c354192-3127-11e1-bd4d-000c29c0b7da" mode="writeonly" name="capture_channels" type="ushort">
+        <value>1</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:1959b75e-3127-11e1-b345-000c29c0b7da" mode="writeonly" name="capture_media" type="ushort">
+        <value>0</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:2736085a-3127-11e1-8b7e-000c29c0b7da" mode="writeonly" name="capture_start" type="boolean">
+        <value>False</value> 
+        <description>
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softpkg id="DCE:51360380-3127-11e1-be7b-000c29c0b7da" name="Sound_Commander">
+    <title/>
+    <description>
+    </description>
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/Sound_Commander/Sound_Commander.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/Sound_Commander/Sound_Commander.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:513682ce-3127-11e1-8836-000c29c0b7da">
+        <description>Description</description> 
+        <code type="Executable">
+            <localfile name="/bin/Sound_Commander"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>
