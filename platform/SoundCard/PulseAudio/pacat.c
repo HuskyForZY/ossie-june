@@ -18,6 +18,8 @@
   along with PulseAudio; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
   USA.
+
+pacat -r --latency-msec=1 -d alsa_input.pci-0000_00_1b.0.analog-stereo|pacat -p --latency-msec=1 -d alsa_output.pci-0000_00_1b.0.analog-stereo
 ***/
 
 #ifdef HAVE_CONFIG_H
