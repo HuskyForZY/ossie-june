@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS =
 EXTRA_DIST = OSSIETalk.prf.xml      \
 			 OSSIETalk.scd.xml      \
 			 OSSIETalk.spd.xml	\
