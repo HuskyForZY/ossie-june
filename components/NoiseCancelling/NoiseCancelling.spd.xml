@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softpkg id="DCE:6ed46c92-3140-11e1-844c-000c29c0b7da" name="NoiseCancelling">
+    <title/>
+    <description>
+    </description>
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/NoiseCancelling/NoiseCancelling.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/NoiseCancelling/NoiseCancelling.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:6ed509fe-3140-11e1-bf93-000c29c0b7da">
+        <description>Description</description> 
+        <code type="Executable">
+            <localfile name="/bin/NoiseCancelling"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>
