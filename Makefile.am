@@ -8,6 +8,7 @@ SUBDIRS = system/ossie \
 	  system/SigProc \
 	  platform/domain \
 	  platform/dtd \
+	  platform/SoundCard \
 	  platform/Sound_in \
 	  platform/Sound_out \
 	  platform/USRP \
@@ -15,6 +16,7 @@ SUBDIRS = system/ossie \
 	  platform/XilinxFPGA \
 	  platform/nodes/default_GPP_node \
 	  platform/nodes/default_GPP_sound_node \
+	  platform/nodes/default_GPP_PAsound_node \
 	  platform/nodes/default_GPP_USRP_node \
 	  platform/nodes/default_GPP_USRP2_node \
 	  platform/nodes/default_GPP_USRP_sound_node \
@@ -26,6 +28,7 @@ SUBDIRS = system/ossie \
 	  waveforms/OSSIETalkLoopBack \
 	  waveforms/Lab5Example \
 	  waveforms/pass_data_waveform \
+	  waveforms/AdaptiveNoiseCancelling \
 	  components/am_demod \
 	  components/amplifier \
 	  components/AutomaticGainControl \
@@ -49,6 +52,9 @@ SUBDIRS = system/ossie \
 	  components/WFMDemod \
           components/readBytesfromFile \
           components/writeBytestoFile \
+	  components/WavSinc \
+	  components/WavSource \
+	  components/Sound_Commander \
 	  tools
 
 if WITHNB
