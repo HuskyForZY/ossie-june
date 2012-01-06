@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softwareassembly SYSTEM "../../xml/dtd/softwareassembly.dtd">
+<!-- Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softwareassembly id="DCE:99464e6e-317c-11e1-b23d-000c29c0b7da" name="OSSIE::AdaptiveNoiseCancelling">
+    <componentfiles>
+        <componentfile id="NoiseCancelling_d7a669a0-3140-11e1-a2ec-000c29c0b7da" type="SPD">
+            <localfile name="/xml/NoiseCancelling/NoiseCancelling.spd.xml"/>
+        </componentfile>
+        <componentfile id="Sound_Commander_d81e1b12-3140-11e1-b9cf-000c29c0b7da" type="SPD">
+            <localfile name="/xml/Sound_Commander/Sound_Commander.spd.xml"/>
+        </componentfile>
+    </componentfiles>
+    <partitioning>
+        <componentplacement>
+            <componentfileref refid="NoiseCancelling_d7a669a0-3140-11e1-a2ec-000c29c0b7da"/>
+            <componentinstantiation id="DCE:9946e180-317c-11e1-b4c9-000c29c0b7da">
+                <usagename>NoiseCancelling_1</usagename> 
+                <findcomponent>
+                    <namingservice name="NoiseCancelling_1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="Sound_Commander_d81e1b12-3140-11e1-b9cf-000c29c0b7da"/>
+            <componentinstantiation id="DCE:994861ae-317c-11e1-a654-000c29c0b7da">
+                <componentproperties>
+                    <simpleref description="" name="capture_start" refid="DCE:2736085a-3127-11e1-8b7e-000c29c0b7da" value="1"/>
+                </componentproperties>
+                <usagename>Sound_Commander_1</usagename> 
+                <findcomponent>
+                    <namingservice name="Sound_Commander_1"/>
+                </findcomponent>
+            </componentinstantiation>
+        </componentplacement>
+    </partitioning>
+    <assemblycontroller>
+        <componentinstantiationref refid="DCE:994861ae-317c-11e1-a654-000c29c0b7da"/>
+    </assemblycontroller>
+    <connections>
+        <connectinterface id="DCE:99476524-317c-11e1-8e6f-000c29c0b7da">
+            <providesport>
+                <providesidentifier>In</providesidentifier> 
+                <findby>
+                    <namingservice name="NoiseCancelling_1"/>
+                </findby>
+            </providesport>
+            <usesport>
+                <usesidentifier>soundIn</usesidentifier> 
+                <findby>
+                    <namingservice name="soundCard"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:9947e5c6-317c-11e1-a081-000c29c0b7da">
+            <findby>
+                <namingservice name="DomainName1/soundOut"/>
+            </findby>
+            <usesport>
+                <usesidentifier>Out</usesidentifier> 
+                <findby>
+                    <namingservice name="NoiseCancelling_1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:9948e30e-317c-11e1-94fb-000c29c0b7da">
+            <findby>
+                <namingservice name="DomainName1/soundOutControl"/>
+            </findby>
+            <usesport>
+                <usesidentifier>soundOutControl</usesidentifier> 
+                <findby>
+                    <namingservice name="Sound_Commander_1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+        <connectinterface id="DCE:99495956-317c-11e1-a95c-000c29c0b7da">
+            <findby>
+                <namingservice name="DomainName1/soundInControl"/>
+            </findby>
+            <usesport>
+                <usesidentifier>soundInControl</usesidentifier> 
+                <findby>
+                    <namingservice name="Sound_Commander_1"/>
+                </findby>
+            </usesport>
+        </connectinterface>
+    </connections>
+</softwareassembly>

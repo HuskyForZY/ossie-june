@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softpkg id="DCE:7f5ef9a2-2d07-11e1-81f5-000c29c0b7da" name="WavSource">
+    <title/>
+    <description>
+    </description>
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/WavSource/WavSource.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/WavSource/WavSource.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:7f5f7b84-2d07-11e1-99a4-000c29c0b7da">
+        <description>Description</description> 
+        <code type="Executable">
+            <localfile name="/bin/WavSource"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

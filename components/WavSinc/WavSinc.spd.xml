@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<softpkg id="DCE:3b9d6924-3135-11e1-ba96-000c29c0b7da" name="WavSinc">
+    <title/>
+    <description>
+    </description>
+    <author>
+        <name>OSSIE Project</name> 
+        <company>Mobile and Portable Radio Research Group</company> 
+        <webpage>http://www.mprg.org</webpage> 
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="/xml/WavSinc/WavSinc.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="/xml/WavSinc/WavSinc.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:3b9de3e0-3135-11e1-8df3-000c29c0b7da">
+        <description>Description</description> 
+        <code type="Executable">
+            <localfile name="/bin/WavSinc"/>
+        </code>
+        <os name="Linux" version="2.6.26.3"/>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

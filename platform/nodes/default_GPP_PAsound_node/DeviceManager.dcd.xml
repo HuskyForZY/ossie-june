@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE deviceconfiguration SYSTEM "../../xml/dtd/deviceconfiguration.dtd">
+<!-- Created with OSSIE WaveDev-->
+<!--Powered by Python-->
+<deviceconfiguration id="DCE:60244faa-3028-11e1-aeff-000c29c0b7da" name="DeviceManager_default_GPP_PAsound_node">
+    <devicemanagersoftpkg>
+        <localfile name="/nodes/default_GPP_PAsound_node/DeviceManager.spd.xml"/>
+    </devicemanagersoftpkg>
+    <componentfiles>
+        <!--Device Definitions--> 
+        <componentfile id="c962b29e-2ce6-11e1-9550-000c29c0b7da" type="SPD">
+            <localfile name="/xml/GPP/GPP.spd.xml"/>
+        </componentfile>
+        <componentfile id="4fcee9f8-3028-11e1-b1ca-000c29c0b7da" type="SPD">
+            <localfile name="/xml/soundCard/soundCard.spd.xml"/>
+        </componentfile>
+    </componentfiles>
+    <partitioning>
+        <componentplacement>
+            <componentfileref refid="c962b29e-2ce6-11e1-9550-000c29c0b7da"/>
+            <componentinstantiation id="DCE:c96030aa-2ce6-11e1-873f-000c29c0b7da">
+                <usagename>GPP</usagename> 
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="4fcee9f8-3028-11e1-b1ca-000c29c0b7da"/>
+            <componentinstantiation id="DCE:4fcd0c6e-3028-11e1-b6c0-000c29c0b7da">
+                <usagename>soundCard</usagename> 
+            </componentinstantiation>
+        </componentplacement>
+    </partitioning>
+    <domainmanager>
+        <namingservice name="DomainName1/DomainManager"/>
+    </domainmanager>
+</deviceconfiguration>
