@@ -442,7 +442,7 @@ Copyright (C) 2009 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/june/Work/temp/ossie-june/system/ossie'
+ac_pwd='/home/june/workspace/ossie-june/system/ossie'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -651,7 +651,7 @@ finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
 finish_eval=''
 hardcode_into_libs='yes'
 sys_lib_search_path_spec='/usr/lib/gcc/i486-linux-gnu/4.4.3 /usr/lib /lib /usr/lib/i486-linux-gnu'
-sys_lib_dlsearch_path_spec='/lib /usr/lib /usr/lib/mesa /usr/lib/atlas /lib/i486-linux-gnu /usr/lib/i486-linux-gnu /usr/lib/alsa-lib /usr/local/lib /usr/lib/vmware-tools/lib32/libvmGuestLib.so /usr/lib/vmware-tools/lib64/libvmGuestLib.so /usr/lib/vmware-tools/lib32/libvmGuestLibJava.so /usr/lib/vmware-tools/lib64/libvmGuestLibJava.so /usr/lib/vmware-tools/lib32/libDeployPkg.so /usr/lib/vmware-tools/lib64/libDeployPkg.so '
+sys_lib_dlsearch_path_spec='/lib /usr/lib /usr/lib/mesa /usr/lib/atlas /lib/i486-linux-gnu /usr/lib/i486-linux-gnu /usr/lib/alsa-lib /usr/local/lib '
 hardcode_action='immediate'
 enable_dlopen='unknown'
 enable_dlopen_self='unknown'
@@ -917,7 +917,7 @@ S["build"]="i686-pc-linux-gnu"
 S["LIBTOOL"]="$(SHELL) $(top_builddir)/libtool"
 S["am__untar"]="${AMTAR} xf -"
 S["am__tar"]="${AMTAR} chof - \"$$tardir\""
-S["AMTAR"]="${SHELL} /home/june/Work/temp/ossie-june/missing --run tar"
+S["AMTAR"]="${SHELL} /home/june/workspace/ossie-june/missing --run tar"
 S["am__leading_dot"]="."
 S["SET_MAKE"]=""
 S["AWK"]="gawk"
@@ -925,12 +925,12 @@ S["mkdir_p"]="/bin/mkdir -p"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]="strip"
-S["install_sh"]="${SHELL} /home/june/Work/temp/ossie-june/install-sh"
-S["MAKEINFO"]="${SHELL} /home/june/Work/temp/ossie-june/missing --run makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/june/Work/temp/ossie-june/missing --run autoheader"
-S["AUTOMAKE"]="${SHELL} /home/june/Work/temp/ossie-june/missing --run automake-1.11"
-S["AUTOCONF"]="${SHELL} /home/june/Work/temp/ossie-june/missing --run autoconf"
-S["ACLOCAL"]="${SHELL} /home/june/Work/temp/ossie-june/missing --run aclocal-1.11"
+S["install_sh"]="${SHELL} /home/june/workspace/ossie-june/install-sh"
+S["MAKEINFO"]="${SHELL} /home/june/workspace/ossie-june/missing --run makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/june/workspace/ossie-june/missing --run autoheader"
+S["AUTOMAKE"]="${SHELL} /home/june/workspace/ossie-june/missing --run automake-1.11"
+S["AUTOCONF"]="${SHELL} /home/june/workspace/ossie-june/missing --run autoconf"
+S["ACLOCAL"]="${SHELL} /home/june/workspace/ossie-june/missing --run aclocal-1.11"
 S["VERSION"]="0.6.2"
 S["PACKAGE"]="ossie"
 S["CYGPATH_W"]="echo"

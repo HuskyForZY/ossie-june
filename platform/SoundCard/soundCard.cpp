@@ -33,11 +33,20 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <string.h>
 #include <fcntl.h>
 
+#include <ace/Acceptor.h>
+#include <ace/SOCK_Acceptor.h>
+#include <ace/Reactor.h>
+#include <ace/Signal.h>
+
 #include "ossie/cf.h"
 #include "ossie/portability.h"
 #include <ossie/ossieSupport.h>
 
 #include "soundCard.h"
+#include "NetHandler.h"
+
+ACE_Reactor *g_reactor;
+ACE_SOCK_STREAM *g_peer = NULL;
 
 
 
@@ -59,10 +68,13 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     sound_out_control = new audioOutControl_i(this,"soundOutControl","DomainName1");
     sound_in_conrtol = new audioInControl_i(this,"soundInControl","DomainName1");
 
+    ACE_NEW(g_reactor, ACE_Reactor);
+
+    port_num = ACE_DEFAULT_SERVER_PORT;
 
 // Start the play_sound thread
-
-    capture_thread = new omni_thread(capture, (void *) this);
+    capture_frame_length = 512;
+ //   capture_thread = new omni_thread(capture, (void *) this);
 
 
     dev_usageState = CF::Device::IDLE;
@@ -70,6 +82,7 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     dev_adminState = CF::Device::UNLOCKED;
 
     OutputType = standardInterfaces::audioOutControl::otSpeaker;
+    InputType = standardInterfaces::audioInControl::itMicrophone;
 
     playback_profile.channels = 1;
     playback_profile.rate = 44100;
@@ -91,7 +104,7 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     iWav_profile.channels = 0;
 
 
-    capture_frame_length = 512;
+
 
 
 
@@ -279,6 +292,7 @@ void SoundCard_i::set_play_connector(standardInterfaces::audioOutControl::OutTyp
     	break;
     case standardInterfaces::audioOutControl::otNet:
     	DEBUG(3, SoundCard, "Output Media = Network");
+    	peer_acceptor.open (ACE_INET_Addr (port_num),g_reactor);
     	break;
     default:
     	DEBUG(3, SoundCard, "Output Media = Speaker");
@@ -399,6 +413,7 @@ void SoundCard_i::set_capture_connector(standardInterfaces::audioInControl::InTy
     	break;
     case standardInterfaces::audioInControl::itNet:
     	DEBUG(3, SoundCard, "Input Media = Network");
+    	peer_acceptor.open (ACE_INET_Addr (port_num),g_reactor);
     	break;
     default:
     	DEBUG(3, SoundCard, "Input Media = Microphone");
@@ -456,12 +471,12 @@ void SoundCard_i::capture_sound()
 		capture_profile_mutex.unlock();
 
 		if(capture_profile.channels == 1){
-			I_out.length(512);
+			I_out.length(capture_frame_length);
 			DEBUG(3, SoundCard, "capturing mono sound")
 		}
 		else{
-			I_out.length(capture_frame_length);
-			DEBUG(3, SoundCard, "capturing mono sound")
+			I_out.length(capture_frame_length*2);
+			DEBUG(3, SoundCard, "capturing stereo sound")
 		}
 
 		pa_capture_read(&(I_out[0]),I_out.length()*2);
@@ -536,6 +551,7 @@ int SoundCard_i::pa_capture_read(void* buffer,unsigned int length)
     	break;
 
     case standardInterfaces::audioInControl::itNet:
+    	g_reactor->handle_events ();
     	break;
 
     default:

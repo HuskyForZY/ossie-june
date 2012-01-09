@@ -44,6 +44,7 @@ void playback_thread(void*)
 	ACE_Time_Value t = ACE_Time_Value::max_time;
 
 	while(!finished){
+	//for(i=0;i<64;){
 		if(g_peer != NULL){
 			sprintf(buff,"from server: message = %d\n",i++);
 			if(g_peer->send_n(buff, sizeof(buff),&t,&transfer) == -1)

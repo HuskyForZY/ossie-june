@@ -37,6 +37,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <pulse/error.h>
 #include <sndfile.h>
 
+#include <ace/Acceptor.h>
+#include <ace/SOCK_Acceptor.h>
+#include <ace/Reactor.h>
+#include <ace/Signal.h>
+#include "NetHandler.h"
+
 #include "ossie/cf.h"
 #include "ossie/PortTypes.h"
 #include "ossie/debug.h"
@@ -46,6 +52,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <standardinterfaces/soundControl_p.h>
 
 class SoundCard_i;
+
+typedef ACE_Acceptor <Logging_Handler, ACE_SOCK_ACCEPTOR> AudioStreamming_Acceptor;
 
 class audioOutControl_i: public standardInterfaces_i::audioOutControl_p
 {
@@ -246,7 +254,8 @@ private:
     std::string oWav_name,iWav_name;
     SF_INFO oWav_profile, iWav_profile;
 
-
+    unsigned short port_num;
+    AudioStreamming_Acceptor peer_acceptor;
 
     void play_sound();
     void capture_sound();

@@ -44,6 +44,7 @@ configure:1787: checking for a BSD-compatible install
 configure:1855: result: /usr/bin/install -c
 configure:1866: checking whether build environment is sane
 configure:1916: result: yes
+configure:1944: WARNING: `missing' script is too old or missing
 configure:2057: checking for a thread-safe mkdir -p
 configure:2096: result: /bin/mkdir -p
 configure:2109: checking for gawk
@@ -148,14 +149,14 @@ am_cv_CXX_dependencies_compiler_type=none
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /home/june/Work/ossie-june/waveforms/AdaptiveNoiseCancelling/missing --run aclocal-1.11'
+ACLOCAL='aclocal-1.11'
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
 AMDEP_TRUE=''
-AMTAR='${SHELL} /home/june/Work/ossie-june/waveforms/AdaptiveNoiseCancelling/missing --run tar'
-AUTOCONF='${SHELL} /home/june/Work/ossie-june/waveforms/AdaptiveNoiseCancelling/missing --run autoconf'
-AUTOHEADER='${SHELL} /home/june/Work/ossie-june/waveforms/AdaptiveNoiseCancelling/missing --run autoheader'
-AUTOMAKE='${SHELL} /home/june/Work/ossie-june/waveforms/AdaptiveNoiseCancelling/missing --run automake-1.11'
+AMTAR='tar'
+AUTOCONF='autoconf'
+AUTOHEADER='autoheader'
+AUTOMAKE='automake-1.11'
 AWK='gawk'
 CPPFLAGS=''
 CXX='g++'
@@ -176,7 +177,7 @@ LDFLAGS=''
 LIBOBJS=''
 LIBS=''
 LTLIBOBJS=''
-MAKEINFO='${SHELL} /home/june/Work/ossie-june/waveforms/AdaptiveNoiseCancelling/missing --run makeinfo'
+MAKEINFO='makeinfo'
 MKDIR_P='/bin/mkdir -p'
 OBJEXT='o'
 PACKAGE='adaptivenoisecancelling'
@@ -213,7 +214,7 @@ host_alias=''
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${datarootdir}/info'
-install_sh='${SHELL} /home/june/Work/ossie-june/waveforms/AdaptiveNoiseCancelling/install-sh'
+install_sh='${SHELL} /home/june/workspace/ossie-june/waveforms/AdaptiveNoiseCancelling/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'

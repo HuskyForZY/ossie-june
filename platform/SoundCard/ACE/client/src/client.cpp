@@ -52,7 +52,7 @@ main (int argc, char *argv[])
   /* Just for grins, we'll send the server several messages.  */
   for (int i = 0; i < max_iterations; i++)
     {
-      char buf[BUFSIZ];
+      char buf[256];
 
       /* Create our message with the message number */
       ACE_OS::sprintf (buf,
@@ -79,9 +79,9 @@ main (int argc, char *argv[])
                            "%p\n",
                            "send"),
                           -1);
-      else
+     // else
         /* Pause for a second.  */
-        ACE_OS::sleep (1);
+     //   ACE_OS::sleep (1);
       server.recv_n(buf,sizeof(buf));
       printf("%s",buf);
     }

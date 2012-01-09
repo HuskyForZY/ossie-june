@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS =
        
 AM_CXXFLAGS = -Wall -I../../system/ossie/include -I../../system/ossie/include/ossie -I../../system/standardInterfaces/include \
-	-lpulse -lpulse-simple
+	-lpulse -lpulse-simple -lACE
 
 LDADD = ../../system/ossie/framework/libossiecf.la \
 	../../system/ossie/parser/libossieparser.la \

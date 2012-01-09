@@ -5,13 +5,7 @@
 	<projects>
 	</projects>
 	<buildSpec>
-		<buildCommand>
-			<name>edu.vt.ossie.WaveformXmlBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>edu.vt.ossie.WaveformNature</nature>
 	</natures>
 </projectDescription>
