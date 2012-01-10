@@ -395,8 +395,8 @@ soundCard.o: soundCard.cpp /usr/include/c++/4.4/iostream \
  /usr/include/pulse/cdecl.h /usr/include/pulse/version.h \
  /usr/include/pulse/channelmap.h /usr/include/pulse/def.h \
  /usr/include/pulse/error.h /usr/include/sndfile.h NetHandler.h \
- ../../system/ossie/include/ossie/PortTypes.h \
  ../../system/ossie/include/ossie/debug.h \
+ ../../system/ossie/include/ossie/PortTypes.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort_p.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort_u.h \
@@ -1695,9 +1695,9 @@ soundCard.h:
 
 NetHandler.h:
 
-../../system/ossie/include/ossie/PortTypes.h:
-
 ../../system/ossie/include/ossie/debug.h:
+
+../../system/ossie/include/ossie/PortTypes.h:
 
 ../../system/standardInterfaces/include/standardinterfaces/realShort_p.h:
 

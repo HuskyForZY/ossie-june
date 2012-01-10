@@ -45,9 +45,16 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include "soundCard.h"
 #include "NetHandler.h"
 
-ACE_Reactor *g_reactor;
-ACE_SOCK_STREAM *g_peer = NULL;
+#if defined (ACE_HAS_EXPLICIT_TEMPLATE_INSTANTIATION)
+template class ACE_Acceptor <Logging_Handler, ACE_SOCK_ACCEPTOR>;
+template class ACE_Svc_Handler<ACE_SOCK_STREAM, ACE_NULL_SYNCH>;
+#elif defined (ACE_HAS_TEMPLATE_INSTANTIATION_PRAGMA)
+#pragma instantiate ACE_Acceptor <Logging_Handler, ACE_SOCK_ACCEPTOR>
+#pragma instantiate ACE_Svc_Handler<ACE_SOCK_STREAM, ACE_NULL_SYNCH>
+#endif /* ACE_HAS_EXPLICIT_TEMPLATE_INSTANTIATION */
 
+ACE_Reactor *g_reactor;
+Logging_Handler *NetworkHandler = NULL;
 
 
 // Initializing constructor
@@ -364,7 +371,7 @@ void SoundCard_i::play_sound()
         	for(int i=0;i<S_in_length;i++){
         		mWave[i] = (*S_in)[i];
         	}
-        	DEBUG(3, SoundCard, "playing mono sound")
+        	//DEBUG(3, SoundCard, "playing mono sound")
         	pa_play_write(&mWave[0], mWave.size()*sizeof(TMonoWave::value_type));
 
 
@@ -413,7 +420,9 @@ void SoundCard_i::set_capture_connector(standardInterfaces::audioInControl::InTy
     	break;
     case standardInterfaces::audioInControl::itNet:
     	DEBUG(3, SoundCard, "Input Media = Network");
-    	peer_acceptor.open (ACE_INET_Addr (port_num),g_reactor);
+    	if(peer_acceptor.open (ACE_INET_Addr (port_num),g_reactor) == -1)
+    		printf("%s\n",ACE_OS::strerror(ACE_OS::last_error ()) );
+    	ACE_DEBUG ((LM_DEBUG, "(%P|%t) starting up audio streaming daemon\n"));
     	break;
     default:
     	DEBUG(3, SoundCard, "Input Media = Microphone");
@@ -454,6 +463,12 @@ void SoundCard_i::set_capture_frame_length(unsigned long length)
 
 void SoundCard_i::capture_sound()
 {
+	while (1){
+		DEBUG(3, SoundCard, "Waiting Event")
+		if(g_reactor->handle_events (NULL) == -1)
+			printf("%s\n",ACE_OS::strerror(ACE_OS::last_error ()) );
+	}
+	/*
     TStereoWave sWave(capture_frame_length);
     TMonoWave mWave(capture_frame_length);
     PortTypes::ShortSequence I_out;
@@ -472,7 +487,7 @@ void SoundCard_i::capture_sound()
 
 		if(capture_profile.channels == 1){
 			I_out.length(capture_frame_length);
-			DEBUG(3, SoundCard, "capturing mono sound")
+		//	DEBUG(3, SoundCard, "capturing mono sound")
 		}
 		else{
 			I_out.length(capture_frame_length*2);
@@ -484,7 +499,7 @@ void SoundCard_i::capture_sound()
 		sound_in->pushPacket(I_out);
 
 	}
-	pa_capture_close();
+	pa_capture_close();*/
 }
 
 void SoundCard_i::pa_play_open()
@@ -551,6 +566,11 @@ int SoundCard_i::pa_capture_read(void* buffer,unsigned int length)
     	break;
 
     case standardInterfaces::audioInControl::itNet:
+    	if(NetworkHandler != NULL){
+    		NetworkHandler->RecvBuffer = (char*)buffer;
+    		NetworkHandler->RecvBuffer_Size = 128;//length;
+    		DEBUG(4, SoundCard, "client available")
+    	}
     	g_reactor->handle_events ();
     	break;
 
@@ -575,4 +595,6 @@ bool SoundCard_i::continue_capturing()
 	omni_mutex_lock l(capturing_mutex);
 	return capture_started;
 }
+
+
 

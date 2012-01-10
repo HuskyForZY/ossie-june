@@ -19,7 +19,7 @@ class Logging_Handler;
   way out and grab the global pointer.  (There is a way to get back to
   the acceptor's reactor that we'll see later on.)  */
 extern ACE_Reactor *g_reactor;
-extern ACE_SOCK_STREAM *g_peer;
+extern Logging_Handler *NetworkHandler;
 
 /* This time we're deriving from ACE_Svc_Handler instead of
   ACE_Event_Handler.  The big reason for this is because it already
@@ -33,6 +33,11 @@ public:
 
   /* The Acceptor<> template will open() us when there is a new client
     connection.  */
+
+	char* RecvBuffer;
+	size_t RecvBuffer_size;
+
+
   virtual int open (void *)
   {
     ACE_INET_Addr addr;
@@ -70,7 +75,7 @@ public:
                 "(%P|%t) connected with %s\n",
                 addr.get_host_name ()));
 
-    g_peer = &(this->peer());
+    //NetworkHandler = this;
 
     return 0;
   }
@@ -90,7 +95,7 @@ public:
 
     /* Shut down the connection to the client.  */
     this->peer ().close ();
-    g_peer = NULL;
+    //NetworkHandler = NULL;
 
     /* Free our memory.  */
     delete this;
@@ -119,11 +124,10 @@ protected:
   /* Respond to input just like Tutorial 1.  */
   virtual int handle_input (ACE_HANDLE)
   {
-    char buf[128];
+	  char buf[256];
     ACE_OS::memset (buf, 0, sizeof (buf));
 
-    switch (this->peer ().recv (buf,
-                                sizeof buf))
+    switch (this->peer ().recv (buf,sizeof (buf)) )
       {
       case -1:
         ACE_ERROR_RETURN ((LM_ERROR,

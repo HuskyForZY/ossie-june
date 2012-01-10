@@ -79,11 +79,11 @@ main (int argc, char *argv[])
                            "%p\n",
                            "send"),
                           -1);
-     // else
+      else
         /* Pause for a second.  */
-     //   ACE_OS::sleep (1);
-      server.recv_n(buf,sizeof(buf));
-      printf("%s",buf);
+        ACE_OS::sleep (1);
+     // server.recv_n(buf,sizeof(buf));
+     // printf("%s",buf);
     }
 
   /* Close the connection to the server.  The servers we've created so

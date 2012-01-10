@@ -36,48 +36,62 @@ extern "C" void handler (int)
   g_reactor->notify();
 }
 
+static const u_short PORT = ACE_DEFAULT_SERVER_PORT;
+
 void playback_thread(void*)
 {
+	  ACE_NEW (g_reactor,
+	                  ACE_Reactor);
+	  Logging_Acceptor peer_acceptor;
+	  peer_acceptor.open (ACE_INET_Addr (PORT),
+	                          g_reactor);
+	/*
 	char buff[256];
 	int i = 0;
 	size_t transfer = 0;
 	ACE_Time_Value t = ACE_Time_Value::max_time;
 
 	while(!finished){
-	//for(i=0;i<64;){
+	for(i=0;i<64;){
 		if(g_peer != NULL){
 			sprintf(buff,"from server: message = %d\n",i++);
 			if(g_peer->send_n(buff, sizeof(buff),&t,&transfer) == -1)
 				printf("send fail\n");
-//			ACE_OS::sleep (1);
+			ACE_OS::sleep (1);
 
 		}
 
-	}
+	}*/
+	  while (!finished){
+		  ACE_DEBUG ((LM_DEBUG,"(%P|%t) waiting event\n"));
+		  g_reactor->handle_events ();
+	  }
+
+	  peer_acceptor.close();
 }
 
-static const u_short PORT = ACE_DEFAULT_SERVER_PORT;
+
 
 int
 main (int, char **)
 {
   // Create the reactor we'll register our event handler derivatives with.
-  ACE_NEW_RETURN (g_reactor,
+  /*ACE_NEW_RETURN (g_reactor,
                   ACE_Reactor,
                   1);
-
+*/
   // Create the acceptor that will listen for client connetions
-  Logging_Acceptor peer_acceptor;
+  //Logging_Acceptor peer_acceptor;
 
   /* Notice how similar this is to the open() call in Tutorial 1.  I
     read ahead when I created that one so that it would come out this
     way...  */
-  if (peer_acceptor.open (ACE_INET_Addr (PORT),
+  /*if (peer_acceptor.open (ACE_INET_Addr (PORT),
                           g_reactor) == -1)
     ACE_ERROR_RETURN ((LM_ERROR,
                        "%p\n",
                        "open"),
-                      -1);
+                      -1);*/
 
   /* Here's the easiest way to respond to signals in your application.
     Simply construct an ACE_Sig_Action object with a "C" function and
@@ -86,7 +100,7 @@ main (int, char **)
     the easy-out here.  */
   ACE_Sig_Action sa((ACE_SignalHandler)handler, SIGINT);
 
-  omni_thread* play = new omni_thread(playback_thread,NULL);
+  omni_thread* play = new omni_thread(playback_thread,false);
   play->start();
 
 
@@ -94,11 +108,14 @@ main (int, char **)
               "(%P|%t) starting up server logging daemon\n"));
 
   // Perform logging service until the signal handler receives SIGINT.
-  while (!finished)
-    g_reactor->handle_events ();
+  while (!finished){
+	  //ACE_DEBUG ((LM_DEBUG,"(%P|%t) waiting event\n"));
+	  //g_reactor->handle_events ();
+	  ;
+  }
 
   // Close the acceptor so that no more clients will be taken in.
-  peer_acceptor.close();
+  //peer_acceptor.close();
 
   // Free up the memory allocated for the reactor.
   delete g_reactor;

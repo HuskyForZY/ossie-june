@@ -322,8 +322,8 @@ port_impl.o: port_impl.cpp /usr/include/c++/4.4/iostream \
  /usr/include/ace/OS_NS_arpa_inet.inl /usr/include/ace/SOCK_Stream.inl \
  /usr/include/ace/SOCK_Acceptor.inl /usr/include/ace/Signal.h \
  /usr/include/ace/Signal.inl /usr/include/ace/Trace.h NetHandler.h \
- ../../system/ossie/include/ossie/cf.h /usr/include/omniORB4/CORBA.h \
- /usr/include/omniORB4/omniInternal.h \
+ ../../system/ossie/include/ossie/ossieSupport.h \
+ /usr/include/omniORB4/CORBA.h /usr/include/omniORB4/omniInternal.h \
  /usr/include/omniORB4/CORBA_sysdep.h \
  /usr/include/omniORB4/local_config.h /usr/include/omniconfig.h \
  /usr/include/omniORB4/acconfig.h \
@@ -390,6 +390,9 @@ port_impl.o: port_impl.cpp /usr/include/c++/4.4/iostream \
  /usr/include/omniORB4/boxes_operators.hh \
  /usr/include/omniORB4/corbaidl_poa.hh /usr/include/omniORB4/boxes_poa.hh \
  /usr/include/omniORB4/boa.h /usr/include/omniORB4/Naming.hh \
+ ../../system/ossie/include/ossie/cf.h \
+ ../../system/ossie/include/ossie/StandardEvent.h \
+ ../../system/ossie/include/ossie/ossieparser.h \
  ../../system/ossie/include/ossie/PortTypes.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort_p.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort.h \
@@ -1509,7 +1512,7 @@ soundCard.h:
 
 NetHandler.h:
 
-../../system/ossie/include/ossie/cf.h:
+../../system/ossie/include/ossie/ossieSupport.h:
 
 /usr/include/omniORB4/CORBA.h:
 
@@ -1682,6 +1685,12 @@ NetHandler.h:
 /usr/include/omniORB4/boa.h:
 
 /usr/include/omniORB4/Naming.hh:
+
+../../system/ossie/include/ossie/cf.h:
+
+../../system/ossie/include/ossie/StandardEvent.h:
+
+../../system/ossie/include/ossie/ossieparser.h:
 
 ../../system/ossie/include/ossie/PortTypes.h:
 
