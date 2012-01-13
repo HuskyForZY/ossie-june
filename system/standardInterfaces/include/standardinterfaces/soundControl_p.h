@@ -45,6 +45,8 @@ namespace standardInterfaces_i
 	    virtual void set_sample_rate(::CORBA::ULong rate) = 0;
 	    virtual void set_channels(::CORBA::UShort channels) = 0;
 	    virtual void set_connector(standardInterfaces::audioOutControl::OutType type) = 0;
+	    virtual void set_network_port(unsigned short port) = 0;
+	    virtual void set_file_name(const char* name) = 0;
 	    virtual void start() = 0;
 	    virtual void stop() = 0;
 	    virtual void mute(::CORBA::Boolean enable) = 0;
@@ -85,15 +87,21 @@ namespace audioOutControl
 		void set_connector(standardInterfaces::audioOutControl::OutType type){
 			base->set_connector(type);
 		}
-	    void start(){
-	    	base->start();
-	    }
-	    void stop(){
-	    	base->stop();
-	    }
-	    void mute(::CORBA::Boolean enable){
-	    	base->mute(enable);
-	    }
+	    	void set_network_port(unsigned short port){
+			base->set_network_port(port);
+		}
+	    	void set_file_name(const char* name){
+			base->set_file_name(name);
+		}
+	    	void start(){
+	    		base->start();
+	    	}
+	    	void stop(){
+	    		base->stop();
+	    	}
+	    	void mute(::CORBA::Boolean enable){
+	    		base->mute(enable);
+	    	}
 
 
 	private:
@@ -124,9 +132,11 @@ namespace standardInterfaces_i
 	    virtual void set_sample_rate(::CORBA::ULong rate) = 0;
 	    virtual void set_channels(::CORBA::UShort channels) = 0;
 	    virtual void set_connector(standardInterfaces::audioInControl::InType type) = 0;
+	    virtual void set_network_port(unsigned short port) = 0;
+	    virtual void set_file_name(const char* name) = 0;
 	    virtual void start() = 0;
 	    virtual void stop() = 0;
-	    virtual void set_frame_length(::CORBA::ULong length) = 0;
+	    virtual void set_frame_size(::CORBA::ULong length) = 0;
 
 
 
@@ -163,14 +173,20 @@ namespace audioInControl
 		void set_connector(standardInterfaces::audioInControl::InType type){
 			base->set_connector(type);
 		}
+	    	void set_network_port(unsigned short port){
+			base->set_network_port(port);
+		}
+	    	void set_file_name(const char* name){
+			base->set_file_name(name);
+		}
 	    void start(){
 	    	base->start();
 	    }
 	    void stop(){
 	    	base->stop();
 	    }
-	    void set_frame_length(::CORBA::ULong length){
-	    	base->set_frame_length(length);
+	    void set_frame_size(::CORBA::ULong length){
+	    	base->set_frame_size(length);
 	    }
 
 

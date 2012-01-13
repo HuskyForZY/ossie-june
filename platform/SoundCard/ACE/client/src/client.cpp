@@ -2,8 +2,11 @@
 
 /* To establish a socket connection to a server, we'll need an
   ACE_SOCK_Connector.  */
-#include "ace/Log_Msg.h"
-#include "ace/SOCK_Connector.h"
+#include <ace/Log_Msg.h>
+#include <ace/SOCK_Connector.h>
+#include <pulse/simple.h>
+#include <pulse/error.h>
+#include <omnithread.h>
 
 /* Unlike the previous two tutorials, we're going to allow the user to
   provide command line options this time.  Still, we need defaults in
@@ -11,6 +14,26 @@
 static u_short SERVER_PORT = ACE_DEFAULT_SERVER_PORT;
 static const char *const SERVER_HOST = ACE_DEFAULT_SERVER_HOST;
 static const int MAX_ITERATIONS = 1000;
+
+ACE_SOCK_Stream server;
+
+void read_thread(void* arg)
+{
+	pa_sample_spec capture_profile;
+	capture_profile.channels = 1;
+	capture_profile.rate = 44100;
+	capture_profile.format = PA_SAMPLE_S16LE;
+	int error;
+	int m = *(int*)arg;
+	pa_simple *paPlayHandle = pa_simple_new(NULL,"soundCard", PA_STREAM_PLAYBACK, NULL, "playback", &capture_profile, NULL, NULL, &error);
+  for (int i = 0; i < m; i++)
+	{
+		  short buffer[2048];
+		if(server.recv_n(buffer,2048) > 0)
+		  pa_simple_write(paPlayHandle, buffer, 2048, &error);
+	}
+}
+
 
 int
 main (int argc, char *argv[])
@@ -25,7 +48,7 @@ main (int argc, char *argv[])
   /* Build ourselves a Stream socket. This is a connected socket that
     provides reliable end-to-end communications. We will use the
     server object to send data to the server we connect to.  */
-  ACE_SOCK_Stream server;
+
 
   /* And we need a connector object to establish that connection. The
     ACE_SOCK_Connector object provides all of the tools we need to
@@ -50,14 +73,27 @@ main (int argc, char *argv[])
                       -1);
 
   /* Just for grins, we'll send the server several messages.  */
+  pa_sample_spec capture_profile;
+  capture_profile.channels = 1;
+  capture_profile.rate = 44100;
+  capture_profile.format = PA_SAMPLE_S16LE;
+
+  int error;
+
+  pa_simple *paCaptureHandle = pa_simple_new(NULL,"soundCard", PA_STREAM_RECORD, NULL, "record", &capture_profile, NULL, NULL, &error);
+
+  omni_thread* read = new omni_thread(read_thread, (void *)&max_iterations );
+  read->start();
+
+
+
   for (int i = 0; i < max_iterations; i++)
     {
-      char buf[256];
+      short buffer[2048];
 
       /* Create our message with the message number */
-      ACE_OS::sprintf (buf,
-                       "message = %d\n",
-                       i + 1);
+      pa_simple_read(paCaptureHandle, buffer, 2048, &error);
+     // sprintf((char*)buffer,"Message = %d\n",i);
       /* Send the message to the server.  We use the server object's
         send_n() function to send all of the data at once. There is
         also a send() function but it may not send all of the
@@ -73,25 +109,25 @@ main (int argc, char *argv[])
         amount of time the system will attempt to send the data to the
         peer.  The flags parameter is passed directly to the OS send()
         system call.  See send(2) for the valid flags values.  */
-      if (server.send_n (buf,
-                         ACE_OS::strlen (buf)) == -1)
-        ACE_ERROR_RETURN ((LM_ERROR,
-                           "%p\n",
-                           "send"),
-                          -1);
-      else
+      if (server.send_n (buffer,2048) == -1)
+        //ACE_ERROR_RETURN ((LM_ERROR,
+        //                   "%p\n",
+        //                   "send"),
+        //                  -1);
+      //else
         /* Pause for a second.  */
-        ACE_OS::sleep (1);
-     // server.recv_n(buf,sizeof(buf));
-     // printf("%s",buf);
-    }
+       // ACE_OS::sleep (1);
+    	  memset(buffer,2048,0);
 
+    }
+  pa_simple_free(paCaptureHandle);
   /* Close the connection to the server.  The servers we've created so
     far all are based on the ACE_Reactor.  When we close(), the
     server's reactor will see activity for the registered event
     handler and invoke handle_input().  That, in turn, will try to
     read from the socket but get back zero bytes.  At that point, the
     server will know that we've closed from our side.  */
+  while(read->state()!=omni_thread::STATE_TERMINATED);
   if (server.close () == -1)
     ACE_ERROR_RETURN ((LM_ERROR,
                        "%p\n",

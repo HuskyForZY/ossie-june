@@ -11,13 +11,27 @@
 
 #include <ace/SOCK_Stream.h>
 #include <ace/Reactor.h>
+#include <ace/Thread.h>
+#include <ace/Condition_T.h>
+#include <deque>
+#include <algorithm>
+#include <iterator>
+#include <omnithread.h>
+
+
+class Logging_Handler;
 
 /* Since we used the template to create the acceptor, we don't know if
   there is a way to get to the reactor it uses.  We'll take the easy
   way out and grab the global pointer.  (There is a way to get back to
   the acceptor's reactor that we'll see later on.)  */
 extern ACE_Reactor *g_reactor;
-extern ACE_SOCK_STREAM *g_peer;
+extern Logging_Handler *NetworkHandler;
+extern omni_condition *NetOnAccepted;
+extern omni_condition *NetOnReceied;
+extern ACE_Thread_Condition<ACE_Thread_Mutex>* ACond;
+
+
 
 /* This time we're deriving from ACE_Svc_Handler instead of
   ACE_Event_Handler.  The big reason for this is because it already
@@ -27,7 +41,19 @@ extern ACE_SOCK_STREAM *g_peer;
   it as is...  */
 class Logging_Handler : public ACE_Svc_Handler <ACE_SOCK_STREAM, ACE_NULL_SYNCH>
 {
+	friend class SoundCard_i;
+
+	typedef std::deque<char> TSocket_buffer;
+	omni_mutex sock_mutex;
+
+	char* RecvBuffer;
+	size_t RecvBuffer_Size;
+	size_t recived_n;
+
+	TSocket_buffer sock_queue;
+
 public:
+
 
   /* The Acceptor<> template will open() us when there is a new client
     connection.  */
@@ -67,8 +93,8 @@ public:
     ACE_DEBUG ((LM_DEBUG,
                 "(%P|%t) connected with %s\n",
                 addr.get_host_name ()));
-    g_peer = this->peer();
-
+    NetworkHandler = this;
+    NetOnAccepted->signal();
     return 0;
   }
 
@@ -87,8 +113,8 @@ public:
 
     /* Shut down the connection to the client.  */
     this->peer ().close ();
+    NetworkHandler = NULL;
 
-    g_peer = NULL;
 
     /* Free our memory.  */
     delete this;
@@ -115,32 +141,28 @@ public:
 
 protected:
 
-  /* Respond to input just like Tutorial 1.  */
+
   virtual int handle_input (ACE_HANDLE)
   {
     char buf[128];
     ACE_OS::memset (buf, 0, sizeof (buf));
+    size_t n = this->peer ().recv_n (buf,128);
 
-    switch (this->peer ().recv (buf,
-                                sizeof buf))
+
+    switch (n)
       {
       case -1:
         ACE_ERROR_RETURN ((LM_ERROR,
-                           "(%P|%t) %p bad read\n",
-                           "client logger"),
-                          -1);
+                           "(%P|%t) %p bad read\n","client logger"),-1);
       case 0:
-        ACE_ERROR_RETURN ((LM_ERROR,
-                           "(%P|%t) closing log daemon (fd = %d)\n",
-                           this->get_handle ()),
-                          -1);
+        ACE_ERROR_RETURN ((LM_ERROR,"(%P|%t) closing log daemon (fd = %d)\n",this->get_handle ()),-1);
       default:
-        ACE_DEBUG ((LM_DEBUG,
-                    "(%P|%t) from client: %s",
-                    buf));
+    	  sock_mutex.lock();
+    	  std::copy(buf,buf+n, std::back_insert_iterator<TSocket_buffer>(sock_queue));
+    	  sock_mutex.unlock();
+    	  NetOnReceied->signal();
+        //ACE_DEBUG ((LM_DEBUG, "(%P|%t) from client: %s", buf));
       }
-
-    this->peer().send(buf,sizeof buf);
 
     return 0;
   }
@@ -172,5 +194,7 @@ protected:
     return 0;
   }
 };
+
+
 
 #endif /* LOGGING_HANDLER_H */

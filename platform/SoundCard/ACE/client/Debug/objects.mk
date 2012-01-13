@@ -4,4 +4,4 @@
 
 USER_OBJS :=
 
-LIBS := -lACE
+LIBS := -lACE -lomnithread -lpulse-simple

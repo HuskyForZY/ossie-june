@@ -57,6 +57,15 @@ void audioOutControl_i::set_connector(standardInterfaces::audioOutControl::OutTy
 	soundCard->set_play_connector(type);
 }
 
+void audioOutControl_i::set_network_port(unsigned short port)
+{
+	soundCard->set_play_network_port(port);
+}
+void audioOutControl_i::set_file_name(const char* name)
+{
+	soundCard->set_play_file_name(name);
+}
+
 void audioOutControl_i::start()
 {
 	soundCard->start_play();
@@ -92,6 +101,15 @@ void audioInControl_i::set_connector(standardInterfaces::audioInControl::InType 
 	soundCard->set_capture_connector(type);
 }
 
+void audioInControl_i::set_network_port(unsigned short port)
+{
+	soundCard->set_capture_network_port(port);
+}
+void audioInControl_i::set_file_name(const char* name)
+{
+	soundCard->set_capture_file_name(name);
+}
+
 void audioInControl_i::start()
 {
 	soundCard->start_capture();
@@ -101,9 +119,9 @@ void audioInControl_i::stop()
 	soundCard->stop_capture();
 }
 
-void audioInControl_i::set_frame_length(::CORBA::ULong length)
+void audioInControl_i::set_frame_size(::CORBA::ULong length)
 {
-	soundCard->set_capture_frame_length(length);
+	soundCard->set_capture_frame_size(length);
 }
 
 

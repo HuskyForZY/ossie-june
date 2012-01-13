@@ -155,10 +155,8 @@ main.o: main.cpp /usr/include/c++/4.4/iostream \
  /usr/include/sys/types.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/sys/sysmacros.h \
  /usr/include/alloca.h /usr/include/bits/stdlib.h \
- /usr/include/c++/4.4/queue /usr/include/c++/4.4/deque \
- /usr/include/c++/4.4/bits/stl_deque.h \
- /usr/include/c++/4.4/bits/deque.tcc /usr/include/c++/4.4/bits/stl_heap.h \
- /usr/include/c++/4.4/bits/stl_queue.h /usr/include/libio.h \
+ /usr/include/c++/4.4/deque /usr/include/c++/4.4/bits/stl_deque.h \
+ /usr/include/c++/4.4/bits/deque.tcc /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/sys_errlist.h \
  /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
  /usr/include/pulse/simple.h /usr/include/pulse/sample.h \
@@ -264,6 +262,7 @@ main.o: main.cpp /usr/include/c++/4.4/iostream \
  /usr/include/ace/Guard_T.cpp /usr/include/c++/4.4/algorithm \
  /usr/include/c++/4.4/bits/stl_algo.h \
  /usr/include/c++/4.4/bits/algorithmfwd.h \
+ /usr/include/c++/4.4/bits/stl_heap.h \
  /usr/include/c++/4.4/bits/stl_tempbuf.h /usr/include/ace/Atomic_Op_T.cpp \
  /usr/include/ace/Atomic_Op.inl /usr/include/ace/Synch_Traits.h \
  /usr/include/ace/Event_Handler.inl /usr/include/ace/DLL.h \
@@ -393,6 +392,8 @@ main.o: main.cpp /usr/include/c++/4.4/iostream \
  /usr/include/ace/OS_NS_arpa_inet.inl /usr/include/ace/SOCK_Stream.inl \
  /usr/include/ace/SOCK_Acceptor.inl /usr/include/ace/Signal.h \
  /usr/include/ace/Signal.inl /usr/include/ace/Trace.h NetHandler.h \
+ /usr/include/ace/Condition_T.h /usr/include/ace/Condition_T.inl \
+ /usr/include/ace/Condition_T.cpp \
  ../../system/ossie/include/ossie/PortTypes.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort_p.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort.h \
@@ -844,17 +845,11 @@ soundCard.h:
 
 /usr/include/bits/stdlib.h:
 
-/usr/include/c++/4.4/queue:
-
 /usr/include/c++/4.4/deque:
 
 /usr/include/c++/4.4/bits/stl_deque.h:
 
 /usr/include/c++/4.4/bits/deque.tcc:
-
-/usr/include/c++/4.4/bits/stl_heap.h:
-
-/usr/include/c++/4.4/bits/stl_queue.h:
 
 /usr/include/libio.h:
 
@@ -1235,6 +1230,8 @@ soundCard.h:
 /usr/include/c++/4.4/bits/stl_algo.h:
 
 /usr/include/c++/4.4/bits/algorithmfwd.h:
+
+/usr/include/c++/4.4/bits/stl_heap.h:
 
 /usr/include/c++/4.4/bits/stl_tempbuf.h:
 
@@ -1693,6 +1690,12 @@ soundCard.h:
 /usr/include/ace/Trace.h:
 
 NetHandler.h:
+
+/usr/include/ace/Condition_T.h:
+
+/usr/include/ace/Condition_T.inl:
+
+/usr/include/ace/Condition_T.cpp:
 
 ../../system/ossie/include/ossie/PortTypes.h:
 

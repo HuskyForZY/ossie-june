@@ -3,51 +3,58 @@
 <!--Created with OSSIE WaveDev-->
 <!--Powered by Python-->
 <properties>
-    <description>These are the properties to configure the device manager</description> 
-    <simple id="DCE:d1e1764c-2f72-11e1-9da8-000c29c0b7da" mode="writeonly" name="playback_sample_rate" type="ulong">
+    <simple id="DCE:dce70c7c-3d8d-11e1-a802-000c29c0b7da" mode="readwrite" name="playback_sample_rate" type="long">
         <value>44100</value> 
         <description>
         </description>
         <kind kindtype="configure"/>
     </simple>
-    <simple id="DCE:fad06162-2f72-11e1-b943-000c29c0b7da" mode="writeonly" name="playback_channels" type="ushort">
+    <simple id="DCE:e9fa6e5e-3d8d-11e1-89f9-000c29c0b7da" mode="readwrite" name="playback_channels" type="short">
         <value>1</value> 
         <description>
         </description>
         <kind kindtype="configure"/>
     </simple>
-    <simple id="DCE:88c75d18-3126-11e1-8542-000c29c0b7da" mode="writeonly" name="playback_media" type="ushort">
+    <simple id="DCE:f9e77262-3d8d-11e1-82c5-000c29c0b7da" mode="readwrite" name="playback_destination" type="string">
+        <value>Speaker</value>
+        <description>
+	Speaker:default system output, Number: network port, FileName: wave file name for output
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:1556893e-3d8e-11e1-ac15-000c29c0b7da" mode="readwrite" name="playback_mute" type="boolean">
         <value>0</value> 
         <description>
         </description>
         <kind kindtype="configure"/>
     </simple>
-    <simple id="DCE:ec607c06-3126-11e1-b64b-000c29c0b7da" mode="writeonly" name="playback_mute" type="boolean">
-        <value>False</value> 
-        <description>
-        </description>
-        <kind kindtype="configure"/>
-    </simple>
-    <simple id="DCE:fc2787ec-3126-11e1-af56-000c29c0b7da" mode="writeonly" name="capture_sample_rate" type="ulong">
+    <simple id="DCE:8ecb6d7e-3d8f-11e1-8cc1-000c29c0b7da" mode="readwrite" name="capture_sample_rate" type="long">
         <value>44100</value> 
         <description>
         </description>
         <kind kindtype="configure"/>
     </simple>
-    <simple id="DCE:0c354192-3127-11e1-bd4d-000c29c0b7da" mode="writeonly" name="capture_channels" type="ushort">
+    <simple id="DCE:99257a26-3d8f-11e1-92cc-000c29c0b7da" mode="readwrite" name="capture_channels" type="short">
         <value>1</value> 
         <description>
         </description>
         <kind kindtype="configure"/>
     </simple>
-    <simple id="DCE:1959b75e-3127-11e1-b345-000c29c0b7da" mode="writeonly" name="capture_media" type="ushort">
+    <simple id="DCE:07a8ba48-3d96-11e1-a462-000c29c0b7da" mode="readwrite" name="capture_source" type="string">
+        <value>Mic</value>
+        <description>
+	Mic:default system input, Number: network port, FileName: wave file name for input
+        </description>
+        <kind kindtype="configure"/>
+    </simple>
+    <simple id="DCE:1b757606-3d96-11e1-95fc-000c29c0b7da" mode="readwrite" name="capture_start" type="boolean">
         <value>0</value> 
         <description>
         </description>
         <kind kindtype="configure"/>
     </simple>
-    <simple id="DCE:2736085a-3127-11e1-8b7e-000c29c0b7da" mode="writeonly" name="capture_start" type="boolean">
-        <value>False</value> 
+    <simple id="DCE:24c0655e-3d96-11e1-94bd-000c29c0b7da" mode="readwrite" name="capture_size" type="long">
+        <value>512</value> 
         <description>
         </description>
         <kind kindtype="configure"/>

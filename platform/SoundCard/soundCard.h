@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <cstdlib>
 #include <omnithread.h>
 #include <vector>
-#include <queue>
+#include <deque>
 #include <stdio.h>
 
 #include <pulse/simple.h>
@@ -62,6 +62,8 @@ public:
 	void set_sample_rate(::CORBA::ULong rate);
 	void set_channels(::CORBA::UShort channels);
 	void set_connector(standardInterfaces::audioOutControl::OutType type);
+	void set_network_port(unsigned short port);
+	void set_file_name(const char* name);
 	void start();
 	void stop();
 	void mute(::CORBA::Boolean enable);
@@ -78,9 +80,11 @@ public:
 	void set_sample_rate(::CORBA::ULong rate);
 	void set_channels(::CORBA::UShort channels);
 	void set_connector(standardInterfaces::audioInControl::InType type);
+	void set_network_port(unsigned short port);
+	void set_file_name(const char* name);
 	void start();
 	void stop();
-	void set_frame_length(::CORBA::ULong length);
+	void set_frame_size(::CORBA::ULong length);
 
 private:
 	SoundCard_i* soundCard;
@@ -145,6 +149,7 @@ public:
 //// static function for omni thread
     static void play( void * data );
     static void capture( void * data );
+    static void ACE( void* data);
 
 // Life Cycle methods
 /// Checks if sound card device is not already in use
@@ -180,6 +185,8 @@ public:
 	void set_play_rate(unsigned long rate);
 	void set_play_channels(unsigned short number);
 	void set_play_connector(standardInterfaces::audioOutControl::OutType type);
+	void set_play_network_port(unsigned short port);
+	void set_play_file_name(const char* name);
 	void start_play();
 	void stop_play();
 	void mute_play(bool enable);
@@ -188,9 +195,11 @@ public:
 	void set_capture_rate(unsigned long rate);
 	void set_capture_channels(unsigned short number);
 	void set_capture_connector(standardInterfaces::audioInControl::InType type);
+	void set_capture_network_port(unsigned short port);
+	void set_capture_file_name(const char* name);
 	void start_capture();
 	void stop_capture();
-	void set_capture_frame_length(unsigned long length);
+	void set_capture_frame_size(unsigned long length);
 
 
 private:
@@ -216,6 +225,7 @@ private:
 
     unsigned int buffer_size;
 
+
     bool refresh_play_profile;
     bool refresh_capture_profile;
 
@@ -229,6 +239,7 @@ private:
 /// Main processing playback loop
     omni_thread* play_thread;
     omni_thread* capture_thread;
+    omni_thread* ACE_thread;
 
     omni_mutex playing_mutex;
     omni_mutex capturing_mutex;
@@ -255,16 +266,45 @@ private:
     SF_INFO oWav_profile, iWav_profile;
 
     unsigned short port_num;
+
     AudioStreamming_Acceptor peer_acceptor;
+
 
     void play_sound();
     void capture_sound();
-    void pa_play_open();
+    void handle_sock_event();
+
+
+    void capture_open(standardInterfaces::audioInControl::InType media);
     void pa_capture_open();
-    void pa_play_close();
+    void net_capture_open(unsigned short port);
+    void file_capture_open(const char* name);
+
+    void capture_close(standardInterfaces::audioInControl::InType media);
     void pa_capture_close();
+    void net_capture_close();
+    void file_capture_close();
+
+    void play_open(standardInterfaces::audioOutControl::OutType media);
+    void pa_play_open();
+    void file_play_open(const char* name);
+    void net_play_open(unsigned short port);
+
+    void play_close(standardInterfaces::audioOutControl::OutType media);
+    void pa_play_close();
+    void net_play_close();
+    void file_play_close();
+
     int pa_play_write(const void* buffer,unsigned int length);
+    int net_play_write(void* buffer,unsigned int length);
+    int file_play_write(void* buffer,unsigned int length);
+    int play_write(void* buffer,unsigned int length);
+
     int pa_capture_read(void* buffer,unsigned int length);
+    int net_capture_read(void* buffer,unsigned int length);
+    int file_capture_read(void* buffer,unsigned int length);
+    int capture_read(void* buffer,unsigned int length);
+
 
     //void wav_open(char* finename);
     //void wav_read(char* buff,unsigned int length);
@@ -275,4 +315,6 @@ private:
     bool continue_capturing();
 
 };
+
+
 

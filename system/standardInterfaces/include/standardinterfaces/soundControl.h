@@ -131,9 +131,11 @@ _CORBA_MODULE_BEG
     void set_sample_rate(::CORBA::ULong rate);
     void set_channels(::CORBA::UShort channels);
     void set_connector(audioInControl::InType type);
+    void set_network_port(::CORBA::UShort port);
+    void set_file_name(const char* name);
     void start();
     void stop();
-    void set_frame_length(::CORBA::ULong length);
+    void set_frame_size(::CORBA::ULong length);
 
     inline _objref_audioInControl()  { _PR_setobj(0); }  // nil
     _objref_audioInControl(omniIOR*, omniIdentity*);
@@ -170,9 +172,11 @@ _CORBA_MODULE_BEG
     virtual void set_sample_rate(::CORBA::ULong rate) = 0;
     virtual void set_channels(::CORBA::UShort channels) = 0;
     virtual void set_connector(audioInControl::InType type) = 0;
+    virtual void set_network_port(::CORBA::UShort port) = 0;
+    virtual void set_file_name(const char* name) = 0;
     virtual void start() = 0;
     virtual void stop() = 0;
-    virtual void set_frame_length(::CORBA::ULong length) = 0;
+    virtual void set_frame_size(::CORBA::ULong length) = 0;
     
   public:  // Really protected, workaround for xlC
     virtual _CORBA_Boolean _dispatch(omniCallHandle&);
@@ -255,6 +259,8 @@ _CORBA_MODULE_BEG
     void set_sample_rate(::CORBA::ULong rate);
     void set_channels(::CORBA::UShort channels);
     void set_connector(audioOutControl::OutType type);
+    void set_network_port(::CORBA::UShort port);
+    void set_file_name(const char* name);
     void start();
     void stop();
     void mute(::CORBA::Boolean enable);
@@ -294,6 +300,8 @@ _CORBA_MODULE_BEG
     virtual void set_sample_rate(::CORBA::ULong rate) = 0;
     virtual void set_channels(::CORBA::UShort channels) = 0;
     virtual void set_connector(audioOutControl::OutType type) = 0;
+    virtual void set_network_port(::CORBA::UShort port) = 0;
+    virtual void set_file_name(const char* name) = 0;
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual void mute(::CORBA::Boolean enable) = 0;

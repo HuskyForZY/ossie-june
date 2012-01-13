@@ -18,11 +18,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define SOUND_COMMANDER_IMPL_H
 
 #include <stdlib.h>
+#include <string>
 #include "ossie/cf.h"
 #include "ossie/PortTypes.h"
 #include "ossie/Resource_impl.h"
 #include "ossie/debug.h"
-
 #include "standardinterfaces/soundControl_u.h"
 
 
@@ -87,19 +87,20 @@ class Sound_Commander_i : public virtual Resource_impl
     omni_condition *component_running;  ///< for component shutdown
     omni_thread *processing_thread;     ///< for component writer function
     	
-        CORBA::ULong simple_0_value;
-        CORBA::UShort simple_1_value;
-        CORBA::UShort simple_2_value;
-        CORBA::Boolean simple_3_value;
-        CORBA::ULong simple_4_value;
-        CORBA::UShort simple_5_value;
-        CORBA::UShort simple_6_value;
-        CORBA::Boolean simple_7_value;
+        long play_sample_rate;
+        short play_channels;
+        std::string play_destination;
+        bool play_mute;
+        long capture_sample_rate;
+        short capture_channels;
+        std::string capture_source;
+        bool capture_start;
+        long capture_size;
 
     
     // list components provides and uses ports
-        standardInterfaces_i::audioOutControl_u *soundOutControl;
-        standardInterfaces_i::audioInControl_u *soundInControl;
+        standardInterfaces_i::audioOutControl_u *audioOutControl;
+        standardInterfaces_i::audioInControl_u *audioInControl;
     
 };
 #endif

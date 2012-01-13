@@ -77,10 +77,9 @@ port_impl.o: port_impl.cpp /usr/include/c++/4.4/iostream \
  /usr/include/c++/4.4/bits/stl_uninitialized.h \
  /usr/include/c++/4.4/bits/stl_vector.h \
  /usr/include/c++/4.4/bits/stl_bvector.h \
- /usr/include/c++/4.4/bits/vector.tcc /usr/include/c++/4.4/queue \
- /usr/include/c++/4.4/deque /usr/include/c++/4.4/bits/stl_deque.h \
- /usr/include/c++/4.4/bits/deque.tcc /usr/include/c++/4.4/bits/stl_heap.h \
- /usr/include/c++/4.4/bits/stl_queue.h /usr/include/libio.h \
+ /usr/include/c++/4.4/bits/vector.tcc /usr/include/c++/4.4/deque \
+ /usr/include/c++/4.4/bits/stl_deque.h \
+ /usr/include/c++/4.4/bits/deque.tcc /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
  /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
  /usr/include/bits/stdio2.h /usr/include/pulse/simple.h \
@@ -193,6 +192,7 @@ port_impl.o: port_impl.cpp /usr/include/c++/4.4/iostream \
  /usr/include/ace/Guard_T.cpp /usr/include/c++/4.4/algorithm \
  /usr/include/c++/4.4/bits/stl_algo.h \
  /usr/include/c++/4.4/bits/algorithmfwd.h \
+ /usr/include/c++/4.4/bits/stl_heap.h \
  /usr/include/c++/4.4/bits/stl_tempbuf.h /usr/include/ace/Atomic_Op_T.cpp \
  /usr/include/ace/Atomic_Op.inl /usr/include/ace/Synch_Traits.h \
  /usr/include/ace/Event_Handler.inl /usr/include/ace/DLL.h \
@@ -322,7 +322,8 @@ port_impl.o: port_impl.cpp /usr/include/c++/4.4/iostream \
  /usr/include/ace/OS_NS_arpa_inet.inl /usr/include/ace/SOCK_Stream.inl \
  /usr/include/ace/SOCK_Acceptor.inl /usr/include/ace/Signal.h \
  /usr/include/ace/Signal.inl /usr/include/ace/Trace.h NetHandler.h \
- ../../system/ossie/include/ossie/ossieSupport.h \
+ /usr/include/ace/Condition_T.h /usr/include/ace/Condition_T.inl \
+ /usr/include/ace/Condition_T.cpp ../../system/ossie/include/ossie/cf.h \
  /usr/include/omniORB4/CORBA.h /usr/include/omniORB4/omniInternal.h \
  /usr/include/omniORB4/CORBA_sysdep.h \
  /usr/include/omniORB4/local_config.h /usr/include/omniconfig.h \
@@ -390,9 +391,6 @@ port_impl.o: port_impl.cpp /usr/include/c++/4.4/iostream \
  /usr/include/omniORB4/boxes_operators.hh \
  /usr/include/omniORB4/corbaidl_poa.hh /usr/include/omniORB4/boxes_poa.hh \
  /usr/include/omniORB4/boa.h /usr/include/omniORB4/Naming.hh \
- ../../system/ossie/include/ossie/cf.h \
- ../../system/ossie/include/ossie/StandardEvent.h \
- ../../system/ossie/include/ossie/ossieparser.h \
  ../../system/ossie/include/ossie/PortTypes.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort_p.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort.h \
@@ -638,17 +636,11 @@ soundCard.h:
 
 /usr/include/c++/4.4/bits/vector.tcc:
 
-/usr/include/c++/4.4/queue:
-
 /usr/include/c++/4.4/deque:
 
 /usr/include/c++/4.4/bits/stl_deque.h:
 
 /usr/include/c++/4.4/bits/deque.tcc:
-
-/usr/include/c++/4.4/bits/stl_heap.h:
-
-/usr/include/c++/4.4/bits/stl_queue.h:
 
 /usr/include/libio.h:
 
@@ -1051,6 +1043,8 @@ soundCard.h:
 /usr/include/c++/4.4/bits/stl_algo.h:
 
 /usr/include/c++/4.4/bits/algorithmfwd.h:
+
+/usr/include/c++/4.4/bits/stl_heap.h:
 
 /usr/include/c++/4.4/bits/stl_tempbuf.h:
 
@@ -1512,7 +1506,13 @@ soundCard.h:
 
 NetHandler.h:
 
-../../system/ossie/include/ossie/ossieSupport.h:
+/usr/include/ace/Condition_T.h:
+
+/usr/include/ace/Condition_T.inl:
+
+/usr/include/ace/Condition_T.cpp:
+
+../../system/ossie/include/ossie/cf.h:
 
 /usr/include/omniORB4/CORBA.h:
 
@@ -1685,12 +1685,6 @@ NetHandler.h:
 /usr/include/omniORB4/boa.h:
 
 /usr/include/omniORB4/Naming.hh:
-
-../../system/ossie/include/ossie/cf.h:
-
-../../system/ossie/include/ossie/StandardEvent.h:
-
-../../system/ossie/include/ossie/ossieparser.h:
 
 ../../system/ossie/include/ossie/PortTypes.h:
 

@@ -28,9 +28,11 @@ module standardInterfaces {
 	void set_sample_rate(in unsigned long rate);
 	void set_channels(in unsigned short channels);
 	void set_connector(in InType type);
+	void set_network_port(in unsigned short port);
+	void set_file_name(in string name);
 	void start();
 	void stop();
-	void set_frame_length(in unsigned long length);
+	void set_frame_size(in unsigned long length);
     };
 
     interface audioOutControl {
@@ -38,6 +40,8 @@ module standardInterfaces {
 	void set_sample_rate(in unsigned long rate);
 	void set_channels(in unsigned short channels);
 	void set_connector(in OutType type);
+	void set_network_port(in unsigned short port);
+	void set_file_name(in string name);
 	void start();
 	void stop();
 	void mute(in boolean enable);

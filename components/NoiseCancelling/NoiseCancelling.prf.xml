@@ -3,12 +3,4 @@
 <!--Created with OSSIE WaveDev-->
 <!--Powered by Python-->
 <properties>
-    <description>These are the properties to configure the device manager</description> 
-    <simplesequence id="port_list" mode="readonly" name="port_list" type="string">
-        <description>Returns a sequence of strings with the names of the available Provides ports</description> 
-        <kind kindtype="configure"/>
-        <values>
-            <value>In::standardInterfaces.realShort</value> 
-        </values>
-    </simplesequence>
 </properties>

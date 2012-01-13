@@ -170,7 +170,7 @@ void NoiseCancelling_i::ProcessData()
         for(int i=0;i<I_in_0_length;i++)
         	I_out_0[i] = (*I_in_0)[i];
 
-        DEBUG(3, NoiseCancelling, "NoiseCancelling invoked")
+        //DEBUG(3, NoiseCancelling, "NoiseCancelling invoked")
 
         dataOut_0->pushPacket(I_out_0);
         dataIn_0->bufferEmptied();

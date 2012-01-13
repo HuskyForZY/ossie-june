@@ -2,7 +2,7 @@
 <!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
 <!--Created with OSSIE WaveDev-->
 <!--Powered by Python-->
-<softpkg id="DCE:51360380-3127-11e1-be7b-000c29c0b7da" name="Sound_Commander">
+<softpkg id="DCE:35077e70-3d96-11e1-8eed-000c29c0b7da" name="Sound_Commander">
     <title/>
     <description>
     </description>
@@ -17,7 +17,7 @@
     <descriptor>
         <localfile name="/xml/Sound_Commander/Sound_Commander.scd.xml"/>
     </descriptor>
-    <implementation id="DCE:513682ce-3127-11e1-8836-000c29c0b7da">
+    <implementation id="DCE:35085dcc-3d96-11e1-ae48-000c29c0b7da">
         <description>Description</description> 
         <code type="Executable">
             <localfile name="/bin/Sound_Commander"/>

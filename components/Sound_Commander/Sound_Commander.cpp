@@ -21,15 +21,16 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 Sound_Commander_i::Sound_Commander_i(const char *uuid, omni_condition *condition) :
     Resource_impl(uuid), component_running(condition)
 {
-	soundOutControl = new standardInterfaces_i::audioOutControl_u("soundOutControl");
-	soundInControl = new standardInterfaces_i::audioInControl_u("soundInControl");
-//    start();
+	DEBUG(3, Sound_Commander, "constructor() invoked")
+	audioOutControl = new standardInterfaces_i::audioOutControl_u("soundOutControl");
+	audioInControl = new standardInterfaces_i::audioInControl_u("soundInControl");
+
 }
 
 Sound_Commander_i::~Sound_Commander_i(void)
 {
-    delete soundOutControl;
-    delete soundInControl;
+    delete audioOutControl;
+    delete audioInControl;
 }
 
 // Static function for omni thread
@@ -45,12 +46,12 @@ CORBA::Object_ptr Sound_Commander_i::getPort( const char* portName ) throw (
 
     CORBA::Object_var p;
 
-    p = soundOutControl->getPort(portName);
+    p = audioOutControl->getPort(portName);
 
     if (!CORBA::is_nil(p))
         return p._retn();
 
-    p = soundInControl->getPort(portName);
+    p = audioInControl->getPort(portName);
 
     if (!CORBA::is_nil(p))
         return p._retn();
@@ -63,30 +64,14 @@ void Sound_Commander_i::start() throw (CORBA::SystemException,
     CF::Resource::StartError)
 {
     DEBUG(3, Sound_Commander, "start() invoked")
-
-	/*
-	omni_mutex_lock  l(processing_mutex);
-	if( false == thread_started )
-	{
-		thread_started = true;
-		// Create the thread for the writer's processing function
-		processing_thread = new omni_thread(Run, (void *) this);
-
-		// Start the thread containing the writer's processing function
-		processing_thread->start();
-	}
-	*/
-	soundOutControl->start();
-    soundInControl->start();
+	audioInControl->start();
 }
 
 void Sound_Commander_i::stop() throw (CORBA::SystemException, CF::Resource::StopError)
 {
-    //DEBUG(3, Sound_Commander, "stop() invoked")
-	//omni_mutex_lock l(processing_mutex);
-	//thread_started = false;
-	soundOutControl->stop();
-    soundInControl->stop();
+    DEBUG(3, Sound_Commander, "stop() invoked")
+	audioInControl->stop();
+
 }
 
 void Sound_Commander_i::releaseObject() throw (CORBA::SystemException,
@@ -94,7 +79,6 @@ void Sound_Commander_i::releaseObject() throw (CORBA::SystemException,
 {
     DEBUG(3, Sound_Commander, "releaseObject() invoked")
 
-    component_running->signal();
 }
 
 void Sound_Commander_i::initialize() throw (CF::LifeCycle::InitializeError,
@@ -105,6 +89,7 @@ void Sound_Commander_i::initialize() throw (CF::LifeCycle::InitializeError,
 
 void Sound_Commander_i::query( CF::Properties & configProperties ) throw (CORBA::SystemException, CF::UnknownProperties)
 {
+	DEBUG(3, Sound_Commander, "query() invoked")
 	if( configProperties.length() == 0 )
 	{
 		configProperties.length( propertySet.length() );
@@ -135,7 +120,7 @@ throw (CORBA::SystemException,
     static int init = 0;
     if( init == 0 ) {
         if( props.length() == 0 ) {
-            std::cout << "configure called with invalid props.length - " << props.length() << std::endl;
+            std::cout << "Sound_Commander_i configure called with invalid props.length - " << props.length() << std::endl;
             return;
         }
         propertySet.length(props.length());
@@ -152,12 +137,12 @@ throw (CORBA::SystemException,
     {
         std::cout << "Property id : " << props[i].id << std::endl;
 
-        if (strcmp(props[i].id, "DCE:d1e1764c-2f72-11e1-9da8-000c29c0b7da") == 0)
+        if (strcmp(props[i].id, "DCE:dce70c7c-3d8d-11e1-a802-000c29c0b7da") == 0)
         {
-            CORBA::ULong simple_temp;
+            CORBA::Long simple_temp;
             props[i].value >>= simple_temp;
-            simple_0_value = simple_temp;
-            soundOutControl->set_sample_rate(simple_0_value);
+            play_sample_rate = simple_temp;
+            audioOutControl->set_sample_rate(play_sample_rate);
             for( int k = 0; k < propertySet.length(); k++ ) {
                 if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
                     propertySet[k].value = props[i].value;
@@ -166,12 +151,12 @@ throw (CORBA::SystemException,
             }
         }
 
-        if (strcmp(props[i].id, "DCE:fad06162-2f72-11e1-b943-000c29c0b7da") == 0)
+        if (strcmp(props[i].id, "DCE:e9fa6e5e-3d8d-11e1-89f9-000c29c0b7da") == 0)
         {
-            CORBA::UShort simple_temp;
+            CORBA::Short simple_temp;
             props[i].value >>= simple_temp;
-            simple_1_value = simple_temp;
-            soundOutControl->set_channels(simple_1_value);
+            play_channels = simple_temp;
+            audioOutControl->set_channels(play_channels);
             for( int k = 0; k < propertySet.length(); k++ ) {
                 if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
                     propertySet[k].value = props[i].value;
@@ -180,90 +165,125 @@ throw (CORBA::SystemException,
             }
         }
 
-        if (strcmp(props[i].id, "DCE:88c75d18-3126-11e1-8542-000c29c0b7da") == 0)
+        if (strcmp(props[i].id, "DCE:f9e77262-3d8d-11e1-82c5-000c29c0b7da") == 0)
         {
-            CORBA::UShort simple_temp;
-            props[i].value >>= simple_temp;
-            simple_2_value = simple_temp;
-            soundOutControl->set_connector((standardInterfaces::audioOutControl::OutType)simple_2_value);
-            for( int k = 0; k < propertySet.length(); k++ ) {
-                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
-                    propertySet[k].value = props[i].value;
-                    break;
-                }
+            const char* simple_temp;
+            props[i].value >>= CORBA::Any::to_string(simple_temp,0);
+            play_destination = simple_temp;
+            int p;
+            if(play_destination == "Speaker"){
+            	audioOutControl->set_connector(standardInterfaces::audioOutControl::otSpeaker);
             }
-        }
-
-        if (strcmp(props[i].id, "DCE:ec607c06-3126-11e1-b64b-000c29c0b7da") == 0)
-        {
-            CORBA::Boolean simple_temp;
-            props[i].value >>= simple_temp;
-            simple_3_value = simple_temp;
-            soundOutControl->mute(simple_3_value);
-            for( int k = 0; k < propertySet.length(); k++ ) {
-                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
-                    propertySet[k].value = props[i].value;
-                    break;
-                }
-            }
-        }
-
-        if (strcmp(props[i].id, "DCE:fc2787ec-3126-11e1-af56-000c29c0b7da") == 0)
-        {
-            CORBA::ULong simple_temp;
-            props[i].value >>= simple_temp;
-            simple_4_value = simple_temp;
-            soundInControl->set_sample_rate(simple_4_value);
-            for( int k = 0; k < propertySet.length(); k++ ) {
-                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
-                    propertySet[k].value = props[i].value;
-                    break;
-                }
-            }
-        }
-
-        if (strcmp(props[i].id, "DCE:0c354192-3127-11e1-bd4d-000c29c0b7da") == 0)
-        {
-            CORBA::UShort simple_temp;
-            props[i].value >>= simple_temp;
-            simple_5_value = simple_temp;
-            soundInControl->set_channels(simple_5_value);
-            for( int k = 0; k < propertySet.length(); k++ ) {
-                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
-                    propertySet[k].value = props[i].value;
-                    break;
-                }
-            }
-        }
-
-        if (strcmp(props[i].id, "DCE:1959b75e-3127-11e1-b345-000c29c0b7da") == 0)
-        {
-            CORBA::UShort simple_temp;
-            props[i].value >>= simple_temp;
-            simple_6_value = simple_temp;
-            soundInControl->set_connector((standardInterfaces::audioInControl::InType)simple_6_value);
-            for( int k = 0; k < propertySet.length(); k++ ) {
-                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
-                    propertySet[k].value = props[i].value;
-                    break;
-                }
-            }
-        }
-
-        if (strcmp(props[i].id, "DCE:2736085a-3127-11e1-8b7e-000c29c0b7da") == 0)
-        {
-        	DEBUG(3, Sound_Commander, "capture_start property")
-            CORBA::Boolean simple_temp;
-            props[i].value >>= simple_temp;
-            simple_7_value = simple_temp;
-            if(simple_7_value){
-            	soundInControl->start();
-            	DEBUG(3, Sound_Commander, "capture_start = true property")
+            else if((p=atoi(play_destination.c_str())) > 0){
+            	audioOutControl->set_network_port(p);
+            	audioOutControl->set_connector(standardInterfaces::audioOutControl::otNet);
             }
             else{
-            	soundInControl->stop();
-            	DEBUG(3, Sound_Commander, "capture_start = false property")
+            	audioInControl->set_file_name(capture_source.c_str());
+            	audioOutControl->set_connector(standardInterfaces::audioOutControl::otFile);
             }
+
+            for( int k = 0; k < propertySet.length(); k++ ) {
+                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
+                    propertySet[k].value = props[i].value;
+                    break;
+                }
+            }
+        }
+
+        if (strcmp(props[i].id, "DCE:1556893e-3d8e-11e1-ac15-000c29c0b7da") == 0)
+        {
+            CORBA::Boolean simple_temp;
+            props[i].value >>= simple_temp;
+            play_mute = simple_temp;
+            audioOutControl->mute(play_mute);
+            for( int k = 0; k < propertySet.length(); k++ ) {
+                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
+                    propertySet[k].value = props[i].value;
+                    break;
+                }
+            }
+        }
+
+        if (strcmp(props[i].id, "DCE:8ecb6d7e-3d8f-11e1-8cc1-000c29c0b7da") == 0)
+        {
+            CORBA::Long simple_temp;
+            props[i].value >>= simple_temp;
+            capture_sample_rate = simple_temp;
+            audioInControl->set_sample_rate(capture_sample_rate);
+            for( int k = 0; k < propertySet.length(); k++ ) {
+                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
+                    propertySet[k].value = props[i].value;
+                    break;
+                }
+            }
+        }
+
+        if (strcmp(props[i].id, "DCE:99257a26-3d8f-11e1-92cc-000c29c0b7da") == 0)
+        {
+            CORBA::Short simple_temp;
+            props[i].value >>= simple_temp;
+            capture_channels = simple_temp;
+            audioInControl->set_channels(capture_channels);
+            for( int k = 0; k < propertySet.length(); k++ ) {
+                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
+                    propertySet[k].value = props[i].value;
+                    break;
+                }
+            }
+        }
+
+        if (strcmp(props[i].id, "DCE:07a8ba48-3d96-11e1-a462-000c29c0b7da") == 0)
+        {
+            const char* simple_temp;
+            props[i].value >>= CORBA::Any::to_string(simple_temp,0);
+            capture_source = simple_temp;
+            int p;
+            if(capture_source == "Mic"){
+            	std::cout<<"mic"<<std::endl;
+            	audioInControl->set_connector(standardInterfaces::audioInControl::itMicrophone);
+            }
+            else if((p=atoi(capture_source.c_str())) > 0){
+            	std::cout<<"net"<<std::endl;
+            	audioInControl->set_network_port(p);
+            	audioInControl->set_connector(standardInterfaces::audioInControl::itNet);
+            }
+            else{
+            	std::cout<<"file"<<std::endl;
+            	audioInControl->set_file_name(capture_source.c_str());
+            	audioInControl->set_connector(standardInterfaces::audioInControl::itFile);
+            }
+            for( int k = 0; k < propertySet.length(); k++ ) {
+                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
+                    propertySet[k].value = props[i].value;
+                    break;
+                }
+            }
+        }
+
+        if (strcmp(props[i].id, "DCE:1b757606-3d96-11e1-95fc-000c29c0b7da") == 0)
+        {
+            CORBA::Boolean simple_temp;
+            props[i].value >>= simple_temp;
+            capture_start = simple_temp;
+            if(capture_start)
+            	audioInControl->start();
+            else
+            	audioInControl->stop();
+            for( int k = 0; k < propertySet.length(); k++ ) {
+                if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
+                    propertySet[k].value = props[i].value;
+                    break;
+                }
+            }
+        }
+
+        if (strcmp(props[i].id, "DCE:24c0655e-3d96-11e1-94bd-000c29c0b7da") == 0)
+        {
+            CORBA::Long simple_temp;
+            props[i].value >>= simple_temp;
+            capture_size = simple_temp;
+            audioInControl->set_frame_size(capture_size);
             for( int k = 0; k < propertySet.length(); k++ ) {
                 if( strcmp(propertySet[k].id, props[i].id) == 0 ) {
                     propertySet[k].value = props[i].value;

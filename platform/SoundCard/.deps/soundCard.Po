@@ -310,10 +310,11 @@ soundCard.o: soundCard.cpp /usr/include/c++/4.4/iostream \
  /usr/include/ace/INET_Addr.inl /usr/include/ace/OS_NS_arpa_inet.h \
  /usr/include/ace/os_include/arpa/os_inet.h /usr/include/arpa/inet.h \
  /usr/include/ace/OS_NS_arpa_inet.inl /usr/include/ace/SOCK_Stream.inl \
- /usr/include/ace/SOCK_Acceptor.inl /usr/include/ace/Signal.h \
- /usr/include/ace/Signal.inl /usr/include/ace/Trace.h \
- ../../system/ossie/include/ossie/cf.h /usr/include/omniORB4/CORBA.h \
- /usr/include/omniORB4/omniInternal.h \
+ /usr/include/ace/SOCK_Acceptor.inl /usr/include/ace/Condition_T.h \
+ /usr/include/ace/Condition_T.inl /usr/include/ace/Condition_T.cpp \
+ /usr/include/ace/Signal.h /usr/include/ace/Signal.inl \
+ /usr/include/ace/Trace.h ../../system/ossie/include/ossie/cf.h \
+ /usr/include/omniORB4/CORBA.h /usr/include/omniORB4/omniInternal.h \
  /usr/include/omniORB4/CORBA_sysdep.h \
  /usr/include/omniORB4/local_config.h /usr/include/omniconfig.h \
  /usr/include/omniORB4/acconfig.h \
@@ -386,17 +387,16 @@ soundCard.o: soundCard.cpp /usr/include/c++/4.4/iostream \
  /usr/include/c++/4.4/bits/stl_bvector.h \
  /usr/include/c++/4.4/bits/vector.tcc \
  ../../system/ossie/include/ossie/StandardEvent.h \
- ../../system/ossie/include/ossie/ossieparser.h soundCard.h \
- /usr/include/c++/4.4/queue /usr/include/c++/4.4/deque \
+ ../../system/ossie/include/ossie/ossieparser.h \
+ /usr/include/pulse/timeval.h /usr/include/pulse/cdecl.h \
+ /usr/include/pulse/gccmacro.h /usr/include/pulse/sample.h \
+ /usr/include/pulse/version.h soundCard.h /usr/include/c++/4.4/deque \
  /usr/include/c++/4.4/bits/stl_deque.h \
- /usr/include/c++/4.4/bits/deque.tcc \
- /usr/include/c++/4.4/bits/stl_queue.h /usr/include/pulse/simple.h \
- /usr/include/pulse/sample.h /usr/include/pulse/gccmacro.h \
- /usr/include/pulse/cdecl.h /usr/include/pulse/version.h \
+ /usr/include/c++/4.4/bits/deque.tcc /usr/include/pulse/simple.h \
  /usr/include/pulse/channelmap.h /usr/include/pulse/def.h \
  /usr/include/pulse/error.h /usr/include/sndfile.h NetHandler.h \
- ../../system/ossie/include/ossie/debug.h \
  ../../system/ossie/include/ossie/PortTypes.h \
+ ../../system/ossie/include/ossie/debug.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort_p.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort.h \
  ../../system/standardInterfaces/include/standardinterfaces/realShort_u.h \
@@ -1463,6 +1463,12 @@ soundCard.o: soundCard.cpp /usr/include/c++/4.4/iostream \
 
 /usr/include/ace/SOCK_Acceptor.inl:
 
+/usr/include/ace/Condition_T.h:
+
+/usr/include/ace/Condition_T.inl:
+
+/usr/include/ace/Condition_T.cpp:
+
 /usr/include/ace/Signal.h:
 
 /usr/include/ace/Signal.inl:
@@ -1663,9 +1669,17 @@ soundCard.o: soundCard.cpp /usr/include/c++/4.4/iostream \
 
 ../../system/ossie/include/ossie/ossieparser.h:
 
-soundCard.h:
+/usr/include/pulse/timeval.h:
 
-/usr/include/c++/4.4/queue:
+/usr/include/pulse/cdecl.h:
+
+/usr/include/pulse/gccmacro.h:
+
+/usr/include/pulse/sample.h:
+
+/usr/include/pulse/version.h:
+
+soundCard.h:
 
 /usr/include/c++/4.4/deque:
 
@@ -1673,17 +1687,7 @@ soundCard.h:
 
 /usr/include/c++/4.4/bits/deque.tcc:
 
-/usr/include/c++/4.4/bits/stl_queue.h:
-
 /usr/include/pulse/simple.h:
-
-/usr/include/pulse/sample.h:
-
-/usr/include/pulse/gccmacro.h:
-
-/usr/include/pulse/cdecl.h:
-
-/usr/include/pulse/version.h:
 
 /usr/include/pulse/channelmap.h:
 
@@ -1695,9 +1699,9 @@ soundCard.h:
 
 NetHandler.h:
 
-../../system/ossie/include/ossie/debug.h:
-
 ../../system/ossie/include/ossie/PortTypes.h:
+
+../../system/ossie/include/ossie/debug.h:
 
 ../../system/standardInterfaces/include/standardinterfaces/realShort_p.h:
 
