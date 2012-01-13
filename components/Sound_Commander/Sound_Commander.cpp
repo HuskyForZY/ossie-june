@@ -179,7 +179,7 @@ throw (CORBA::SystemException,
             	audioOutControl->set_connector(standardInterfaces::audioOutControl::otNet);
             }
             else{
-            	audioInControl->set_file_name(capture_source.c_str());
+            	audioOutControl->set_file_name(play_destination.c_str());
             	audioOutControl->set_connector(standardInterfaces::audioOutControl::otFile);
             }
 

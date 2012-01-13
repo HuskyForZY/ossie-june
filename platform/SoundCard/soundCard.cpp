@@ -109,8 +109,8 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     oWav_profile.format = SF_FORMAT_WAV|SF_FORMAT_PCM_16;
     oWav_profile.channels = 1;
 
-    oWav_name = "~/out.wav";
-    iWav_name = "~/in.wav";
+    oWav_name = "/sdr/out.wav";
+    iWav_name = "/sdr/in.wav";
 
     capture_profile.channels = 1;
     capture_profile.rate = 44100;
@@ -342,7 +342,7 @@ void SoundCard_i::set_play_network_port(unsigned short port)
 }
 void SoundCard_i::set_play_file_name(const char* name)
 {
-	DEBUG(3, SoundCard, "set_play_network_port invoked")
+	DEBUG(3, SoundCard, "set_play_file_name invoked")
 	oWav_name = name;
 
 }
@@ -423,7 +423,7 @@ int SoundCard_i::net_play_write(void* buffer,unsigned int length)
 	else{
 		DEBUG(3, SoundCard, "No available client");
 	}
-Speaker	return transfered;
+	return transfered;
 }
 
 void SoundCard_i::pa_play_open()
@@ -480,6 +480,9 @@ void SoundCard_i::play_close(standardInterfaces::audioOutControl::OutType media)
 void SoundCard_i::file_play_open(const char* name)
 {
     oWav_file = sf_open(name,SFM_WRITE,&oWav_profile);
+    DEBUG(3, SoundCard, "File Name: "<<name);
+    if(oWav_file == NULL)
+	std::cout<<"output wave file open error"<<std::endl;
 }
 
 
@@ -491,7 +494,10 @@ void SoundCard_i::file_play_close()
 
 int SoundCard_i::file_play_write(void* buffer,unsigned int length)
 {
-    return sf_write_short(oWav_file,(short*)buffer,length/2);
+	int r = sf_write_short(oWav_file,(short*)buffer,length/2);
+	if(r == 0)
+		sf_perror(oWav_file); 
+    return r;
 }
 
 int SoundCard_i::play_write(void* buffer,unsigned int length)
