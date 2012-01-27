@@ -79,7 +79,10 @@ void audioOutControl_i::mute(::CORBA::Boolean enable)
 	soundCard->mute_play(enable);
 }
 
-
+void audioOutControl_i::reset()
+{
+	soundCard->reset_play();
+}
 
 audioInControl_i::audioInControl_i(SoundCard_i* Card,const char* portName, const char* domain):
 	standardInterfaces_i::audioInControl_p(portName, domain),soundCard(Card)
@@ -124,4 +127,8 @@ void audioInControl_i::set_frame_size(::CORBA::ULong length)
 	soundCard->set_capture_frame_size(length);
 }
 
+void audioInControl_i::reset()
+{
+	soundCard->reset_capture();
+}
 

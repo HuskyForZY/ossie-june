@@ -136,6 +136,7 @@ _CORBA_MODULE_BEG
     void start();
     void stop();
     void set_frame_size(::CORBA::ULong length);
+    void reset();
 
     inline _objref_audioInControl()  { _PR_setobj(0); }  // nil
     _objref_audioInControl(omniIOR*, omniIdentity*);
@@ -177,6 +178,7 @@ _CORBA_MODULE_BEG
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual void set_frame_size(::CORBA::ULong length) = 0;
+    virtual void reset() = 0;
     
   public:  // Really protected, workaround for xlC
     virtual _CORBA_Boolean _dispatch(omniCallHandle&);
@@ -264,6 +266,7 @@ _CORBA_MODULE_BEG
     void start();
     void stop();
     void mute(::CORBA::Boolean enable);
+    void reset();
 
     inline _objref_audioOutControl()  { _PR_setobj(0); }  // nil
     _objref_audioOutControl(omniIOR*, omniIdentity*);
@@ -305,6 +308,7 @@ _CORBA_MODULE_BEG
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual void mute(::CORBA::Boolean enable) = 0;
+    virtual void reset() = 0;
     
   public:  // Really protected, workaround for xlC
     virtual _CORBA_Boolean _dispatch(omniCallHandle&);

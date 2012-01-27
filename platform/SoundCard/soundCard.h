@@ -59,6 +59,7 @@ public:
 	void start();
 	void stop();
 	void mute(::CORBA::Boolean enable);
+	void reset();
 
 private:
 	SoundCard_i* soundCard;
@@ -77,6 +78,7 @@ public:
 	void start();
 	void stop();
 	void set_frame_size(::CORBA::ULong length);
+	void reset();
 
 private:
 	SoundCard_i* soundCard;
@@ -182,6 +184,7 @@ public:
 	void start_play();
 	void stop_play();
 	void mute_play(bool enable);
+	void reset_play();
 
 
 	void set_capture_rate(unsigned long rate);
@@ -192,6 +195,7 @@ public:
 	void start_capture();
 	void stop_capture();
 	void set_capture_frame_size(unsigned long length);
+	void reset_capture();
 
 
 private:

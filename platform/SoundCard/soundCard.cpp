@@ -60,27 +60,22 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     sound_out_control = new audioOutControl_i(this,"soundOutControl","DomainName1");
     sound_in_conrtol = new audioInControl_i(this,"soundInControl","DomainName1");
 
-
-// Start the play_sound thread
-    capture_frame_length = 512;
-
-    play_muted = false;
-
-
-
     dev_usageState = CF::Device::IDLE;
     dev_operationalState = CF::Device::ENABLED;
     dev_adminState = CF::Device::UNLOCKED;
 
+    reset_play();
+    reset_capture();
+
+}
+
+void SoundCard_i::reset_play()
+{
+	stop_play();
+    play_muted = false;
+
     OutputType = standardInterfaces::audioOutControl::otNet;
     paPlayHandle = NULL;
-
-    InputType = standardInterfaces::audioInControl::itNet;
-    paCaptureHandle = NULL;
-
-    oAddress = "127.0.0.1";
-    iAddress = "127.0.0.1";
-
 
     playback_profile.channels = 1;
     playback_profile.rate = 44100;
@@ -90,8 +85,21 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     oWav_profile.format = SF_FORMAT_WAV|SF_FORMAT_PCM_16;
     oWav_profile.channels = 1;
 
+    oAddress = "127.0.0.1";
     oWav_name = "/sdr/out.wav";
-    iWav_name = "/sdr/in.wav";
+
+    refresh_play_profile = false;
+    start_play();
+    DEBUG(3, SoundCard, "reset playing...")
+}
+
+void SoundCard_i::reset_capture()
+{
+	stop_capture();
+    capture_frame_length = 512;
+
+    InputType = standardInterfaces::audioInControl::itNet;
+    paCaptureHandle = NULL;
 
     capture_profile.channels = 1;
     capture_profile.rate = 44100;
@@ -102,13 +110,13 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     iWav_profile.channels = 0;
 
 
+    iAddress = "127.0.0.1";
+    iWav_name = "/sdr/in.wav";
 
-    set_play_channels(1);
-    refresh_play_profile = false;
     refresh_capture_profile = false;
-
-
+    DEBUG(3, SoundCard, "reset capturing...")
 }
+
 
 // Default destructor
 SoundCard_i::~SoundCard_i()
@@ -229,7 +237,6 @@ void SoundCard_i::initialize() throw (CF::LifeCycle::InitializeError, CORBA::Sys
 
 {
     DEBUG(3, SoundCard, "initialize() invoked")
-	start_play();
 }
 
 void SoundCard_i::releaseObject() throw (CF::LifeCycle::ReleaseError, CORBA::SystemException)
@@ -365,6 +372,7 @@ void SoundCard_i::net_play_open(const char* address)
     int latency_msec = 1;
 	pa_buffer_attr buffer_attr;
     buffer_attr.fragsize = buffer_attr.tlength = pa_usec_to_bytes(latency_msec * PA_USEC_PER_MSEC, &playback_profile);
+    buffer_attr.maxlength = 1024*256;
     if(std::string(address)=="127.0.0.1"){
     	if (!(paPlayHandle = pa_simple_new(NULL,"OSSIE-playback", PA_STREAM_PLAYBACK, NULL, "playback", &playback_profile, NULL, &buffer_attr, &error))) {
     				fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
@@ -393,6 +401,7 @@ void SoundCard_i::pa_play_open()
     int latency_msec = 1;
 	pa_buffer_attr buffer_attr;
     buffer_attr.fragsize = buffer_attr.tlength = pa_usec_to_bytes(latency_msec * PA_USEC_PER_MSEC, &playback_profile);
+    buffer_attr.maxlength = 1024*256;
 
 	if (!(paPlayHandle = pa_simple_new(NULL,"soundCard", PA_STREAM_PLAYBACK, NULL, "playback", &playback_profile, NULL, &buffer_attr, &error))) {
 		fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
@@ -787,7 +796,6 @@ bool SoundCard_i::continue_capturing()
 
 void SoundCard_i::capture_sound()
 {
-	//g_reactor->owner(ACE_OS::thr_self());
 
     TStereoWave sWave(capture_frame_length);
     TMonoWave mWave(capture_frame_length);

@@ -50,6 +50,7 @@ namespace standardInterfaces_i
 	    virtual void start() = 0;
 	    virtual void stop() = 0;
 	    virtual void mute(::CORBA::Boolean enable) = 0;
+	    virtual void reset() = 0;
 
 
 
@@ -103,6 +104,10 @@ namespace audioOutControl
 	    		base->mute(enable);
 	    	}
 
+	    	void reset(){
+	    		base->reset();
+	    	}
+
 
 	private:
 		standardInterfaces_i::audioOutControl_p *base;
@@ -137,6 +142,7 @@ namespace standardInterfaces_i
 	    virtual void start() = 0;
 	    virtual void stop() = 0;
 	    virtual void set_frame_size(::CORBA::ULong length) = 0;
+	    virtual void reset() = 0;
 
 
 
@@ -187,6 +193,9 @@ namespace audioInControl
 	    }
 	    void set_frame_size(::CORBA::ULong length){
 	    	base->set_frame_size(length);
+	    }
+	    void reset(){
+	    	base->reset();
 	    }
 
 

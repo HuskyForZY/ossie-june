@@ -33,6 +33,7 @@ module standardInterfaces {
 	void start();
 	void stop();
 	void set_frame_size(in unsigned long length);
+	void reset();
     };
 
     interface audioOutControl {
@@ -45,6 +46,7 @@ module standardInterfaces {
 	void start();
 	void stop();
 	void mute(in boolean enable);
+	void reset();
     };
 
 };

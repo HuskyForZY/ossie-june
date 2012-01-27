@@ -25,7 +25,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    ossieDebugLevel = 0;
+    ossieDebugLevel = 9;
 
     if ( argc < 7 ) {
         cout << argv[0] << " NAMING_CONTEXT_IOR <string> NAME_BINDING <string> COMPONENT_IDENTIFIER <string> " << endl;

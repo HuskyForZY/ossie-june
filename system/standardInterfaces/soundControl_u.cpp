@@ -83,6 +83,12 @@ void standardInterfaces_i::audioOutControl_u::mute(::CORBA::Boolean enable)
         dest_port->mute(enable);
 }
 
+void standardInterfaces_i::audioOutControl_u::reset()
+{
+    omni_mutex_lock l(port_mutex);
+    if (!CORBA::is_nil(dest_port))
+        dest_port->reset();
+}
 
 audioOutControl::usesPort::usesPort(standardInterfaces_i::audioOutControl_u *_base) :
         base(_base)
@@ -110,11 +116,11 @@ void audioOutControl::usesPort::disconnectPort(const char* _connectionID)
 {
     omni_mutex_lock l(base->port_mutex);
     if (base->connectionID == _connectionID) {
+    	base->dest_port->reset();
         base->dest_port = standardInterfaces::audioOutControl::_nil();
         base->connectionID.clear();
         return;
     }
-
     DEBUG(2, StandardInterfaces, "Attempted to disconnect non-existent port: " << _connectionID);
 
 
@@ -190,7 +196,12 @@ void standardInterfaces_i::audioInControl_u::set_frame_size(::CORBA::ULong lengt
     if (!CORBA::is_nil(dest_port))
         dest_port->set_frame_size(length);
 }
-
+void standardInterfaces_i::audioInControl_u::reset()
+{
+    omni_mutex_lock l(port_mutex);
+    if (!CORBA::is_nil(dest_port))
+        dest_port->reset();
+}
 
 audioInControl::usesPort::usesPort(standardInterfaces_i::audioInControl_u *_base) :
         base(_base)
@@ -219,6 +230,7 @@ void audioInControl::usesPort::disconnectPort(const char* _connectionID)
 {
     omni_mutex_lock l(base->port_mutex);
     if (base->connectionID == _connectionID) {
+    	base->dest_port->reset();
         base->dest_port = standardInterfaces::audioInControl::_nil();
         base->connectionID.clear();
         return;

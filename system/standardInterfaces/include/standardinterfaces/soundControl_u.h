@@ -51,6 +51,7 @@ namespace standardInterfaces_i
 	    void start();
 	    void stop();
 	    void mute(::CORBA::Boolean enable);
+	    void reset();
 
 	private:
 		audioOutControl_u();
@@ -117,6 +118,7 @@ namespace standardInterfaces_i
 	    void start();
 	    void stop();
 	    void set_frame_size(::CORBA::ULong length);
+	    void reset();
 
 
 

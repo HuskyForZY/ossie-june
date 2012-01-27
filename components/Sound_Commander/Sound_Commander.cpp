@@ -29,6 +29,7 @@ Sound_Commander_i::Sound_Commander_i(const char *uuid, omni_condition *condition
 
 Sound_Commander_i::~Sound_Commander_i(void)
 {
+	DEBUG(3, Sound_Commander, "destructor() invoked")
     delete audioOutControl;
     delete audioInControl;
 }
@@ -77,8 +78,7 @@ void Sound_Commander_i::stop() throw (CORBA::SystemException, CF::Resource::Stop
 void Sound_Commander_i::releaseObject() throw (CORBA::SystemException,
     CF::LifeCycle::ReleaseError)
 {
-    DEBUG(3, Sound_Commander, "releaseObject() invoked")
-
+    DEBUG(3, Sound_Commander, "releaseObject() invoked");
 }
 
 void Sound_Commander_i::initialize() throw (CF::LifeCycle::InitializeError,
