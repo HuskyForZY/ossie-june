@@ -45,7 +45,7 @@ namespace standardInterfaces_i
 	    virtual void set_sample_rate(::CORBA::ULong rate) = 0;
 	    virtual void set_channels(::CORBA::UShort channels) = 0;
 	    virtual void set_connector(standardInterfaces::audioOutControl::OutType type) = 0;
-	    virtual void set_network_port(unsigned short port) = 0;
+	    virtual void set_network_address(const char* address) = 0;
 	    virtual void set_file_name(const char* name) = 0;
 	    virtual void start() = 0;
 	    virtual void stop() = 0;
@@ -87,8 +87,8 @@ namespace audioOutControl
 		void set_connector(standardInterfaces::audioOutControl::OutType type){
 			base->set_connector(type);
 		}
-	    	void set_network_port(unsigned short port){
-			base->set_network_port(port);
+	    	void set_network_address(const char* address){
+			base->set_network_address(address);
 		}
 	    	void set_file_name(const char* name){
 			base->set_file_name(name);
@@ -132,7 +132,7 @@ namespace standardInterfaces_i
 	    virtual void set_sample_rate(::CORBA::ULong rate) = 0;
 	    virtual void set_channels(::CORBA::UShort channels) = 0;
 	    virtual void set_connector(standardInterfaces::audioInControl::InType type) = 0;
-	    virtual void set_network_port(unsigned short port) = 0;
+	    virtual void set_network_address(const char* address) = 0;
 	    virtual void set_file_name(const char* name) = 0;
 	    virtual void start() = 0;
 	    virtual void stop() = 0;
@@ -173,8 +173,8 @@ namespace audioInControl
 		void set_connector(standardInterfaces::audioInControl::InType type){
 			base->set_connector(type);
 		}
-	    	void set_network_port(unsigned short port){
-			base->set_network_port(port);
+	    	void set_network_address(const char* address){
+			base->set_network_address(address);
 		}
 	    	void set_file_name(const char* name){
 			base->set_file_name(name);

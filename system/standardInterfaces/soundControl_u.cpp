@@ -51,11 +51,11 @@ void standardInterfaces_i::audioOutControl_u::set_connector(standardInterfaces::
         dest_port->set_connector(type);
 }
 
-void standardInterfaces_i::audioOutControl_u::set_network_port(unsigned short port)
+void standardInterfaces_i::audioOutControl_u::set_network_address(const char* address)
 {
     omni_mutex_lock l(port_mutex);
     if (!CORBA::is_nil(dest_port))
-        dest_port->set_network_port(port);
+        dest_port->set_network_address(address);
 }
 void standardInterfaces_i::audioOutControl_u::set_file_name(const char* name)
 {
@@ -159,11 +159,11 @@ void standardInterfaces_i::audioInControl_u::set_connector(standardInterfaces::a
         dest_port->set_connector(type);
 }
 
-void standardInterfaces_i::audioInControl_u::set_network_port(unsigned short port)
+void standardInterfaces_i::audioInControl_u::set_network_address(const char* address)
 {
     omni_mutex_lock l(port_mutex);
     if (!CORBA::is_nil(dest_port))
-        dest_port->set_network_port(port);
+        dest_port->set_network_address(address);
 }
 void standardInterfaces_i::audioInControl_u::set_file_name(const char* name)
 {

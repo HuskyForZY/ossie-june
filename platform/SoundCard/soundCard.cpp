@@ -33,13 +33,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <string.h>
 #include <fcntl.h>
 
-#include <ace/Acceptor.h>
-#include <ace/SOCK_Acceptor.h>
-#include <ace/Reactor.h>
-#include <ace/Thread.h>
-#include <ace/Condition_T.h>
-#include <ace/Signal.h>
-
 #include "ossie/cf.h"
 #include "ossie/portability.h"
 #include <ossie/ossieSupport.h>
@@ -47,22 +40,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <pulse/timeval.h>
 
 #include "soundCard.h"
-#include "NetHandler.h"
 
-#if defined (ACE_HAS_EXPLICIT_TEMPLATE_INSTANTIATION)
-template class ACE_Acceptor <Logging_Handler, ACE_SOCK_ACCEPTOR>;
-template class ACE_Svc_Handler<ACE_SOCK_STREAM, ACE_NULL_SYNCH>;
-#elif defined (ACE_HAS_TEMPLATE_INSTANTIATION_PRAGMA)
-#pragma instantiate ACE_Acceptor <Logging_Handler, ACE_SOCK_ACCEPTOR>
-#pragma instantiate ACE_Svc_Handler<ACE_SOCK_STREAM, ACE_NULL_SYNCH>
-#endif /* ACE_HAS_EXPLICIT_TEMPLATE_INSTANTIATION */
-
-ACE_Reactor *g_reactor;
-Logging_Handler *NetworkHandler = NULL;
-
-omni_condition *NetOnAccepted;
-omni_condition *NetOnReceied;
-ACE_Thread_Condition<ACE_Thread_Mutex>* ACond;
 
 // Initializing constructor
 SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
@@ -83,10 +61,10 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     sound_in_conrtol = new audioInControl_i(this,"soundInControl","DomainName1");
 
 
-    port_num = ACE_DEFAULT_SERVER_PORT;
-
 // Start the play_sound thread
     capture_frame_length = 512;
+
+    play_muted = false;
 
 
 
@@ -94,11 +72,14 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
     dev_operationalState = CF::Device::ENABLED;
     dev_adminState = CF::Device::UNLOCKED;
 
-    OutputType = standardInterfaces::audioOutControl::otSpeaker;
+    OutputType = standardInterfaces::audioOutControl::otNet;
     paPlayHandle = NULL;
 
-    InputType = standardInterfaces::audioInControl::itMicrophone;
+    InputType = standardInterfaces::audioInControl::itNet;
     paCaptureHandle = NULL;
+
+    oAddress = "127.0.0.1";
+    iAddress = "127.0.0.1";
 
 
     playback_profile.channels = 1;
@@ -122,22 +103,10 @@ SoundCard_i::SoundCard_i(char *id, char *label, char *profile)
 
 
 
-
-
-
-
-    pa_simple *paHandle = NULL;
-
-
     set_play_channels(1);
     refresh_play_profile = false;
     refresh_capture_profile = false;
 
-    capture_open(InputType);
-    play_open(OutputType);
-
-    ACE_thread = new omni_thread(ACE, (void *) this);
-    ACE_thread->start();
 
 }
 
@@ -158,12 +127,6 @@ void SoundCard_i::capture( void * data )
 {
 	DEBUG(3, SoundCard, "capturing thread is running")
     ((SoundCard_i*) data)->capture_sound();
-}
-
-void SoundCard_i::ACE( void * data )
-{
-	DEBUG(3, SoundCard, "ACE thread is running")
-    ((SoundCard_i*) data)->handle_sock_event();
 }
 
 // Device methods
@@ -198,7 +161,7 @@ CORBA::Boolean SoundCard_i::allocateCapacity (const CF::
 throw (CORBA::SystemException, CF::Device::InvalidCapacity,
        CF::Device::InvalidState)
 {
-
+	DEBUG(3, SoundCard, "allocateCapacity invoked")
     return true;
 }
 
@@ -206,7 +169,7 @@ void SoundCard_i::deallocateCapacity (const CF::Properties & capacities)
 throw (CORBA::SystemException, CF::Device::InvalidCapacity,
        CF::Device::InvalidState)
 {
-
+	DEBUG(3, SoundCard, "deallocateCapacity invoked")
 }
 
 char *SoundCard_i::label ()
@@ -334,10 +297,12 @@ void SoundCard_i::set_play_rate(::CORBA::ULong rate)
 	refresh_play_profile = true;
 
 }
-void SoundCard_i::set_play_network_port(unsigned short port)
+void SoundCard_i::set_play_network_address(const char* address)
 {
-	DEBUG(3, SoundCard, "set_play_network_port invoked")
-	port_num = port;
+	DEBUG(3, SoundCard, "set_play_network_port invoked");
+	oAddress = address;
+	refresh_play_profile = true;
+
 
 }
 void SoundCard_i::set_play_file_name(const char* name)
@@ -364,7 +329,7 @@ void SoundCard_i::stop_play()
 }
 void SoundCard_i::mute_play(bool enable)
 {
-
+	play_muted = enable;
 }
 
 bool SoundCard_i::continue_playing()
@@ -382,7 +347,7 @@ void SoundCard_i::play_open(standardInterfaces::audioOutControl::OutType media)
     	break;
     case standardInterfaces::audioOutControl::otNet:
     	DEBUG(3, SoundCard, "Output Media = Network");
-    	net_play_open(port_num);
+    	net_play_open(oAddress.c_str());
     	break;
     default:
     	DEBUG(3, SoundCard, "Output Media = Speaker");
@@ -394,36 +359,33 @@ void SoundCard_i::play_open(standardInterfaces::audioOutControl::OutType media)
 
 
 
-void SoundCard_i::net_play_open(unsigned short port)
+void SoundCard_i::net_play_open(const char* address)
 {
-	/*
-	if(peer_acceptor.open (ACE_INET_Addr (port),g_reactor) == -1)
-		printf("SoundCard: Net error - %s\n",ACE_OS::strerror(ACE_OS::last_error ()) );
-	DEBUG(3, SoundCard, "starting up audio streaming daemon");
-	*/
+	DEBUG(3, SoundCard, "Play Network Address: "<<address);
+    int latency_msec = 1;
+	pa_buffer_attr buffer_attr;
+    buffer_attr.fragsize = buffer_attr.tlength = pa_usec_to_bytes(latency_msec * PA_USEC_PER_MSEC, &playback_profile);
+    if(std::string(address)=="127.0.0.1"){
+    	if (!(paPlayHandle = pa_simple_new(NULL,"OSSIE-playback", PA_STREAM_PLAYBACK, NULL, "playback", &playback_profile, NULL, &buffer_attr, &error))) {
+    				fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
+    			}
+    }
+    else{
+		if (!(paPlayHandle = pa_simple_new(address,"OSSIE-playback", PA_STREAM_PLAYBACK, NULL, "playback", &playback_profile, NULL, &buffer_attr, &error))) {
+			fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
+		}
+    }
 
 }
 
 void SoundCard_i::net_play_close()
 {
-	/*
-	if(peer_acceptor.close() == -1)
-		printf("SoundCard: Net error - %s\n",ACE_OS::strerror(ACE_OS::last_error ()) );
-		*/
+	pa_play_close();
 }
 
 int SoundCard_i::net_play_write(void* buffer,unsigned int length)
 {
-	size_t transfered = 0;
-	ACE_Time_Value t(0,500000);
-//	g_reactor->handle_events();
-	if(NetworkHandler != NULL){
-		NetworkHandler->peer().send_n(buffer,length,&t,&transfered);
-	}
-	else{
-		DEBUG(3, SoundCard, "No available client");
-	}
-	return transfered;
+	return pa_play_write(buffer,length);
 }
 
 void SoundCard_i::pa_play_open()
@@ -448,15 +410,18 @@ int SoundCard_i::pa_play_write(const void* buffer,unsigned int length)
         fprintf(stderr, __FILE__": pa_simple_write() failed: %s\n", pa_strerror(error));
         return r;
     }
-    else
+    else{
     	return length;
+    }
 
 
 }
 
 void SoundCard_i::pa_play_close()
 {
+	int error;
 	if(paPlayHandle != NULL){
+		pa_simple_flush	(paPlayHandle,&error);
 		pa_simple_free(paPlayHandle);
 		paPlayHandle = NULL;
 	}
@@ -490,6 +455,7 @@ void SoundCard_i::file_play_close()
 {
 	if(oWav_file != NULL)
 		sf_close(oWav_file);
+
 }
 
 int SoundCard_i::file_play_write(void* buffer,unsigned int length)
@@ -504,6 +470,8 @@ int SoundCard_i::play_write(void* buffer,unsigned int length)
 {
 	omni_mutex_lock l(OutputType_mutex);
 	unsigned int r = 0;
+	if(play_muted == true)
+		return length;
     switch(OutputType){
     case standardInterfaces::audioOutControl::otFile:
     	r = file_play_write(buffer,length);
@@ -527,8 +495,7 @@ void SoundCard_i::play_sound()
     CORBA::UShort S_in_length;
     TStereoWave sWave;
     TMonoWave mWave;
- //   g_reactor->owner(ACE_OS::thr_self());
-
+    play_open(OutputType);
     while(continue_playing()) {
 
     	sound_out->getData(S_in);
@@ -549,7 +516,7 @@ void SoundCard_i::play_sound()
         	for(int i=0;i<S_in_length;i++){
         		mWave[i] = (*S_in)[i];
         	}
-
+    		DEBUG(3, SoundCard, "before playing sound");
         	if(play_write(&mWave[0], mWave.size()*sizeof(TMonoWave::value_type)) > 0)
         		DEBUG(3, SoundCard, "playing mono sound");
 
@@ -570,6 +537,7 @@ void SoundCard_i::play_sound()
     	sound_out->bufferEmptied();
 
     }
+    play_close(OutputType);
 
 }
 
@@ -607,10 +575,11 @@ void SoundCard_i::set_capture_rate(::CORBA::ULong rate)
 	refresh_capture_profile = true;
 }
 
-void SoundCard_i::set_capture_network_port(unsigned short port)
+void SoundCard_i::set_capture_network_address(const char* address)
 {
-	DEBUG(3, SoundCard, "set_capture_network_port invoked")
-	port_num = port;
+	DEBUG(3, SoundCard, "set_capture_network_port invoked");
+	iAddress = address;
+	net_capture_close();
 
 }
 void SoundCard_i::set_capture_file_name(const char* name)
@@ -654,7 +623,7 @@ void SoundCard_i::capture_open(standardInterfaces::audioInControl::InType media)
     	break;
     case standardInterfaces::audioInControl::itNet:
     	std::cout<<"Input Media = Network"<<std::endl;
-    	net_capture_open(port_num);
+    	net_capture_open(iAddress.c_str());
     	break;
     default:
     	std::cout<<"Input Media = Microphone"<<std::endl;
@@ -671,13 +640,9 @@ void SoundCard_i::pa_capture_open()
     */
 }
 
-void SoundCard_i::net_capture_open(unsigned short port)
+void SoundCard_i::net_capture_open(const char* address)
 {
-	/*
-	if(peer_acceptor.open (ACE_INET_Addr (port),g_reactor) == -1)
-		printf("SoundCard: Net error - %s\n",ACE_OS::strerror(ACE_OS::last_error ()) );
-	DEBUG(3, SoundCard, "starting up audio streaming daemon");
-	*/
+
 }
 
 void SoundCard_i::file_capture_open(const char* name)
@@ -751,22 +716,32 @@ int SoundCard_i::file_capture_read(void* buffer,unsigned int length)
 
 int SoundCard_i::net_capture_read(void* buffer,unsigned int length)
 {
-	while(1){
-		if(NetworkHandler != NULL){
-			if(NetworkHandler->sock_queue.size() > length)
-				break;
-			NetOnReceied->wait();
-		}
-		else{
-			NetOnAccepted->wait();
-		}
-
+	size_t r = 0;
+    int latency_msec = 1;
+	pa_buffer_attr buffer_attr;
+    buffer_attr.fragsize = buffer_attr.tlength = pa_usec_to_bytes(latency_msec * PA_USEC_PER_MSEC, &capture_profile);
+	if(paCaptureHandle == NULL){
+		if(iAddress == "127.0.0.1")
+			paCaptureHandle = pa_simple_new(NULL,"OSSIE-capture", PA_STREAM_RECORD, NULL, "record", &capture_profile, NULL, &buffer_attr, &error);
+		else
+			paCaptureHandle = pa_simple_new(iAddress.c_str(),"OSSIE-capture", PA_STREAM_RECORD, NULL, "record", &capture_profile, NULL, &buffer_attr, &error);
 	}
-	NetworkHandler->sock_mutex.lock();
-	std::copy(NetworkHandler->sock_queue.begin(),NetworkHandler->sock_queue.begin()+length, (char*)buffer);
-	NetworkHandler->sock_queue.erase(NetworkHandler->sock_queue.begin(),NetworkHandler->sock_queue.begin()+length);
-	NetworkHandler->sock_mutex.unlock();
-	return length;
+    if(paCaptureHandle == NULL)
+        fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
+
+	if(paCaptureHandle != NULL)
+		r = pa_simple_read(paCaptureHandle, buffer, length, &error);
+	else{
+		DEBUG(3, SoundCard, "paCaptureHandle is not yet opened\n");
+		return -1;
+	}
+
+	if (r < 0)
+		fprintf(stderr, __FILE__": pa_simple_read() failed: %s\n", pa_strerror(error));
+	else
+		r = length;
+
+	return r;
 }
 
 void SoundCard_i::capture_close(standardInterfaces::audioInControl::InType media)
@@ -801,10 +776,7 @@ void SoundCard_i::file_capture_close()
 
 void SoundCard_i::net_capture_close()
 {
-	/*
-	if(peer_acceptor.close() == -1)
-		printf("SoundCard: Net error - %s\n",ACE_OS::strerror(ACE_OS::last_error ()) );
-	*/
+	pa_capture_close();
 }
 
 bool SoundCard_i::continue_capturing()
@@ -820,7 +792,7 @@ void SoundCard_i::capture_sound()
     TStereoWave sWave(capture_frame_length);
     TMonoWave mWave(capture_frame_length);
     PortTypes::ShortSequence I_out;
-
+    capture_open(InputType);
 	while(continue_capturing()){
 
 		//capture_profile_mutex.lock();
@@ -847,31 +819,10 @@ void SoundCard_i::capture_sound()
 		}
 
 	}
+	capture_close(InputType);
 
 }
 
-void SoundCard_i::handle_sock_event()
-{
-
-    omni_mutex OnAccepted,OnReceived;
-	NetOnAccepted = new omni_condition(&OnAccepted);
-	NetOnReceied = new omni_condition(&OnReceived);
-
-	DEBUG(3, SoundCard, "ACE running")
-
-	ACE_NEW(g_reactor, ACE_Reactor);
-
-	if(peer_acceptor.open (ACE_INET_Addr (port_num),g_reactor) == -1)
-		printf("SoundCard: Net error - %s\n",ACE_OS::strerror(ACE_OS::last_error ()) );
-	DEBUG(3, SoundCard, "starting up audio streaming daemon");
-
-	while(1){
-		//ACE_DEBUG ((LM_DEBUG,"(%P|%t) waiting event\n"));
-		g_reactor->handle_events();
-	}
-	delete NetOnAccepted;
-	delete NetOnReceied;
-}
 
 
 

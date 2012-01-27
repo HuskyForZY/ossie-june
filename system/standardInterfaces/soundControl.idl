@@ -28,7 +28,7 @@ module standardInterfaces {
 	void set_sample_rate(in unsigned long rate);
 	void set_channels(in unsigned short channels);
 	void set_connector(in InType type);
-	void set_network_port(in unsigned short port);
+	void set_network_address(in string address);
 	void set_file_name(in string name);
 	void start();
 	void stop();
@@ -40,7 +40,7 @@ module standardInterfaces {
 	void set_sample_rate(in unsigned long rate);
 	void set_channels(in unsigned short channels);
 	void set_connector(in OutType type);
-	void set_network_port(in unsigned short port);
+	void set_network_address(in string address);
 	void set_file_name(in string name);
 	void start();
 	void stop();

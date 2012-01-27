@@ -131,7 +131,7 @@ _CORBA_MODULE_BEG
     void set_sample_rate(::CORBA::ULong rate);
     void set_channels(::CORBA::UShort channels);
     void set_connector(audioInControl::InType type);
-    void set_network_port(::CORBA::UShort port);
+    void set_network_address(const char* address);
     void set_file_name(const char* name);
     void start();
     void stop();
@@ -172,7 +172,7 @@ _CORBA_MODULE_BEG
     virtual void set_sample_rate(::CORBA::ULong rate) = 0;
     virtual void set_channels(::CORBA::UShort channels) = 0;
     virtual void set_connector(audioInControl::InType type) = 0;
-    virtual void set_network_port(::CORBA::UShort port) = 0;
+    virtual void set_network_address(const char* address) = 0;
     virtual void set_file_name(const char* name) = 0;
     virtual void start() = 0;
     virtual void stop() = 0;
@@ -259,7 +259,7 @@ _CORBA_MODULE_BEG
     void set_sample_rate(::CORBA::ULong rate);
     void set_channels(::CORBA::UShort channels);
     void set_connector(audioOutControl::OutType type);
-    void set_network_port(::CORBA::UShort port);
+    void set_network_address(const char* address);
     void set_file_name(const char* name);
     void start();
     void stop();
@@ -300,7 +300,7 @@ _CORBA_MODULE_BEG
     virtual void set_sample_rate(::CORBA::ULong rate) = 0;
     virtual void set_channels(::CORBA::UShort channels) = 0;
     virtual void set_connector(audioOutControl::OutType type) = 0;
-    virtual void set_network_port(::CORBA::UShort port) = 0;
+    virtual void set_network_address(const char* address) = 0;
     virtual void set_file_name(const char* name) = 0;
     virtual void start() = 0;
     virtual void stop() = 0;

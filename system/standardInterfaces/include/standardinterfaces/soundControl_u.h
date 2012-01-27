@@ -46,7 +46,7 @@ namespace standardInterfaces_i
 	    void set_sample_rate(::CORBA::ULong rate);
 	    void set_channels(::CORBA::UShort channels);
 	    void set_connector(standardInterfaces::audioOutControl::OutType type);
-	    void set_network_port(unsigned short port);
+	    void set_network_address(const char* address);
 	    void set_file_name(const char* name);
 	    void start();
 	    void stop();
@@ -112,7 +112,7 @@ namespace standardInterfaces_i
 	    void set_sample_rate(::CORBA::ULong rate);
 	    void set_channels(::CORBA::UShort channels);
 	    void set_connector(standardInterfaces::audioInControl::InType type);
-	    void set_network_port(unsigned short port);
+	    void set_network_address(const char* address);
 	    void set_file_name(const char* name);
 	    void start();
 	    void stop();

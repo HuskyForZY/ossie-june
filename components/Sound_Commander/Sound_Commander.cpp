@@ -170,17 +170,14 @@ throw (CORBA::SystemException,
             const char* simple_temp;
             props[i].value >>= CORBA::Any::to_string(simple_temp,0);
             play_destination = simple_temp;
-            int p;
-            if(play_destination == "Speaker"){
-            	audioOutControl->set_connector(standardInterfaces::audioOutControl::otSpeaker);
-            }
-            else if((p=atoi(play_destination.c_str())) > 0){
-            	audioOutControl->set_network_port(p);
-            	audioOutControl->set_connector(standardInterfaces::audioOutControl::otNet);
-            }
-            else{
+            if(play_destination.substr(play_destination.length()-3,3) == "wav"){
             	audioOutControl->set_file_name(play_destination.c_str());
             	audioOutControl->set_connector(standardInterfaces::audioOutControl::otFile);
+
+            }
+            else{
+            	audioOutControl->set_network_address(play_destination.c_str());
+            	audioOutControl->set_connector(standardInterfaces::audioOutControl::otNet);
             }
 
             for( int k = 0; k < propertySet.length(); k++ ) {
@@ -238,20 +235,15 @@ throw (CORBA::SystemException,
             const char* simple_temp;
             props[i].value >>= CORBA::Any::to_string(simple_temp,0);
             capture_source = simple_temp;
-            int p;
-            if(capture_source == "Mic"){
-            	std::cout<<"mic"<<std::endl;
-            	audioInControl->set_connector(standardInterfaces::audioInControl::itMicrophone);
-            }
-            else if((p=atoi(capture_source.c_str())) > 0){
-            	std::cout<<"net"<<std::endl;
-            	audioInControl->set_network_port(p);
-            	audioInControl->set_connector(standardInterfaces::audioInControl::itNet);
-            }
-            else{
+            if(capture_source.substr(capture_source.length()-3,3) == "wav"){
             	std::cout<<"file"<<std::endl;
             	audioInControl->set_file_name(capture_source.c_str());
             	audioInControl->set_connector(standardInterfaces::audioInControl::itFile);
+            }
+            else{
+            	std::cout<<"net"<<std::endl;
+            	audioInControl->set_network_address(capture_source.c_str());
+            	audioInControl->set_connector(standardInterfaces::audioInControl::itNet);
             }
             for( int k = 0; k < propertySet.length(); k++ ) {
                 if( strcmp(propertySet[k].id, props[i].id) == 0 ) {

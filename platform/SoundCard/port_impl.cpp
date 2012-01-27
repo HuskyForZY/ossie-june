@@ -57,9 +57,9 @@ void audioOutControl_i::set_connector(standardInterfaces::audioOutControl::OutTy
 	soundCard->set_play_connector(type);
 }
 
-void audioOutControl_i::set_network_port(unsigned short port)
+void audioOutControl_i::set_network_address(const char* address)
 {
-	soundCard->set_play_network_port(port);
+	soundCard->set_play_network_address(address);
 }
 void audioOutControl_i::set_file_name(const char* name)
 {
@@ -101,9 +101,9 @@ void audioInControl_i::set_connector(standardInterfaces::audioInControl::InType 
 	soundCard->set_capture_connector(type);
 }
 
-void audioInControl_i::set_network_port(unsigned short port)
+void audioInControl_i::set_network_address(const char* address)
 {
-	soundCard->set_capture_network_port(port);
+	soundCard->set_capture_network_address(address);
 }
 void audioInControl_i::set_file_name(const char* name)
 {

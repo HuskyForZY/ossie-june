@@ -37,12 +37,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <pulse/error.h>
 #include <sndfile.h>
 
-#include <ace/Acceptor.h>
-#include <ace/SOCK_Acceptor.h>
-#include <ace/Reactor.h>
-#include <ace/Signal.h>
-#include "NetHandler.h"
-
 #include "ossie/cf.h"
 #include "ossie/PortTypes.h"
 #include "ossie/debug.h"
@@ -53,8 +47,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 class SoundCard_i;
 
-typedef ACE_Acceptor <Logging_Handler, ACE_SOCK_ACCEPTOR> AudioStreamming_Acceptor;
-
 class audioOutControl_i: public standardInterfaces_i::audioOutControl_p
 {
 public:
@@ -62,7 +54,7 @@ public:
 	void set_sample_rate(::CORBA::ULong rate);
 	void set_channels(::CORBA::UShort channels);
 	void set_connector(standardInterfaces::audioOutControl::OutType type);
-	void set_network_port(unsigned short port);
+	void set_network_address(const char* address);
 	void set_file_name(const char* name);
 	void start();
 	void stop();
@@ -80,7 +72,7 @@ public:
 	void set_sample_rate(::CORBA::ULong rate);
 	void set_channels(::CORBA::UShort channels);
 	void set_connector(standardInterfaces::audioInControl::InType type);
-	void set_network_port(unsigned short port);
+	void set_network_address(const char* address);
 	void set_file_name(const char* name);
 	void start();
 	void stop();
@@ -185,7 +177,7 @@ public:
 	void set_play_rate(unsigned long rate);
 	void set_play_channels(unsigned short number);
 	void set_play_connector(standardInterfaces::audioOutControl::OutType type);
-	void set_play_network_port(unsigned short port);
+	void set_play_network_address(const char* address);
 	void set_play_file_name(const char* name);
 	void start_play();
 	void stop_play();
@@ -195,7 +187,7 @@ public:
 	void set_capture_rate(unsigned long rate);
 	void set_capture_channels(unsigned short number);
 	void set_capture_connector(standardInterfaces::audioInControl::InType type);
-	void set_capture_network_port(unsigned short port);
+	void set_capture_network_address(const char* address);
 	void set_capture_file_name(const char* name);
 	void start_capture();
 	void stop_capture();
@@ -239,7 +231,6 @@ private:
 /// Main processing playback loop
     omni_thread* play_thread;
     omni_thread* capture_thread;
-    omni_thread* ACE_thread;
 
     omni_mutex playing_mutex;
     omni_mutex capturing_mutex;
@@ -247,6 +238,7 @@ private:
 
 
     bool play_started;
+    bool play_muted;
     bool capture_started;
 
     pa_sample_spec playback_profile;
@@ -263,11 +255,11 @@ private:
 
     SNDFILE *oWav_file, *iWav_file;
     std::string oWav_name,iWav_name;
+    std::string oAddress, iAddress;
     SF_INFO oWav_profile, iWav_profile;
 
-    unsigned short port_num;
 
-    AudioStreamming_Acceptor peer_acceptor;
+
 
 
     void play_sound();
@@ -277,7 +269,7 @@ private:
 
     void capture_open(standardInterfaces::audioInControl::InType media);
     void pa_capture_open();
-    void net_capture_open(unsigned short port);
+    void net_capture_open(const char* address);
     void file_capture_open(const char* name);
 
     void capture_close(standardInterfaces::audioInControl::InType media);
@@ -288,7 +280,7 @@ private:
     void play_open(standardInterfaces::audioOutControl::OutType media);
     void pa_play_open();
     void file_play_open(const char* name);
-    void net_play_open(unsigned short port);
+    void net_play_open(const char* address);
 
     void play_close(standardInterfaces::audioOutControl::OutType media);
     void pa_play_close();

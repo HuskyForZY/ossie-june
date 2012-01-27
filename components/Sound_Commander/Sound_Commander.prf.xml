@@ -16,7 +16,7 @@
         <kind kindtype="configure"/>
     </simple>
     <simple id="DCE:f9e77262-3d8d-11e1-82c5-000c29c0b7da" mode="readwrite" name="playback_destination" type="string">
-        <value>Speaker</value>
+        <value>127.0.0.1</value>
         <description>
 	Speaker:default system output, Number: network port, FileName: wave file name for output
         </description>
@@ -41,7 +41,7 @@
         <kind kindtype="configure"/>
     </simple>
     <simple id="DCE:07a8ba48-3d96-11e1-a462-000c29c0b7da" mode="readwrite" name="capture_source" type="string">
-        <value>Mic</value>
+        <value>127.0.0.1</value>
         <description>
 	Mic:default system input, Number: network port, FileName: wave file name for input
         </description>
